@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 import { ApiError, createDraft, getDraft, type Draft } from "@/lib/api";
 
@@ -110,6 +111,12 @@ export function DraftGenerator({ slug, schemeName }: { slug: string; schemeName:
           </button>
         </div>
         <p className="mt-3 text-sm text-blue-100">{populated} fields prepared · {humanRequired} kept for your input</p>
+        <Link
+          href={`/schemes/${slug}/workspace`}
+          className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-white underline decoration-white/40 underline-offset-4 hover:decoration-white"
+        >
+          Open full workspace →
+        </Link>
       </div>
 
       <div className="p-5">
