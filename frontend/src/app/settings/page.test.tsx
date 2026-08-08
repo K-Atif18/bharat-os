@@ -12,6 +12,7 @@ const mocks = vi.hoisted(() => ({
 
 vi.mock("next/navigation", () => ({
   useRouter: () => mocks.router,
+  usePathname: () => "/settings",
 }));
 
 vi.mock("@/lib/api", async (importOriginal) => {

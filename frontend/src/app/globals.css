@@ -327,6 +327,31 @@
     @apply border-field-fg bg-field-fg text-field-bg hover:bg-field-fg/85;
   }
 
+  /* Form primitives for the field system. Deliberately NOT named
+     field-label/field-control/field-hint — those names are already the
+     civic-paper form system's classes (see the "Editorial system" block
+     below); reusing them here would silently apply the wrong styles to
+     whichever world's page didn't get migrated yet. */
+  .field-input-label {
+    @apply block font-field text-xs uppercase tracking-[0.06em] text-field-fg-muted;
+  }
+
+  .field-input {
+    @apply mt-2 min-h-11 w-full border border-field-rule-strong bg-transparent px-3.5 py-2.5 text-sm text-field-fg outline-none transition-colors duration-150 placeholder:text-field-fg-subtle hover:border-field-fg focus:border-field-fg disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .field-input-hint {
+    @apply mt-2 text-xs leading-5 text-field-fg-subtle;
+  }
+
+  .field-choice-row {
+    @apply flex min-h-11 cursor-pointer items-start gap-3 border border-field-rule px-3 py-2.5 text-sm transition-colors duration-150 hover:border-field-rule-strong;
+  }
+
+  .field-choice-row input {
+    @apply mt-0.5 h-4 w-4 shrink-0 accent-field-fg;
+  }
+
   /* Waveform rule: a section divider that reads as an instrument's signal
      trace rather than a plain horizontal line. Pure CSS, no image asset. */
   .field-wave-rule {

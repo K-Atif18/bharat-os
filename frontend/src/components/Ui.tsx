@@ -119,3 +119,28 @@ export function FieldLoadingState({ label }: { label: string }) {
     </div>
   );
 }
+
+export function FieldPageIntro({
+  index,
+  title,
+  description,
+  actions,
+}: {
+  index?: string;
+  title: string;
+  description?: ReactNode;
+  actions?: ReactNode;
+}) {
+  return (
+    <header className="flex flex-col gap-5 border-b border-field-rule pb-7 sm:flex-row sm:items-end sm:justify-between">
+      <div className="max-w-3xl">
+        <div className="field-section-label border-none pb-0">
+          {index && <span className="field-index">{index}</span>}
+          <span>{title}</span>
+        </div>
+        {description && <div className="mt-3 max-w-2xl text-sm leading-6 text-field-fg-muted sm:text-base">{description}</div>}
+      </div>
+      {actions && <div className="flex shrink-0 flex-wrap gap-2">{actions}</div>}
+    </header>
+  );
+}
