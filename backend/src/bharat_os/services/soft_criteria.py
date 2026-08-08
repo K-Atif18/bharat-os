@@ -164,6 +164,234 @@ Applicant profile:
 Assess whether this applicant appears to satisfy the criterion."""
 
 
+#: Prompt version for the retrieval-grounded judgement path
+#: (:func:`judge_criterion_with_context`). Deliberately distinct from
+#: PROMPT_VERSION: this path sends a materially different prompt (it can
+#: include grounding passages the default path never sees), and reusing the
+#: same version string would make an old judgement's cache_key ambiguous
+#: about which prompt shape actually produced it.
+GROUNDED_PROMPT_VERSION = "v1-grounded"
+
+#: Retrieved grounding is capped, the same discipline as the extraction
+#: retrieval in pdf/retrieval.py — this exists to add useful context, not to
+#: replace the profile and criterion as the primary inputs to the judgement.
+MAX_GROUNDING_CHARS = 2_000
+
+
+def build_grounded_prompt(
+    criterion: EligibilityCriterion,
+    version: SchemeVersion,
+    profile: ApplicantProfile,
+    *,
+    grounding_context: str,
+) -> str:
+    """The grounded prompt: the same inputs as :func:`build_prompt`, plus
+    retrieved context from the rest of the scheme's own data.
+
+    A criterion judged in total isolation from the rest of its scheme can
+    miss something the fuller text would have made clear — a benefit
+    description that clarifies what "commercially viable" means for this
+    specific scheme, or a neighbouring criterion that narrows the intended
+    scope. This is still the same model, the same hedged vocabulary, the
+    same confidence threshold; only the grounding is new.
+    """
+    grounding_block = (
+        f"\nAdditional context from this scheme's own published material:\n"
+        f"{grounding_context}\n"
+        if grounding_context
+        else ""
+    )
+    return f"""\
+Scheme: {version.name}
+Administered by: {version.administering_ministry}
+
+Criterion to assess:
+"{criterion.description}"
+
+{f'Wording from the official source: "{criterion.source_quote}"' if criterion.source_quote else ""}
+{grounding_block}
+Applicant profile:
+{profile_summary(profile)}
+
+Assess whether this applicant appears to satisfy the criterion. Use the \
+additional context only to understand what the criterion means for this \
+scheme specifically — do not treat it as a fact about the applicant."""
+
+
+def _grounding_candidates(criterion: EligibilityCriterion, version: SchemeVersion) -> list[str]:
+    """Text passages from the scheme's own data that could ground this
+    criterion's judgement — everything except the criterion being judged
+    itself, so retrieval cannot just retrieve the question back as its own
+    answer.
+    """
+    candidates: list[str] = []
+    if version.summary:
+        candidates.append(version.summary)
+    if version.benefit_description:
+        candidates.append(version.benefit_description)
+    for other in version.criteria:
+        if other.id != criterion.id and other.description:
+            candidates.append(other.description)
+    return candidates
+
+
+def build_grounding_context(criterion: EligibilityCriterion, version: SchemeVersion) -> str:
+    """Retrieve and assemble grounding text for one criterion.
+
+    Reuses the same lightweight relevance scoring built for long-document
+    extraction (:mod:`bharat_os.pdf.retrieval`) rather than a second, bespoke
+    implementation — the underlying problem is identical: given a pool of
+    candidate text, keep only what is actually relevant to a specific
+    question, bounded to a size that belongs in a prompt.
+    """
+    from bharat_os.pdf.retrieval import chunk_text
+
+    candidates = _grounding_candidates(criterion, version)
+    if not candidates:
+        return ""
+
+    pool = " ".join(candidates)
+    chunks = chunk_text(pool) or [type("_Chunk", (), {"index": 0, "text": pool})()]
+
+    # Score against the criterion's own wording, not the generic eligibility
+    # vocabulary retrieve_relevant_chunks defaults to — grounding is only
+    # useful if it relates to *this* criterion specifically.
+    criterion_words = {w for w in criterion.description.lower().split() if len(w) > 3}
+    if not criterion_words:
+        scored_text = pool[:MAX_GROUNDING_CHARS]
+        return scored_text
+
+    def _overlap(chunk_text_value: str) -> int:
+        chunk_words = set(chunk_text_value.lower().split())
+        return len(criterion_words & chunk_words)
+
+    ranked = sorted(chunks, key=lambda c: _overlap(c.text), reverse=True)
+
+    assembled = ""
+    for chunk in ranked:
+        if _overlap(chunk.text) == 0:
+            break
+        if len(assembled) + len(chunk.text) > MAX_GROUNDING_CHARS:
+            break
+        assembled += chunk.text + " "
+
+    return assembled.strip()
+
+
+def judge_criterion_with_context(
+    db: Session,
+    criterion: EligibilityCriterion,
+    version: SchemeVersion,
+    profile: ApplicantProfile,
+    *,
+    user_id: object | None = None,
+    provider: LLMProvider | None = None,
+) -> SoftJudgement:
+    """Judge one soft criterion with retrieved grounding from the scheme's
+    own data, in addition to the profile and the criterion's own wording.
+
+    Strictly additive: :func:`judge_criterion` is unchanged and remains the
+    default path used everywhere it already runs
+    (:func:`judge_all`, the eligibility report, all existing tests). This
+    function is a separate opt-in entry point, cached under a distinct
+    prompt version (:data:`GROUNDED_PROMPT_VERSION`) so it can never collide
+    with or overwrite an existing cached judgement. Failure handling,
+    hedged-verdict enforcement and the human-review threshold are identical
+    to the default path — grounding changes what the model reads, not the
+    guarantees this system makes about what it does with the answer.
+    """
+    active = provider or get_provider()
+    grounding_context = build_grounding_context(criterion, version)
+
+    key_material = "|".join(
+        [
+            str(user_id) if user_id is not None else "anonymous",
+            str(criterion.id),
+            GROUNDED_PROMPT_VERSION,
+            active.name,
+            active.model,
+            profile_summary(profile),
+            grounding_context,
+        ]
+    )
+    key = hashlib.sha256(key_material.encode("utf-8")).hexdigest()
+
+    existing = db.scalar(select(AIJudgement).where(AIJudgement.cache_key == key))
+    if existing is not None:
+        return _to_judgement(existing, criterion, cached=True)
+
+    request = LLMRequest(
+        system=SYSTEM_PROMPT,
+        prompt=build_grounded_prompt(
+            criterion, version, profile, grounding_context=grounding_context
+        ),
+        required_keys=REQUIRED_KEYS,
+    )
+
+    try:
+        response = active.complete(request)
+        verdict = _coerce_verdict(response.data["verdict"])
+        confidence = _coerce_confidence(response.data["confidence"])
+        reasoning = str(response.data["reasoning"]).strip()
+        evidence = response.data["evidence_that_would_strengthen"]
+        if not isinstance(evidence, list):
+            evidence = [str(evidence)]
+        evidence = [str(item) for item in evidence if str(item).strip()]
+    except (LLMError, KeyError) as exc:
+        logger.warning(
+            "Grounded soft criterion %s could not be judged (%s): %s",
+            criterion.id,
+            type(exc).__name__,
+            exc,
+        )
+        return SoftJudgement(
+            criterion_id=str(criterion.id),
+            description=criterion.description,
+            verdict=SoftVerdict.UNCERTAIN,
+            confidence=0.0,
+            reasoning=(
+                "This criterion needs a human to assess. Our automated assessment "
+                "was unavailable, so rather than guess we are flagging it for review."
+            ),
+            evidence_that_would_strengthen=(),
+            requires_human_review=True,
+            provider=active.name,
+            model=active.model,
+            prompt_version=GROUNDED_PROMPT_VERSION,
+        )
+
+    requires_review = confidence < HUMAN_REVIEW_THRESHOLD
+
+    record = AIJudgement(
+        cache_key=key,
+        criterion_id=criterion.id,
+        user_id=user_id,
+        verdict=verdict,
+        confidence=confidence,
+        reasoning=reasoning,
+        evidence_that_would_strengthen=evidence,
+        requires_human_review=requires_review,
+        provider=response.provider,
+        model=response.model,
+        prompt_version=GROUNDED_PROMPT_VERSION,
+        prompt=response.prompt,
+        raw_response=response.raw_text,
+        prompt_tokens=response.usage.get("prompt_tokens"),
+        completion_tokens=response.usage.get("completion_tokens"),
+    )
+    db.add(record)
+    try:
+        db.commit()
+    except IntegrityError:
+        db.rollback()
+        winner = db.scalar(select(AIJudgement).where(AIJudgement.cache_key == key))
+        if winner is None:
+            raise
+        return _to_judgement(winner, criterion, cached=True)
+
+    return _to_judgement(record, criterion, cached=False)
+
+
 def cache_key(
     criterion: EligibilityCriterion,
     profile: ApplicantProfile,

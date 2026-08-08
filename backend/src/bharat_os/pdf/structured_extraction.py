@@ -6,6 +6,13 @@ asks a language model to structure that prose into the same shape
 *candidate*, staged in :class:`PendingRevision`. It is never passed to
 :mod:`bharat_os.seed.loader` directly. A confidence below the review threshold is
 flagged and must never bypass a human, no matter how confident the model sounds.
+
+Long documents are retrieved down to their most relevant passages
+(:mod:`bharat_os.pdf.retrieval`) before being sent to the model, rather than
+truncated at a fixed character count. A blind truncation risks silently
+dropping the one section — eligibility criteria, a benefit figure — that
+actually matters, just because it happened to fall past the cut. Retrieval
+keeps the on-topic passages regardless of where they sit in the document.
 """
 
 from __future__ import annotations
@@ -15,12 +22,23 @@ from dataclasses import dataclass
 from bharat_os.llm import LLMError, LLMRequest, LLMResponseError, get_provider
 from bharat_os.llm.base import LLMProvider
 from bharat_os.pdf.extraction import ExtractedDocument
+from bharat_os.pdf.retrieval import retrieve_relevant_chunks
 
 #: Below this, extraction is flagged for review regardless of what the model
 #: claims — mirrors the threshold used for soft-criteria judgements, because the
 #: same principle applies: a confident-sounding wrong extraction is worse than an
 #: extraction that admits uncertainty.
 REVIEW_THRESHOLD = 0.7
+
+#: Documents at or below this length are sent whole — retrieval adds no value
+#: when everything already fits comfortably in one prompt, and skipping it
+#: keeps short-document behaviour (the common case in this system's tests and
+#: its actual usage so far) exactly as it was.
+RETRIEVAL_THRESHOLD_CHARS = 12_000
+
+#: Cap on how much retrieved text is sent, regardless of how many chunks
+#: scored as relevant — the model still needs a bounded prompt.
+MAX_RETRIEVED_CHARS = 12_000
 
 REQUIRED_KEYS = ("scheme_name", "summary_of_change", "confidence", "extracted_fields")
 
@@ -58,6 +76,11 @@ class ExtractionResult:
     requires_review: bool
     provider: str
     model: str
+    #: True when the text sent to the model was a retrieved subset of a
+    #: longer document rather than the whole thing — visible to a reviewer so
+    #: they know to check the full source if something looks like it might be
+    #: missing, rather than assuming the model saw everything.
+    used_retrieval: bool = False
 
 
 def extract_structured(
@@ -85,9 +108,23 @@ def extract_structured(
             model=active_provider.model,
         )
 
+    full_text = document.full_text
+    used_retrieval = len(full_text) > RETRIEVAL_THRESHOLD_CHARS
+
+    if used_retrieval:
+        chunks = retrieve_relevant_chunks(full_text, max_chunks=20)
+        assembled = ""
+        for chunk in chunks:
+            if len(assembled) + len(chunk.text) > MAX_RETRIEVED_CHARS:
+                break
+            assembled += (chunk.text + "\n\n")
+        prompt_text = assembled.strip() or full_text[:MAX_RETRIEVED_CHARS]
+    else:
+        prompt_text = full_text
+
     request = LLMRequest(
         system=SYSTEM_PROMPT,
-        prompt=f"Document text:\n\n{document.full_text[:12_000]}",
+        prompt=f"Document text:\n\n{prompt_text}",
         required_keys=REQUIRED_KEYS,
         max_output_tokens=2048,
     )
@@ -109,6 +146,7 @@ def extract_structured(
             requires_review=True,
             provider=active_provider.name,
             model=active_provider.model,
+            used_retrieval=used_retrieval,
         )
 
     return ExtractionResult(
@@ -119,4 +157,5 @@ def extract_structured(
         requires_review=confidence < REVIEW_THRESHOLD,
         provider=response.provider,
         model=response.model,
+        used_retrieval=used_retrieval,
     )

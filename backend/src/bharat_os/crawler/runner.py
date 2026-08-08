@@ -126,6 +126,7 @@ def crawl_source(
             "requires_review": result.requires_review,
             "extraction_provider": result.provider,
             "extraction_model": result.model,
+            "used_retrieval": result.used_retrieval,
         }
 
     revision = PendingRevision(
