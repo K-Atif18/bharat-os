@@ -180,10 +180,13 @@ class TestUnauthenticatedAccessIsRejected:
         # /freshness reports how recently each scheme's criteria were verified
         # against their official source — a property of the scheme catalogue,
         # not of any user, so it is public for the same reason /schemes is.
+        # /calibration reports whether the system's stated confidence scores
+        # are accurate overall — a property of the model, not of any user.
         public_prefixes = (
             "/health",
             "/schemes",
             "/freshness",
+            "/calibration",
             "/auth/register",
             "/auth/login",
             "/matches/draftable",
