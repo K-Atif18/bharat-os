@@ -20,6 +20,8 @@ const OWN_SHELL_ROUTES = [
   /^\/onboarding$/,
   /^\/settings$/,
   /^\/review-queue$/,
+  /^\/vault$/,
+  /^\/applications$/,
 ];
 
 export function AppShell({ children }: { children: React.ReactNode }) {
