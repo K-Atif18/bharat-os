@@ -176,6 +176,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/intelligence/{scheme_slug}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Scheme Intelligence */
+        get: operations["get_scheme_intelligence_intelligence__scheme_slug__get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/auth/register": {
         parameters: {
             query?: never;
@@ -1698,6 +1715,13 @@ export interface components {
             /** Note */
             note: string;
         };
+        /** RejectionReasonOut */
+        RejectionReasonOut: {
+            /** Reason */
+            reason: string;
+            /** Count */
+            count: number;
+        };
         /**
          * ReportOutcome
          * @description The headline conclusion of an assessment.
@@ -1806,6 +1830,29 @@ export interface components {
             total_criterion_count: number;
             /** Staleness Threshold Days */
             staleness_threshold_days: number;
+        };
+        /** SchemeIntelligenceOut */
+        SchemeIntelligenceOut: {
+            /** Scheme Slug */
+            scheme_slug: string;
+            /** Scheme Name */
+            scheme_name: string;
+            /** Total Outcomes Recorded */
+            total_outcomes_recorded: number;
+            /** Approval Rate */
+            approval_rate: number | null;
+            /** Average Days To Decision */
+            average_days_to_decision: number | null;
+            /** Approval Rate By Turnover Band */
+            approval_rate_by_turnover_band: {
+                [key: string]: number | null;
+            };
+            /** Common Rejection Reasons */
+            common_rejection_reasons: components["schemas"]["RejectionReasonOut"][];
+            /** Has Real Outcomes */
+            has_real_outcomes: boolean;
+            /** Data Note */
+            data_note: string;
         };
         /**
          * SchemeOutcomeStatsOut
@@ -2219,6 +2266,37 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["CalibrationOut"];
+                };
+            };
+        };
+    };
+    get_scheme_intelligence_intelligence__scheme_slug__get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                scheme_slug: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SchemeIntelligenceOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
                 };
             };
         };

@@ -184,11 +184,15 @@ class TestUnauthenticatedAccessIsRejected:
         # not of any user, so it is public for the same reason /schemes is.
         # /calibration reports whether the system's stated confidence scores
         # are accurate overall — a property of the model, not of any user.
+        # /intelligence reports de-identified, aggregate outcome statistics
+        # per scheme (approval rate, rejection reasons, timelines) — never a
+        # single applicant's row, so it carries the same public reasoning.
         public_prefixes = (
             "/health",
             "/schemes",
             "/freshness",
             "/calibration",
+            "/intelligence",
             "/auth/register",
             "/auth/login",
             "/matches/draftable",

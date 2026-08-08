@@ -98,6 +98,10 @@ revision: ## Autogenerate a migration: make revision m="add widget table"
 seed: ## Load the curated scheme corpus (idempotent)
 	cd $(BACKEND) && .venv/bin/python -m bharat_os.seed.load
 
+.PHONY: seed-outcomes
+seed-outcomes: ## Seed synthetic outcome data for the intelligence/calibration demo (idempotent)
+	cd $(BACKEND) && .venv/bin/python -m bharat_os.seed.seed_synthetic_outcomes
+
 .PHONY: seed-crawl-sources
 seed-crawl-sources: ## Load the curated crawl source list (idempotent)
 	cd $(BACKEND) && .venv/bin/python -m bharat_os.seed.load_crawl_sources
