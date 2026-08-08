@@ -10,6 +10,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from bharat_os.api import (
     applications,
     auth,
+    calibration,
     deadlines,
     documents,
     drafts,
@@ -92,6 +93,7 @@ def create_app() -> FastAPI:
     app.include_router(health.router)
     app.include_router(schemes.router)
     app.include_router(freshness.router)
+    app.include_router(calibration.router)
     app.include_router(auth.router)
     app.include_router(profile.router)
     # drafts.router must be included before matches.router: it defines

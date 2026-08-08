@@ -154,6 +154,28 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/calibration/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get Calibration
+         * @description Calibration report: real outcomes if any exist, synthetic fixtures
+         *     otherwise. The response always says which one it is - a caller must
+         *     never be able to mistake a demo number for a real one.
+         */
+        get: operations["get_calibration_calibration__get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/auth/register": {
         parameters: {
             query?: never;
@@ -853,6 +875,42 @@ export interface components {
          * @enum {string}
          */
         BenefitType: "cash" | "kind" | "service" | "recognition" | "credit_guarantee" | "interest_subvention";
+        /** BucketOut */
+        BucketOut: {
+            /** Lower */
+            lower: number;
+            /** Upper */
+            upper: number;
+            /** Count */
+            count: number;
+            /** Mean Predicted */
+            mean_predicted: number;
+            /** Observed Rate */
+            observed_rate: number;
+            /** Gap */
+            gap: number;
+            /** Direction */
+            direction: string;
+        };
+        /** CalibrationOut */
+        CalibrationOut: {
+            /** Expected Calibration Error */
+            expected_calibration_error: number | null;
+            /** Max Calibration Error */
+            max_calibration_error: number | null;
+            /** Sample Size */
+            sample_size: number;
+            /** Base Rate */
+            base_rate: number | null;
+            /** Overall Direction */
+            overall_direction: string | null;
+            /** Buckets */
+            buckets: components["schemas"]["BucketOut"][];
+            /** Has Real Outcomes */
+            has_real_outcomes: boolean;
+            /** Warning */
+            warning: string | null;
+        };
         /** ConsentOut */
         ConsentOut: {
             purpose: components["schemas"]["ConsentPurpose"];
@@ -2051,6 +2109,26 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_calibration_calibration__get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CalibrationOut"];
                 };
             };
         };
