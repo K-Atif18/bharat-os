@@ -171,6 +171,62 @@
   .reveal {
     animation: reveal 320ms cubic-bezier(0.22, 1, 0.36, 1) both;
   }
+
+  /* --- Editorial system additions (Phase 0) -------------------------------
+   * These sit alongside the existing primitives above rather than replacing
+   * them — every current page keeps working unchanged. New pages and the
+   * landing rebuild draw on this layer for asymmetric, content-dense,
+   * typographically deliberate composition instead of generic card grids.
+   */
+
+  /* A section rule that behaves like a printed folio line, not a card
+     border — for separating dense editorial sections without boxing them. */
+  .folio-rule {
+    @apply relative border-t border-surface-strong pt-6;
+  }
+
+  .folio-rule::before {
+    content: attr(data-folio);
+    @apply absolute -top-3 left-0 bg-surface-canvas px-1 font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-ink-subtle;
+  }
+
+  /* Metadata line: dates, versions, counts — always monospace, always
+     tabular, deliberately smaller and quieter than surrounding copy. */
+  .meta-line {
+    @apply font-mono text-[11px] tabular-nums tracking-[0.04em] text-ink-subtle;
+  }
+
+  /* A single oversized numeral/word used as the "bold moment" for a
+     section — one per fold, not decoration repeated everywhere. */
+  .bold-moment {
+    @apply font-display text-[clamp(3.5rem,9vw,7.5rem)] font-semibold leading-[0.92] tracking-tightest text-ink;
+  }
+
+  /* Mixed-weight editorial paragraph: first few words carry weight 600,
+     the rest sits at 400 — a typographic device instead of a subheadline. */
+  .lede {
+    @apply text-lg leading-8 text-ink-muted sm:text-xl sm:leading-9;
+  }
+
+  .lede strong {
+    @apply font-semibold text-ink;
+  }
+
+  /* Asymmetric two-up section shells, keyed to the grid-template-columns
+     added in tailwind.config.ts. Use instead of a default sm:grid-cols-2. */
+  .split-a {
+    @apply grid gap-10 lg:grid-cols-editorial-a lg:gap-16;
+  }
+
+  .split-b {
+    @apply grid gap-10 lg:grid-cols-editorial-b lg:gap-16;
+  }
+
+  /* Running index used for numbered lists that should read like a table of
+     contents rather than a feature-grid icon slot. */
+  .index-mark {
+    @apply font-mono text-xs font-semibold tabular-nums text-brand;
+  }
 }
 
 @layer utilities {

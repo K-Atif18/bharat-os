@@ -68,6 +68,27 @@ const config: Config = {
         panel: "0 1px 2px rgb(23 34 51 / 0.05), 0 12px 32px rgb(23 34 51 / 0.06)",
         lift: "0 2px 4px rgb(23 34 51 / 0.06), 0 18px 45px rgb(23 34 51 / 0.10)",
       },
+      // One radius system for the whole product: 6px is the only corner
+      // rounding value anything is allowed to use. Sharp everywhere else —
+      // rules and hairlines carry structure instead of rounded containers.
+      borderRadius: {
+        DEFAULT: "6px",
+        none: "0px",
+        full: "9999px",
+        lg: "6px",
+        xl: "6px",
+        "2xl": "6px",
+      },
+      // Asymmetric layout primitives — deliberately uneven column ratios so
+      // sections don't default to 50/50 or 3-up grids.
+      gridTemplateColumns: {
+        "editorial-a": "minmax(0, 1.6fr) minmax(0, 1fr)",
+        "editorial-b": "minmax(0, 1fr) minmax(0, 1.9fr)",
+        "editorial-c": "0.9fr 1.4fr 0.7fr",
+      },
+      letterSpacing: {
+        tightest: "-0.045em",
+      },
     },
   },
   plugins: [],
