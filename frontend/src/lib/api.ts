@@ -186,6 +186,18 @@ export function getDeepDive(slug: string): Promise<DeepDive> {
   return request<DeepDive>(`/matches/${encodeURIComponent(slug)}/deep-dive`);
 }
 
+// --- Scheme data freshness ----------------------------------------------------
+
+export type SchemeFreshness = components["schemas"]["SchemeFreshnessOut"];
+
+export function listFreshness(): Promise<SchemeFreshness[]> {
+  return request<SchemeFreshness[]>("/freshness/");
+}
+
+export function getFreshness(slug: string): Promise<SchemeFreshness> {
+  return request<SchemeFreshness>(`/freshness/${encodeURIComponent(slug)}`);
+}
+
 // --- Document vault ----------------------------------------------------------
 
 export type UserDocument = components["schemas"]["UserDocumentOut"];

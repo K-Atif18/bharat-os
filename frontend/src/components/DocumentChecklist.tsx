@@ -36,10 +36,10 @@ export function DocumentChecklistCard({ slug }: { slug: string }) {
   const missing = checklist.documents.filter((d) => d.status === "need");
 
   return (
-    <section className="rounded-lg border border-surface-border bg-surface p-5">
+    <section className="panel p-5">
       <div className="flex items-baseline justify-between">
-        <h2 className="text-sm font-medium">Documents</h2>
-        <span className="text-xs text-ink-subtle">
+        <h2 className="text-sm font-semibold text-ink">Documents</h2>
+        <span className="meta-line">
           {checklist.have_count} have · {checklist.need_count} missing
           {checklist.expired_count > 0 && ` · ${checklist.expired_count} expired`}
         </span>
@@ -56,11 +56,11 @@ export function DocumentChecklistCard({ slug }: { slug: string }) {
         {checklist.documents.map((doc) => (
           <li
             key={doc.requirement_id}
-            className={`rounded border px-3 py-2 text-sm ${STATUS_STYLE[doc.status]}`}
+            className={`border px-3 py-2 text-sm ${STATUS_STYLE[doc.status]}`}
           >
             <div className="flex items-start justify-between gap-3">
               <span className="font-medium">{doc.document_name}</span>
-              <span className="shrink-0 text-xs">{STATUS_LABEL[doc.status]}</span>
+              <span className="shrink-0 text-xs font-semibold">{STATUS_LABEL[doc.status]}</span>
             </div>
             {(doc.status === "need" || doc.status === "expired") && (
               <div className="mt-1 text-xs opacity-90">

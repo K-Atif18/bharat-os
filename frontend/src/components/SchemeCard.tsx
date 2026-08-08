@@ -27,7 +27,7 @@ export function SchemeCard({ match }: { match: Match }) {
       <div className="p-5 sm:p-6">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
           <div className="min-w-0 max-w-2xl">
-            <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-subtle">{match.administering_ministry}</p>
+            <p className="meta-line">{match.administering_ministry}</p>
             <h3 className="mt-1 font-display text-xl font-semibold leading-snug tracking-[-0.015em] sm:text-2xl">
               <Link href={`/schemes/${match.slug}`} className="decoration-brand/30 underline-offset-4 hover:text-brand hover:underline">
                 {match.name}
@@ -43,25 +43,25 @@ export function SchemeCard({ match }: { match: Match }) {
           <ConfidenceMeter confidence={match.confidence} met={match.criteria_met} total={total} />
         </div>
 
-        <dl className="mt-5 grid grid-cols-2 border-y border-surface-border py-4 text-xs sm:grid-cols-4">
+        <dl className="mt-5 grid grid-cols-2 border-y border-surface-border py-4 sm:grid-cols-4">
           <div className="pr-3 sm:pr-5">
-            <dt className="text-ink-subtle">Benefit up to</dt>
-            <dd className="data-value mt-1 font-semibold text-ink">{formatRupees(match.benefit_value_max)}</dd>
+            <dt className="meta-line">Benefit up to</dt>
+            <dd className="data-value mt-1 text-sm font-semibold text-ink">{formatRupees(match.benefit_value_max)}</dd>
           </div>
           <div className="border-l border-surface-border px-3 sm:px-5">
-            <dt className="text-ink-subtle">Application effort</dt>
-            <dd className="mt-1 font-semibold text-ink">
+            <dt className="meta-line">Application effort</dt>
+            <dd className="mt-1 text-sm font-semibold text-ink">
               {DIFFICULTY_LABEL[match.application_difficulty] ?? match.application_difficulty}
               {match.estimated_effort_hours ? ` · ~${match.estimated_effort_hours}h` : ""}
             </dd>
           </div>
           <div className="mt-4 border-t border-surface-border pr-3 pt-4 sm:mt-0 sm:border-l sm:border-t-0 sm:px-5 sm:pt-0">
-            <dt className="text-ink-subtle">Next deadline</dt>
-            <dd className="data-value mt-1 font-semibold text-ink">{deadline ?? "Rolling"}</dd>
+            <dt className="meta-line">Next deadline</dt>
+            <dd className="data-value mt-1 text-sm font-semibold text-ink">{deadline ?? "Rolling"}</dd>
           </div>
           <div className="mt-4 border-l border-t border-surface-border pl-3 pt-4 sm:mt-0 sm:border-t-0 sm:px-5 sm:pt-0">
-            <dt className="text-ink-subtle">Human judgement</dt>
-            <dd className="mt-1 font-semibold text-ink">{match.soft_criteria_count === 0 ? "None" : `${match.soft_criteria_count} criteria`}</dd>
+            <dt className="meta-line">Human judgement</dt>
+            <dd className="mt-1 text-sm font-semibold text-ink">{match.soft_criteria_count === 0 ? "None" : `${match.soft_criteria_count} criteria`}</dd>
           </div>
         </dl>
 

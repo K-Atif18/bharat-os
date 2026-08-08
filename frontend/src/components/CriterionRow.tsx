@@ -94,10 +94,10 @@ function ProvenanceLine({
 
 export function HardCriterionRow({ criterion }: { criterion: HardCriterion }) {
   return (
-    <div className={`rounded border p-3 ${STATE_STYLE[criterion.state]}`}>
+    <div className={`border p-3 ${STATE_STYLE[criterion.state]}`}>
       <div className="flex items-start justify-between gap-3">
         <p className="text-sm font-medium">{criterion.description}</p>
-        <span className="shrink-0 rounded-full bg-white/60 px-2 py-0.5 text-xs font-medium">
+        <span className="shrink-0 border border-current/20 bg-white/60 px-2 py-0.5 text-xs font-semibold">
           {STATE_LABEL[criterion.state]}
         </span>
       </div>
@@ -128,13 +128,13 @@ export function SoftCriterionRow({ criterion }: { criterion: SoftCriterion }) {
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <div className={`rounded border p-3 ${STATE_STYLE[criterion.verdict]}`}>
+    <div className={`border p-3 ${STATE_STYLE[criterion.verdict]}`}>
       <div className="flex items-start justify-between gap-3">
         <div>
           <p className="text-sm font-medium">{criterion.description}</p>
           <p className="mt-0.5 text-xs text-ink-subtle">Assessed by AI, not a fixed rule</p>
         </div>
-        <span className="shrink-0 rounded-full bg-white/60 px-2 py-0.5 text-xs font-medium">
+        <span className="shrink-0 border border-current/20 bg-white/60 px-2 py-0.5 text-xs font-semibold">
           {STATE_LABEL[criterion.verdict]} · {formatConfidence(criterion.confidence)}
         </span>
       </div>

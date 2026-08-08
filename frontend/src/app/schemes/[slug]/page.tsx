@@ -7,7 +7,8 @@ import { useEffect, useState } from "react";
 import { DocumentChecklistCard } from "@/components/DocumentChecklist";
 import { DraftGenerator } from "@/components/DraftGenerator";
 import { HardCriterionRow, SoftCriterionRow } from "@/components/CriterionRow";
-import { ApiError, getDeepDive, type DeepDive } from "@/lib/api";
+import { LoadingState } from "@/components/Ui";
+import { ApiError, getDeepDive, getFreshness, type DeepDive, type SchemeFreshness } from "@/lib/api";
 import { formatConfidence, humaniseField } from "@/lib/format";
 
 const OUTCOME_COPY: Record<string, { heading: string; tone: string }> = {
@@ -25,6 +26,7 @@ export default function SchemeDeepDivePage() {
   const params = useParams<{ slug: string }>();
   const router = useRouter();
   const [data, setData] = useState<DeepDive | null>(null);
+  const [freshness, setFreshness] = useState<SchemeFreshness | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -39,53 +41,80 @@ export default function SchemeDeepDivePage() {
           setError(caught instanceof ApiError ? caught.detail : "Could not load this scheme.");
         }
       });
+
+    // Freshness is a supplementary trust signal, not on the critical path —
+    // a failure here must never block the eligibility breakdown from
+    // rendering, so it is fetched and swallowed independently.
+    getFreshness(params.slug)
+      .then(setFreshness)
+      .catch(() => setFreshness(null));
   }, [params.slug, router]);
 
   if (error) {
     return (
-      <div role="alert" className="rounded-lg border border-unmet-border bg-unmet-bg p-4 text-sm text-unmet-fg">
+      <div role="alert" className="notice mx-auto max-w-3xl border-unmet-border bg-unmet-bg text-unmet-fg">
         {error}
       </div>
     );
   }
 
   if (!data) {
-    return <p className="text-sm text-ink-subtle">Loading the full breakdown…</p>;
+    return <LoadingState label="Building the full breakdown" />;
   }
 
   const copy = OUTCOME_COPY[data.outcome] ?? OUTCOME_COPY.promising!;
   const totalHard = data.met.length + data.unmet.length + data.unverifiable.length;
 
   return (
-    <div className="space-y-8">
-      <div>
-        <Link href="/dashboard" className="text-sm text-brand hover:underline">
+    <div className="page-stack">
+      <div className="folio-rule" data-folio="Deep dive">
+        <Link href="/dashboard" className="meta-line text-brand hover:underline">
           ← Back to your matches
         </Link>
-        <h1 className="mt-2 text-2xl font-semibold tracking-tight">{data.name}</h1>
-        <p className={`mt-1 text-sm font-medium ${copy.tone}`}>{copy.heading}</p>
-        {data.confidence !== null && data.confidence !== undefined && (
-          <p className="mt-1 text-sm text-ink-muted">
-            {formatConfidence(data.confidence)} of the evidence we can check supports this —
-            {" "}
-            {data.met.length} of {totalHard} hard requirements confirmed
-            {data.soft.length > 0 && `, plus ${data.soft.length} criteria needing judgement`}.
-          </p>
-        )}
+        <div className="mt-3 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+          <div>
+            <h1 className="page-title">{data.name}</h1>
+            <p className={`mt-1 text-sm font-semibold ${copy.tone}`}>{copy.heading}</p>
+            {data.confidence !== null && data.confidence !== undefined && (
+              <p className="mt-2 max-w-2xl text-sm leading-6 text-ink-muted">
+                {formatConfidence(data.confidence)} of the evidence we can check supports this —
+                {" "}
+                {data.met.length} of {totalHard} hard requirements confirmed
+                {data.soft.length > 0 && `, plus ${data.soft.length} criteria needing judgement`}.
+              </p>
+            )}
+          </div>
+
+          {freshness && (
+            <div className="shrink-0 border border-surface-strong px-3 py-2 text-right">
+              <p className="meta-line">Source freshness</p>
+              {freshness.is_stale ? (
+                <p className="mt-1 text-sm font-semibold text-unverified-fg">
+                  ⚠ {freshness.days_since_last_verification ?? "unknown"}d since last check
+                </p>
+              ) : (
+                <p className="mt-1 text-sm font-semibold text-met-fg">
+                  Verified within {freshness.staleness_threshold_days}d
+                </p>
+              )}
+              <p className="mt-0.5 text-xs text-ink-subtle">
+                {freshness.stale_criterion_count} of {freshness.total_criterion_count} criteria stale
+              </p>
+            </div>
+          )}
+        </div>
       </div>
 
-      {data.has_stale_data && (
-        <div className="rounded border border-unverified-border bg-unverified-bg px-4 py-2 text-sm text-unverified-fg">
+      {(data.has_stale_data || freshness?.is_stale) && (
+        <div className="notice border-unverified-border bg-unverified-bg text-unverified-fg">
           Some criteria on this scheme have not been re-checked recently. Confirm against the
           official source before you act on this.
         </div>
       )}
 
       {data.outcome === "ruled_out" && data.disqualifications.length > 0 && (
-        <section className="rounded-lg border border-unmet-border bg-unmet-bg p-5">
-          <h2 className="text-sm font-medium text-unmet-fg">
-            Why you do not currently qualify
-          </h2>
+        <section className="notice border-unmet-border bg-unmet-bg text-unmet-fg">
+          <h2 className="font-semibold">Why you do not currently qualify</h2>
           <ul className="mt-2 space-y-2">
             {data.disqualifications.map((d) => (
               <li key={d.criterion_id} className="text-sm">
@@ -98,70 +127,53 @@ export default function SchemeDeepDivePage() {
       )}
 
       {data.missing_fields.length > 0 && (
-        <section className="rounded-lg border border-unverified-border bg-unverified-bg p-5">
-          <h2 className="text-sm font-medium text-unverified-fg">
-            Add these to your profile to settle open requirements
-          </h2>
-          <p className="mt-1 text-sm text-ink-muted">
-            {data.missing_fields.map(humaniseField).join(", ")}
-          </p>
-          <Link href="/onboarding" className="mt-2 inline-block text-sm text-brand hover:underline">
+        <section className="notice border-unverified-border bg-unverified-bg text-unverified-fg">
+          <h2 className="font-semibold">Add these to your profile to settle open requirements</h2>
+          <p className="mt-1 text-sm">{data.missing_fields.map(humaniseField).join(", ")}</p>
+          <Link href="/onboarding" className="mt-2 inline-block text-sm font-semibold text-brand hover:underline">
             Update profile
           </Link>
         </section>
       )}
 
-      {data.met.length > 0 && (
-        <section className="space-y-2">
-          <h2 className="text-sm font-medium uppercase tracking-wide text-ink-subtle">
-            Met ({data.met.length})
-          </h2>
-          {data.met.map((c) => (
-            <HardCriterionRow key={c.criterion_id} criterion={c} />
-          ))}
-        </section>
-      )}
+      <div className="split-a">
+        <div className="space-y-6">
+          {data.met.length > 0 && (
+            <section className="space-y-2">
+              <h2 className="folio-rule pt-0 text-sm font-semibold uppercase tracking-wide text-ink-subtle">Met ({data.met.length})</h2>
+              {data.met.map((c) => <HardCriterionRow key={c.criterion_id} criterion={c} />)}
+            </section>
+          )}
 
-      {data.unmet.length > 0 && (
-        <section className="space-y-2">
-          <h2 className="text-sm font-medium uppercase tracking-wide text-ink-subtle">
-            Not met ({data.unmet.length})
-          </h2>
-          {data.unmet.map((c) => (
-            <HardCriterionRow key={c.criterion_id} criterion={c} />
-          ))}
-        </section>
-      )}
+          {data.unmet.length > 0 && (
+            <section className="space-y-2">
+              <h2 className="folio-rule pt-0 text-sm font-semibold uppercase tracking-wide text-ink-subtle">Not met ({data.unmet.length})</h2>
+              {data.unmet.map((c) => <HardCriterionRow key={c.criterion_id} criterion={c} />)}
+            </section>
+          )}
 
-      {data.unverifiable.length > 0 && (
-        <section className="space-y-2">
-          <h2 className="text-sm font-medium uppercase tracking-wide text-ink-subtle">
-            Cannot verify yet ({data.unverifiable.length})
-          </h2>
-          {data.unverifiable.map((c) => (
-            <HardCriterionRow key={c.criterion_id} criterion={c} />
-          ))}
-        </section>
-      )}
+          {data.unverifiable.length > 0 && (
+            <section className="space-y-2">
+              <h2 className="folio-rule pt-0 text-sm font-semibold uppercase tracking-wide text-ink-subtle">Cannot verify yet ({data.unverifiable.length})</h2>
+              {data.unverifiable.map((c) => <HardCriterionRow key={c.criterion_id} criterion={c} />)}
+            </section>
+          )}
 
-      {data.soft.length > 0 && (
-        <section className="space-y-2">
-          <h2 className="text-sm font-medium uppercase tracking-wide text-ink-subtle">
-            Requires judgement ({data.soft.length})
-          </h2>
-          {data.soft.map((c) => (
-            <SoftCriterionRow key={c.criterion_id} criterion={c} />
-          ))}
-        </section>
-      )}
+          {data.soft.length > 0 && (
+            <section className="space-y-2">
+              <h2 className="folio-rule pt-0 text-sm font-semibold uppercase tracking-wide text-ink-subtle">Requires judgement ({data.soft.length})</h2>
+              {data.soft.map((c) => <SoftCriterionRow key={c.criterion_id} criterion={c} />)}
+            </section>
+          )}
+        </div>
 
-      <DocumentChecklistCard slug={params.slug} />
+        <div className="space-y-6">
+          <DocumentChecklistCard slug={params.slug} />
+          <DraftGenerator slug={params.slug} schemeName={data.name} />
+        </div>
+      </div>
 
-      <DraftGenerator slug={params.slug} schemeName={data.name} />
-
-      <p className="rounded border border-surface-border bg-surface px-4 py-3 text-xs text-ink-muted">
-        {data.disclaimer}
-      </p>
+      <p className="notice border-info-border bg-info-bg text-xs text-info-fg">{data.disclaimer}</p>
     </div>
   );
 }
