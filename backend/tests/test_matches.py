@@ -163,7 +163,7 @@ class TestMatchesEndpoint:
         client.put("/profile", json=VALID_PROFILE)
         body = client.get("/matches").json()
 
-        assert body["schemes_assessed"] == 15
+        assert body["schemes_assessed"] == 20
         assert body["matches"], "a DPIIT-recognised early-stage startup should match something"
         scores = [m["score"] for m in body["matches"]]
         assert scores == sorted(scores, reverse=True)
