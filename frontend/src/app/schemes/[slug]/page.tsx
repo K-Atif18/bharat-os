@@ -7,8 +7,17 @@ import { useEffect, useState } from "react";
 import { DocumentChecklistCard } from "@/components/DocumentChecklist";
 import { DraftGenerator } from "@/components/DraftGenerator";
 import { HardCriterionRow, SoftCriterionRow } from "@/components/CriterionRow";
+import { IntelligencePanel } from "@/components/IntelligencePanel";
 import { LoadingState } from "@/components/Ui";
-import { ApiError, getDeepDive, getFreshness, type DeepDive, type SchemeFreshness } from "@/lib/api";
+import {
+  ApiError,
+  getDeepDive,
+  getFreshness,
+  getIntelligence,
+  type DeepDive,
+  type SchemeFreshness,
+  type SchemeIntelligence,
+} from "@/lib/api";
 import { formatConfidence, humaniseField } from "@/lib/format";
 
 const OUTCOME_COPY: Record<string, { heading: string; tone: string }> = {
@@ -27,6 +36,7 @@ export default function SchemeDeepDivePage() {
   const router = useRouter();
   const [data, setData] = useState<DeepDive | null>(null);
   const [freshness, setFreshness] = useState<SchemeFreshness | null>(null);
+  const [intel, setIntel] = useState<SchemeIntelligence | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -48,6 +58,13 @@ export default function SchemeDeepDivePage() {
     getFreshness(params.slug)
       .then(setFreshness)
       .catch(() => setFreshness(null));
+
+    // Same reasoning as freshness: outcome intelligence is supplementary,
+    // fetched and swallowed independently so a failure here never blocks
+    // the eligibility breakdown.
+    getIntelligence(params.slug)
+      .then(setIntel)
+      .catch(() => setIntel(null));
   }, [params.slug, router]);
 
   if (error) {
@@ -172,6 +189,8 @@ export default function SchemeDeepDivePage() {
           <DraftGenerator slug={params.slug} schemeName={data.name} />
         </div>
       </div>
+
+      {intel && <IntelligencePanel intel={intel} />}
 
       <p className="notice border-info-border bg-info-bg text-xs text-info-fg">{data.disclaimer}</p>
     </div>

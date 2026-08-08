@@ -207,6 +207,14 @@ export function getCalibration(): Promise<Calibration> {
   return request<Calibration>("/calibration/");
 }
 
+// --- Scheme outcome intelligence --------------------------------------------
+
+export type SchemeIntelligence = components["schemas"]["SchemeIntelligenceOut"];
+
+export function getIntelligence(slug: string): Promise<SchemeIntelligence> {
+  return request<SchemeIntelligence>(`/intelligence/${encodeURIComponent(slug)}`);
+}
+
 // --- Document vault ----------------------------------------------------------
 
 export type UserDocument = components["schemas"]["UserDocumentOut"];
