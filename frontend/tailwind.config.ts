@@ -81,6 +81,25 @@ const config: Config = {
           "alert-bg": "#1A0705",
           "alert-border": "#4D1310",
         },
+
+        /**
+         * Terminal system — the green-phosphor CRT visual world for the
+         * landing page (the one Persuade surface in this product).
+         * Committed color strategy: phosphor green is not an accent, it is
+         * the page's entire material, carrying body text, rules, glow and
+         * motion alike. Distinct from the field system's black/white
+         * Operate world on purpose — the landing page is allowed the
+         * warmth and "wow" a working screen should never have.
+         */
+        terminal: {
+          bg: "#050806",
+          fg: "#33FF66",
+          dim: "#0DB050",
+          faint: "#076A33",
+          shadow: "#03301A",
+          bloom: "#A7FFC2",
+          cursor: "#66FFA3",
+        },
       },
       fontFamily: {
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],

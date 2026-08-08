@@ -340,6 +340,118 @@
     background-size: 24px 100%;
     mask-image: linear-gradient(180deg, transparent, black 50%, transparent);
   }
+
+  /* --- Terminal system (green-phosphor CRT world, landing page only) ----
+   * The one Persuade surface in this product. Committed color: phosphor
+   * green carries the whole page, not an accent on a neutral ground.
+   */
+
+  .terminal-shell {
+    @apply relative min-h-screen overflow-hidden bg-terminal-bg font-field text-terminal-fg;
+  }
+
+  /* Fine horizontal phosphor scanlines, layered under all content. */
+  .terminal-shell::before {
+    content: "";
+    @apply pointer-events-none fixed inset-0 z-0;
+    background-image: repeating-linear-gradient(
+      180deg,
+      rgb(51 255 102 / 0.035) 0,
+      rgb(51 255 102 / 0.035) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+  }
+
+  /* Subtle vignette + curved-glass darkening at the edges of the tube. */
+  .terminal-shell::after {
+    content: "";
+    @apply pointer-events-none fixed inset-0 z-0;
+    background: radial-gradient(
+      ellipse 120% 90% at 50% 40%,
+      transparent 55%,
+      rgb(0 0 0 / 0.55) 100%
+    );
+  }
+
+  .terminal-page {
+    @apply relative z-10 mx-auto w-full max-w-[1180px] px-4 py-8 sm:px-6 sm:py-12;
+  }
+
+  .terminal-nav {
+    @apply relative z-10 flex min-h-14 items-center justify-between gap-4 border-b border-terminal-faint px-4 sm:px-6;
+  }
+
+  .terminal-link {
+    @apply text-terminal-dim transition-colors duration-150 hover:text-terminal-fg;
+  }
+
+  /* Glowing display text — the "bloom" the reference material calls out:
+     a soft green halo behind crisp foreground type, not a blur on the
+     type itself (which would harm legibility). */
+  .terminal-glow {
+    text-shadow:
+      0 0 1px rgb(51 255 102 / 0.8),
+      0 0 8px rgb(51 255 102 / 0.45),
+      0 0 24px rgb(51 255 102 / 0.25);
+  }
+
+  .terminal-glow-strong {
+    color: theme("colors.terminal.bloom");
+    text-shadow:
+      0 0 2px rgb(167 255 194 / 0.9),
+      0 0 12px rgb(51 255 102 / 0.6),
+      0 0 36px rgb(51 255 102 / 0.35);
+  }
+
+  .terminal-rule {
+    @apply border-terminal-faint;
+  }
+
+  .terminal-muted {
+    @apply text-terminal-dim;
+  }
+
+  .terminal-faint {
+    @apply text-terminal-faint;
+  }
+
+  /* The blinking block cursor used at the end of a typed line. */
+  .terminal-cursor {
+    @apply inline-block h-[1em] w-[0.55em] translate-y-[0.1em] bg-terminal-cursor;
+    animation: terminal-blink 1s steps(1) infinite;
+  }
+
+  .terminal-button {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 border border-terminal-fg px-5 font-field text-sm font-medium uppercase tracking-[0.08em] text-terminal-fg transition-[background-color,color,box-shadow] duration-150 hover:bg-terminal-fg hover:text-terminal-bg disabled:cursor-not-allowed disabled:opacity-40;
+  }
+
+  .terminal-button-primary {
+    @apply bg-terminal-fg text-terminal-bg hover:bg-terminal-bloom;
+    box-shadow: 0 0 18px rgb(51 255 102 / 0.35);
+  }
+
+  .terminal-button-quiet {
+    @apply border-terminal-faint text-terminal-dim hover:border-terminal-fg hover:bg-transparent hover:text-terminal-fg;
+  }
+
+  .terminal-field {
+    @apply w-full border border-terminal-faint bg-transparent px-3 py-2.5 font-field text-sm text-terminal-fg outline-none transition-colors duration-150 placeholder:text-terminal-faint focus:border-terminal-fg;
+  }
+
+  .terminal-panel {
+    @apply border border-terminal-faint bg-black/40;
+  }
+
+  /* A single ruled row in a readout — the same LABEL...VALUE grammar as
+     the field system, rendered here in phosphor green instead of neutral. */
+  .terminal-row {
+    @apply flex items-baseline justify-between gap-4 border-b border-terminal-shadow py-2 text-xs;
+  }
+
+  .terminal-row:last-child {
+    @apply border-b-0;
+  }
 }
 
 @layer utilities {
@@ -371,6 +483,17 @@
 @keyframes shimmer {
   to {
     transform: translateX(100%);
+  }
+}
+
+@keyframes terminal-blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  50.01%,
+  100% {
+    opacity: 0;
   }
 }
 
