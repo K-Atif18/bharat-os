@@ -704,6 +704,51 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/crawler/run": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Run Crawl
+         * @description Crawl every active source now, queuing any detected change for review.
+         *
+         *     Synchronous and blocking on purpose: a hackathon-scale source list crawls
+         *     in seconds, and a reviewer triggering this wants to see the outcome
+         *     immediately, not poll a job status. Revisit if the source list grows large
+         *     enough that this becomes a real request-timeout risk.
+         */
+        post: operations["run_crawl_crawler_run_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/crawler/sources": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List Sources
+         * @description Every configured crawl source, for a reviewer deciding what to trigger.
+         */
+        get: operations["list_sources_crawler_sources_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
 export type webhooks = Record<string, never>;
 export interface components {
@@ -939,6 +984,51 @@ export interface components {
             purpose: components["schemas"]["ConsentPurpose"];
             /** Granted */
             granted: boolean;
+        };
+        /** CrawlOutcomeOut */
+        CrawlOutcomeOut: {
+            /** Source Id */
+            source_id: string;
+            /** Url */
+            url: string;
+            /** Changed */
+            changed: boolean;
+            /** Error */
+            error: string | null;
+            /** Skipped By Robots */
+            skipped_by_robots: boolean;
+            /** Extraction Confidence */
+            extraction_confidence: number | null;
+        };
+        /** CrawlRunOut */
+        CrawlRunOut: {
+            /** Sources Crawled */
+            sources_crawled: number;
+            /** Changed Count */
+            changed_count: number;
+            /** Skipped By Robots Count */
+            skipped_by_robots_count: number;
+            /** Failed Count */
+            failed_count: number;
+            /** Outcomes */
+            outcomes: components["schemas"]["CrawlOutcomeOut"][];
+        };
+        /** CrawlSourceOut */
+        CrawlSourceOut: {
+            /** Id */
+            id: string;
+            /** Url */
+            url: string;
+            /** Source Type */
+            source_type: string;
+            /** Scheme Slug */
+            scheme_slug: string | null;
+            /** Is Active */
+            is_active: boolean;
+            /** Robots Allowed */
+            robots_allowed: boolean;
+            /** Consecutive Failures */
+            consecutive_failures: number;
         };
         /**
          * CrawlSourceType
@@ -3127,6 +3217,68 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["PendingRevisionOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    run_crawl_crawler_run_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: {
+                bharat_os_session?: string | null;
+            };
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CrawlRunOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    list_sources_crawler_sources_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: {
+                bharat_os_session?: string | null;
+            };
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CrawlSourceOut"][];
                 };
             };
             /** @description Validation Error */

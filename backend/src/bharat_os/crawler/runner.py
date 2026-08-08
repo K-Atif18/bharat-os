@@ -1,10 +1,19 @@
 """Running a crawl pass over configured sources.
 
-Ties together robots compliance, fetching, change detection and queue insertion.
-The one invariant enforced at this layer, on top of everything the modules below
-already enforce individually: **a detected change always becomes a**
-:class:`PendingRevision` **and never a** :class:`SchemeVersion`. Nothing here
-calls the seed loader.
+Ties together robots compliance, fetching, change detection, LLM extraction and
+queue insertion. The one invariant enforced at this layer, on top of everything
+the modules below already enforce individually: **a detected change always
+becomes a** :class:`PendingRevision` **and never a** :class:`SchemeVersion`.
+Nothing here calls the seed loader.
+
+LLM extraction runs on every detected change, using the same
+:func:`bharat_os.pdf.structured_extraction.extract_structured` the PDF pipeline
+uses — the model does not care whether the text it is given came from a PDF or
+a web page, and duplicating that logic here would mean two places to keep the
+extraction prompt and confidence handling consistent. A low-confidence or
+failed extraction still produces a queued row: "we could not confidently
+extract this" is itself useful information for the human reviewer, exactly as
+in the PDF pipeline, not a reason to fall back to raw text only.
 
 Failure isolation is deliberate: one source failing (network error, changed page
 structure, robots.txt now disallowing) must not abort the run for every other
@@ -20,10 +29,13 @@ from datetime import UTC, datetime
 from sqlalchemy.orm import Session
 
 from bharat_os.crawler.change_detection import has_changed
+from bharat_os.crawler.html_text import html_to_text
 from bharat_os.crawler.robots import is_allowed
 from bharat_os.crawler.static_fetcher import FetchError, RateLimiter, fetch_static
 from bharat_os.models.crawl import CrawlSource, PendingRevision
 from bharat_os.models.enums import CrawlSourceType, ReviewStatus
+from bharat_os.pdf.extraction import ExtractedDocument, ExtractedPage
+from bharat_os.pdf.structured_extraction import extract_structured
 
 logger = logging.getLogger(__name__)
 
@@ -41,6 +53,8 @@ class CrawlOutcome:
     #: None on success; the reason on failure.
     error: str | None = None
     skipped_by_robots: bool = False
+    #: Confidence the extraction stage attached, when a change produced one.
+    extraction_confidence: float | None = None
 
 
 def _fetch(source: CrawlSource, limiter: RateLimiter) -> str:
@@ -49,6 +63,7 @@ def _fetch(source: CrawlSource, limiter: RateLimiter) -> str:
 
         return fetch_rendered(source.url, limiter=limiter)
     return fetch_static(source.url, limiter=limiter)
+
 
 
 def crawl_source(
@@ -92,18 +107,42 @@ def crawl_source(
         db.commit()
         return CrawlOutcome(str(source.id), source.url, changed=False)
 
+    extraction_confidence = None
+    extracted_content: dict = {"raw_html_excerpt": content[:20_000]}
+
+    if source.source_type is not CrawlSourceType.PDF:
+        text = html_to_text(content)
+        document = ExtractedDocument(
+            source_path=source.url,
+            pages=(ExtractedPage(page_number=1, text=text),),
+        )
+        result = extract_structured(document)
+        extraction_confidence = result.confidence
+        extracted_content = {
+            "raw_html_excerpt": content[:20_000],
+            "scheme_name": result.scheme_name,
+            "summary_of_change": result.summary_of_change,
+            "extracted_fields": result.extracted_fields,
+            "requires_review": result.requires_review,
+            "extraction_provider": result.provider,
+            "extraction_model": result.model,
+        }
+
     revision = PendingRevision(
         source_id=source.id,
         previous_content_hash=source.last_content_hash,
         new_content_hash=new_hash,
-        extracted_content={"raw_html_excerpt": content[:20_000]},
+        extracted_content=extracted_content,
+        extraction_confidence=extraction_confidence,
         status=ReviewStatus.PENDING,
     )
     db.add(revision)
     source.last_content_hash = new_hash
     db.commit()
 
-    return CrawlOutcome(str(source.id), source.url, changed=True)
+    return CrawlOutcome(
+        str(source.id), source.url, changed=True, extraction_confidence=extraction_confidence
+    )
 
 
 def crawl_all(db: Session, *, only_active: bool = True) -> list[CrawlOutcome]:

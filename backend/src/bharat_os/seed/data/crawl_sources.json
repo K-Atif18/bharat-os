@@ -1,0 +1,27 @@
+[
+  {
+    "url": "https://www.startupindia.gov.in/",
+    "source_type": "static_html",
+    "scheme_slug": "dpiit-startup-recognition"
+  },
+  {
+    "url": "https://aspire.msme.gov.in/",
+    "source_type": "static_html",
+    "scheme_slug": "aspire"
+  },
+  {
+    "url": "https://www.cgtmse.in/",
+    "source_type": "static_html",
+    "scheme_slug": "cgtmse"
+  },
+  {
+    "url": "https://msme.gov.in/design-clinic",
+    "source_type": "static_html",
+    "scheme_slug": "design-clinic-msme"
+  },
+  {
+    "url": "https://lean.msme.gov.in/",
+    "source_type": "static_html",
+    "scheme_slug": "lean-manufacturing-msme"
+  }
+]

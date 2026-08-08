@@ -98,6 +98,14 @@ revision: ## Autogenerate a migration: make revision m="add widget table"
 seed: ## Load the curated scheme corpus (idempotent)
 	cd $(BACKEND) && .venv/bin/python -m bharat_os.seed.load
 
+.PHONY: seed-crawl-sources
+seed-crawl-sources: ## Load the curated crawl source list (idempotent)
+	cd $(BACKEND) && .venv/bin/python -m bharat_os.seed.load_crawl_sources
+
+.PHONY: crawl
+crawl: ## Crawl every active source once, queuing detected changes for review
+	cd $(BACKEND) && .venv/bin/python -m bharat_os.scripts.crawl_all
+
 .PHONY: calibration
 calibration: ## Report whether stated confidence tracks reality
 	cd $(BACKEND) && .venv/bin/python -m bharat_os.scripts.calibration_report

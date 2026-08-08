@@ -11,6 +11,7 @@ from bharat_os.api import (
     applications,
     auth,
     calibration,
+    crawler,
     deadlines,
     documents,
     drafts,
@@ -106,6 +107,7 @@ def create_app() -> FastAPI:
     app.include_router(deadlines.router)
     app.include_router(applications.router)
     app.include_router(review_queue.router)
+    app.include_router(crawler.router)
     return app
 
 

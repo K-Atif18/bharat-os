@@ -161,6 +161,8 @@ class TestUnauthenticatedAccessIsRejected:
         ("POST", "/review-queue/{revision_id}/approve"),
         ("POST", "/review-queue/{revision_id}/reject"),
         ("POST", "/review-queue/{revision_id}/annotate"),
+        ("POST", "/crawler/run"),
+        ("GET", "/crawler/sources"),
     ]
 
     @pytest.mark.parametrize(("method", "path"), PROTECTED_ROUTES)
