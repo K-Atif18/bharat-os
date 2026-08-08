@@ -1,0 +1,121 @@
+{
+  "slug": "ksum-seed-fund",
+  "name": "Kerala Startup Mission Seed Fund",
+  "summary": "Provides financial assistance to early stage startups in Kerala through a seed support loan.",
+  "scheme_type": "loan",
+  "status": "active",
+  "administering_ministry": "Electronics and Information Technology Department, Government of Kerala",
+  "implementing_agency": "Kerala Startup Mission (KSUM)",
+  "authority_slug": "kerala-startup-mission",
+  "target_segments": [
+    "startup"
+  ],
+  "sectors": [],
+  "states": [
+    "Kerala"
+  ],
+  "benefit_value_min": null,
+  "benefit_value_max": 1500000,
+  "benefit_description": "Early stage startups can receive seed funding (loan) up to Rs. 15 Lakhs against purchase orders.",
+  "application_url": "https://startupmission.kerala.gov.in/schemes/seed-fund",
+  "offline_process": false,
+  "application_difficulty": "medium",
+  "estimated_effort_hours": 20,
+  "drafting_lead_days": 15,
+  "effective_from": "2018-01-01T00:00:00Z",
+  "criteria": [
+    {
+      "criterion_type": "hard",
+      "description": "The startup must be a registered company in Kerala.",
+      "machine_readable_rule": {
+        "op": "eq",
+        "field": "state",
+        "value": "Kerala"
+      },
+      "display_order": 1,
+      "source_url": "https://startupmission.kerala.gov.in/schemes/seed-fund",
+      "source_quote": "The startup should be a registered company in Kerala as an LLP or Pvt. Ltd company",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "criterion_type": "soft",
+      "description": "Must be working on an innovative product or technology and not be a service startup.",
+      "machine_readable_rule": null,
+      "display_order": 2,
+      "source_url": "https://startupmission.kerala.gov.in/schemes/seed-fund",
+      "source_quote": "The startup must be working on an innovative product or technology. The seed fund is not generally given for service startups and SMEs working in trade and commerce.",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "document_requirements": [
+    {
+      "document_name": "Incorporation Certificate",
+      "document_type": "incorporation_certificate",
+      "issuing_authority_slug": "mca",
+      "issuing_authority_name": "Ministry of Corporate Affairs",
+      "typical_processing_days": 10,
+      "how_to_obtain": "Obtain Pvt. Ltd. or LLP registration via MCA.",
+      "mandatory": true,
+      "display_order": 1,
+      "source_url": "https://startupmission.kerala.gov.in/schemes/seed-fund",
+      "source_quote": "The startup company has DIPP registration and an 'Active'/ 'Active Compliant' status with MCA.",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "DPIIT Registration",
+      "document_type": "dpiit_certificate",
+      "issuing_authority_slug": "dpiit",
+      "issuing_authority_name": "DPIIT",
+      "typical_processing_days": 15,
+      "how_to_obtain": "Register on the Startup India portal.",
+      "mandatory": true,
+      "display_order": 2,
+      "source_url": "https://startupmission.kerala.gov.in/schemes/seed-fund",
+      "source_quote": "The startup company has DIPP registration",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "Pitch Deck & Seed Proposal",
+      "document_type": "pitch_deck",
+      "issuing_authority_slug": null,
+      "issuing_authority_name": "Self",
+      "typical_processing_days": 5,
+      "how_to_obtain": "Submit the seed application form along with business profile.",
+      "mandatory": true,
+      "display_order": 3,
+      "source_url": "https://startupmission.kerala.gov.in/schemes/seed-fund",
+      "source_quote": "The application has two parts:- Business Profile & Seed Proposal.",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "windows": [
+    {
+      "open_date": null,
+      "close_date": null,
+      "recurrence": "rolling",
+      "notification_source": "portal",
+      "notes": "Application for seed fund can be submitted online through KSUM website anytime.",
+      "source_url": "https://startupmission.kerala.gov.in/schemes/seed-fund",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "benefits": [
+    {
+      "benefit_type": "cash",
+      "description": "Financial assistance loan up to Rs. 15 Lakhs.",
+      "quantum_min": null,
+      "quantum_max": 1500000,
+      "conditions_for_disbursement": "Fund disbursal is done on an installment basis.",
+      "source_url": "https://startupmission.kerala.gov.in/schemes/seed-fund",
+      "source_quote": "Based on recommendation by an expert committee further processing for Fund disbursal is initiated by a KSUM representative. Fund disbursal is done on an installment basis.",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ]
+}

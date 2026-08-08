@@ -1,0 +1,130 @@
+{
+  "slug": "maharashtra-startup-week",
+  "name": "Maharashtra Startup Week",
+  "summary": "Provides work orders of up to Rs. 15 lakh to startups to pilot their innovative solutions within state departments.",
+  "scheme_type": "grant",
+  "status": "active",
+  "administering_ministry": "Department of Skill Development, Employment, and Entrepreneurship",
+  "implementing_agency": "Maharashtra State Innovation Society",
+  "authority_slug": "maharashtra-state-innovation-society",
+  "target_segments": [
+    "startup"
+  ],
+  "sectors": [
+    "Agriculture",
+    "Education",
+    "Governance",
+    "Healthcare",
+    "Mobility",
+    "Skilling",
+    "Smart Infrastructure",
+    "Sustainability"
+  ],
+  "states": [
+    "Maharashtra"
+  ],
+  "benefit_value_min": null,
+  "benefit_value_max": 1500000,
+  "benefit_description": "Winners receive work orders of up to Rs. 15 lakh from the Maharashtra State Innovation Society.",
+  "application_url": "https://msins.in/MaharashtraStartupMain",
+  "offline_process": false,
+  "application_difficulty": "high",
+  "estimated_effort_hours": 30,
+  "drafting_lead_days": 21,
+  "effective_from": "2018-06-01T00:00:00Z",
+  "criteria": [
+    {
+      "criterion_type": "hard",
+      "description": "The startup's turnover must not exceed Rs. 25 Crore.",
+      "machine_readable_rule": {
+        "op": "lte",
+        "field": "annual_turnover_inr",
+        "value": 250000000
+      },
+      "display_order": 1,
+      "source_url": "https://msins.in/MaharashtraStartupMain",
+      "source_quote": "The Startup's turnover should not have exceeded Rs. 25 Crore in any of the financial years since its incorporation/registration.",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "criterion_type": "soft",
+      "description": "Startups must have a minimum viable product and be ready to demonstrate proof of concept.",
+      "machine_readable_rule": null,
+      "display_order": 2,
+      "source_url": "https://msins.in/MaharashtraStartupMain",
+      "source_quote": "Furthermore, startups must have a “minimum viable product” and be ready to demonstrate “proof of concept”.",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "document_requirements": [
+    {
+      "document_name": "DPIIT Recognition Certificate",
+      "document_type": "dpiit_certificate",
+      "issuing_authority_slug": "dpiit",
+      "issuing_authority_name": "Department for Promotion of Industry and Internal Trade",
+      "typical_processing_days": 15,
+      "how_to_obtain": "Register on the Startup India portal.",
+      "mandatory": true,
+      "display_order": 1,
+      "source_url": "https://msins.in/MaharashtraStartupMain",
+      "source_quote": "DPIIT Recognition Certificate.",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "Company PAN Card",
+      "document_type": "pan_card",
+      "issuing_authority_slug": "income-tax-department",
+      "issuing_authority_name": "Income Tax Department",
+      "typical_processing_days": 14,
+      "how_to_obtain": "Apply through the NSDL portal.",
+      "mandatory": true,
+      "display_order": 2,
+      "source_url": "https://msins.in/MaharashtraStartupMain",
+      "source_quote": "Company PAN Card.",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "Pitch Deck",
+      "document_type": "pitch_deck",
+      "issuing_authority_slug": null,
+      "issuing_authority_name": "Self",
+      "typical_processing_days": 7,
+      "how_to_obtain": "Prepare a comprehensive presentation outlining the innovation and business model.",
+      "mandatory": true,
+      "display_order": 3,
+      "source_url": "https://msins.in/MaharashtraStartupMain",
+      "source_quote": "Company Pitch Deck/Presentation.",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "windows": [
+    {
+      "open_date": null,
+      "close_date": null,
+      "recurrence": "annual",
+      "notification_source": "portal",
+      "notes": "Organised in the last week of April every year.",
+      "source_url": "https://msins.in/MaharashtraStartupMain",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "benefits": [
+    {
+      "benefit_type": "cash",
+      "description": "Work orders for pilot projects up to Rs. 15 lakh.",
+      "quantum_min": null,
+      "quantum_max": 1500000,
+      "conditions_for_disbursement": "Paid out according to the successful pilot rollout phases.",
+      "source_url": "https://msins.in/MaharashtraStartupMain",
+      "source_quote": "Winners receive work orders of up to Rs 15 lakh from the Maharashtra State Innovation Society to pilot their solutions within different state departments.",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ]
+}

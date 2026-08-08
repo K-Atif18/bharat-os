@@ -95,5 +95,33 @@
     "authority_type": "department",
     "portal_url": "https://niti.gov.in/",
     "document_acceptance_method": "Online submission via Atal Innovation Mission portal"
+  },
+  {
+    "slug": "maharashtra-state-innovation-society",
+    "name": "Maharashtra State Innovation Society",
+    "authority_type": "state_agency",
+    "portal_url": "https://msins.in/",
+    "document_acceptance_method": "Online submission via MSInS portal"
+  },
+  {
+    "slug": "tn-msme-department",
+    "name": "Industries, Investment Promotion and Commerce Department, Government of Tamil Nadu",
+    "authority_type": "state_agency",
+    "portal_url": "https://msmeonline.tn.gov.in/",
+    "document_acceptance_method": "Online submission via TN MSME portal, term loan verified by TIIC or partner bank"
+  },
+  {
+    "slug": "industries-commissionerate-gujarat",
+    "name": "Industries and Mines Department, Government of Gujarat",
+    "authority_type": "state_agency",
+    "portal_url": "https://ic.gujarat.gov.in/",
+    "document_acceptance_method": "Online submission via iNDEXTb portal"
+  },
+  {
+    "slug": "kerala-startup-mission",
+    "name": "Kerala Startup Mission",
+    "authority_type": "state_agency",
+    "portal_url": "https://startupmission.kerala.gov.in/",
+    "document_acceptance_method": "Online submission via KSUM portal"
   }
 ]
