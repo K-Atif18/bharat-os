@@ -6,9 +6,9 @@ import Link from "next/link";
 import { ApiError, createDraft, getDraft, type Draft } from "@/lib/api";
 
 const SOURCE_LABEL: Record<string, string> = {
-  profile: "From your profile",
-  generated_narrative: "Drafted by AI from your profile",
-  human_required: "You need to provide this",
+  profile: "FROM PROFILE",
+  generated_narrative: "DRAFTED BY AI",
+  human_required: "NEEDS YOU",
 };
 
 function exportAsText(draft: Draft, schemeName: string): string {
@@ -70,15 +70,15 @@ export function DraftGenerator({ slug, schemeName }: { slug: string; schemeName:
 
   if (!draft) {
     return (
-      <section className="rounded-lg border border-surface-border bg-surface p-5">
-        <h2 className="text-sm font-medium">Draft application</h2>
-        <p className="mt-1 text-sm text-ink-muted">
+      <section className="field-panel p-5">
+        <h2 className="font-field text-sm font-semibold uppercase text-field-fg">DRAFT APPLICATION</h2>
+        <p className="mt-1 text-sm text-field-fg-muted">
           Pre-fill what can be pre-filled from your profile, and write the narrative
           sections a reviewer expects. You review, edit and submit — nothing here files
           anything for you.
         </p>
         {error && (
-          <p role="alert" className="mt-2 text-sm text-unmet-fg">
+          <p role="alert" className="mt-2 font-field text-xs text-field-alert">
             {error}
           </p>
         )}
@@ -86,10 +86,10 @@ export function DraftGenerator({ slug, schemeName }: { slug: string; schemeName:
           type="button"
           onClick={generate}
           disabled={busy}
-          className="mt-3 rounded bg-brand px-4 py-2 text-sm font-medium text-white hover:bg-brand-hover disabled:opacity-60"
+          className="field-button field-button-primary mt-3"
           onFocus={loadExisting}
         >
-          {busy ? "Drafting…" : "Generate draft"}
+          {busy ? "DRAFTING…" : "GENERATE DRAFT"}
         </button>
       </section>
     );
@@ -99,28 +99,34 @@ export function DraftGenerator({ slug, schemeName }: { slug: string; schemeName:
   const humanRequired = draft.fields.filter((field) => field.source === "human_required").length;
 
   return (
-    <section className="overflow-hidden rounded-xl border border-brand/25 bg-surface shadow-md">
-      <div className="bg-gradient-to-r from-brand to-blue-700 p-5 text-white">
+    <section className="field-panel field-panel-active overflow-hidden">
+      <div className="border-b border-field-rule p-5">
         <div className="flex items-baseline justify-between gap-4">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-blue-200">Application workspace generated</p>
-            <h2 className="mt-1 text-lg font-semibold">Draft application · version {draft.version}</h2>
+            <p className="font-field text-[10px] font-semibold uppercase tracking-[0.16em] text-field-fg-muted">
+              APPLICATION WORKSPACE GENERATED
+            </p>
+            <h2 className="mt-1 font-field text-lg font-semibold uppercase text-field-fg">
+              DRAFT APPLICATION · VERSION {draft.version}
+            </h2>
           </div>
-          <button type="button" onClick={download} className="rounded-lg border border-white/25 bg-white/10 px-3 py-1.5 text-xs font-medium hover:bg-white/20">
-            Download draft
+          <button type="button" onClick={download} className="field-button">
+            DOWNLOAD
           </button>
         </div>
-        <p className="mt-3 text-sm text-blue-100">{populated} fields prepared · {humanRequired} kept for your input</p>
+        <p className="mt-3 font-field text-xs text-field-fg-muted">
+          {populated} FIELDS PREPARED · {humanRequired} KEPT FOR YOUR INPUT
+        </p>
         <Link
           href={`/schemes/${slug}/workspace`}
-          className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-white underline decoration-white/40 underline-offset-4 hover:decoration-white"
+          className="mt-3 inline-flex items-center gap-1 font-field text-xs font-semibold uppercase text-field-fg underline decoration-field-fg-muted underline-offset-4 hover:text-field-fg-muted"
         >
-          Open full workspace →
+          OPEN FULL WORKSPACE →
         </Link>
       </div>
 
       <div className="p-5">
-      <p className="rounded border border-unverified-border bg-unverified-bg px-3 py-2 text-xs text-unverified-fg">
+      <p className="border border-field-alert-border bg-field-alert-bg px-3 py-2 font-field text-xs text-field-alert">
         {draft.review_notice}
       </p>
 
@@ -128,18 +134,18 @@ export function DraftGenerator({ slug, schemeName }: { slug: string; schemeName:
         {draft.fields.map((field) => (
           <div key={field.key}>
             <div className="flex items-baseline justify-between">
-              <h3 className="text-sm font-medium">{field.label}</h3>
-              <span className="text-xs text-ink-subtle">
+              <h3 className="text-sm font-medium text-field-fg">{field.label}</h3>
+              <span className="field-status">
                 {SOURCE_LABEL[field.source] ?? field.source}
               </span>
             </div>
             {field.value ? (
-              <p className="mt-1 whitespace-pre-wrap text-sm text-ink-muted">{field.value}</p>
+              <p className="mt-1 whitespace-pre-wrap text-sm text-field-fg-muted">{field.value}</p>
             ) : (
-              <p className="mt-1 text-sm text-unverified-fg">{field.reason}</p>
+              <p className="mt-1 font-field text-xs text-field-alert">{field.reason}</p>
             )}
             {field.instruction && (
-              <p className="mt-1 text-xs text-ink-subtle">Asked of the AI: {field.instruction}</p>
+              <p className="mt-1 font-field text-[11px] text-field-fg-subtle">ASKED OF THE AI: {field.instruction}</p>
             )}
           </div>
         ))}
@@ -149,9 +155,9 @@ export function DraftGenerator({ slug, schemeName }: { slug: string; schemeName:
         type="button"
         onClick={generate}
         disabled={busy}
-        className="mt-4 text-xs font-medium text-brand hover:underline disabled:opacity-60"
+        className="mt-4 font-field text-xs font-semibold uppercase text-field-fg-muted hover:text-field-fg disabled:opacity-60"
       >
-        {busy ? "Regenerating…" : "Regenerate (creates a new version)"}
+        {busy ? "REGENERATING…" : "REGENERATE (CREATES A NEW VERSION)"}
       </button>
       </div>
     </section>
