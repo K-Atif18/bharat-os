@@ -71,3 +71,51 @@ export function StatusDot({ tone }: { tone: "met" | "unmet" | "unverified" | "in
   };
   return <span aria-hidden="true" className={`inline-block h-2 w-2 shrink-0 rounded-full ${colors[tone]}`} />;
 }
+
+/* --- Field-system equivalents ------------------------------------------
+ * Same components, restyled for the black/white instrument-panel world.
+ * Kept separate from the civic-paper versions above rather than adding a
+ * variant prop — the two worlds' pages never render the same component
+ * instance, so a prop would only add an unused branch to every call site.
+ */
+
+export function FieldSectionHeading({
+  index,
+  title,
+  description,
+  trailing,
+  id,
+}: {
+  index?: string;
+  title: string;
+  description?: ReactNode;
+  trailing?: ReactNode;
+  id?: string;
+}) {
+  return (
+    <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+      <div className="max-w-2xl">
+        <div className="field-section-label border-none pb-0">
+          {index && <span className="field-index">{index}</span>}
+          <span id={id}>{title}</span>
+        </div>
+        {description && <div className="mt-2 text-sm leading-6 text-field-fg-muted">{description}</div>}
+      </div>
+      {trailing && <div className="shrink-0">{trailing}</div>}
+    </div>
+  );
+}
+
+export function FieldLoadingState({ label }: { label: string }) {
+  return (
+    <div role="status" aria-live="polite" className="field-panel mx-auto max-w-3xl p-6 sm:p-8">
+      <span className="sr-only">{label}</span>
+      <div aria-hidden="true" className="space-y-4">
+        <div className="h-3 w-28 animate-pulse bg-field-rule" />
+        <div className="h-9 w-3/4 animate-pulse bg-field-rule" />
+        <div className="h-4 w-full animate-pulse bg-field-rule" />
+        <div className="h-4 w-5/6 animate-pulse bg-field-rule" />
+      </div>
+    </div>
+  );
+}

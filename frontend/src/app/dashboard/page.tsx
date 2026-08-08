@@ -1,11 +1,36 @@
 "use client";
 
+/*
+THESIS: The dashboard is an instrument readout of one applicant's real
+funding position — assessed/met/open counts as tabular data, matches as
+labeled status panels — refusing the generic stat-tile-plus-card-grid
+dashboard template.
+OWN-WORLD: Field system — black ground, monospace type, hairline rules,
+tabular readouts, one reserved accent for ruled-out/blocked states.
+STORY: A returning applicant sees their real numbers first (schemes
+assessed, fully met, worth a look), then reads their actual matches
+grouped by how close each is to actionable, with a ruled-out section
+kept visible rather than hidden — the same trust posture as the rest of
+this redesign.
+FIRST VIEWPORT: FieldNav, then a readout strip (assessed / fully met /
+worth a look) beside the profile identity, then the pipeline caption
+inherited from the landing page's method section.
+FORM: Rollout of the field-system direction already committed for the
+application workspace (seed key ca281bee, index 3, data-sublime/Ikeda
+family) — this page extends that established world rather than running
+a new direction roll, per the redesign's own "extend an established
+surface" rule.
+FINISH: unreviewed and undocumented is unfinished; this build ends with
+the finish review, the verdict, and DESIGN.md.
+*/
+
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useId, useState } from "react";
 
+import { FieldNav } from "@/components/FieldNav";
 import { RuledOutCard, SchemeCard } from "@/components/SchemeCard";
-import { LoadingState, SectionHeading } from "@/components/Ui";
+import { FieldLoadingState, FieldSectionHeading } from "@/components/Ui";
 import { ApiError, getMatches, getProfile, type MatchFeed, type Profile } from "@/lib/api";
 import { humaniseField } from "@/lib/format";
 
@@ -32,130 +57,170 @@ export default function DashboardPage() {
 
   if (error) {
     return (
-      <div role="alert" className="notice mx-auto max-w-3xl border-unmet-border bg-unmet-bg text-unmet-fg">
-        <p className="font-semibold">{error}</p>
-        <p className="mt-1 text-sm text-ink-muted">If the API is not running, start it with <code className="font-mono">make dev-backend</code>.</p>
+      <div className="field-shell">
+        <FieldNav />
+        <div className="field-page">
+          <div role="alert" className="field-panel field-panel-active mx-auto max-w-3xl p-6">
+            <p className="font-semibold text-field-fg">{error}</p>
+            <p className="mt-1 text-sm text-field-fg-muted">
+              If the API is not running, start it with <code className="font-field">make dev-backend</code>.
+            </p>
+          </div>
+        </div>
       </div>
     );
   }
 
-  if (!feed || !profile) return <LoadingState label="Checking your business against every scheme" />;
+  if (!feed || !profile) {
+    return (
+      <div className="field-shell">
+        <FieldNav />
+        <div className="field-page">
+          <FieldLoadingState label="Checking your business against every scheme" />
+        </div>
+      </div>
+    );
+  }
 
   const ready = feed.matches.filter((match) => match.outcome === "eligible");
   const partial = feed.matches.filter((match) => match.outcome !== "eligible");
 
   return (
-    <div className="page-stack">
-      {/* Masthead: asymmetric — profile identity on the left, the three
-         load-bearing numbers on the right as a tight ledger rather than
-         three equal-weight stat tiles. */}
-      <section className="folio-rule" data-folio="Workspace">
-        <div className="grid gap-6 lg:grid-cols-editorial-b lg:items-start lg:gap-10">
+    <div className="field-shell">
+      <FieldNav />
+
+      <main className="field-page space-y-8">
+        <section className="field-section-label">
+          <span className="field-index">01</span>
+          <span>WORKSPACE</span>
+        </section>
+
+        <div className="grid gap-6 lg:grid-cols-[1.4fr_1fr] lg:items-start lg:gap-10">
           <div>
-            <p className="eyebrow">Funding command centre</p>
-            <h1 className="page-title mt-2">{profile.entity_name}</h1>
-            <p className="mt-2 text-sm text-ink-muted sm:text-base">
+            <p className="font-field text-xs uppercase tracking-[0.14em] text-field-fg-muted">FUNDING COMMAND CENTRE</p>
+            <h1 className="field-display mt-2">{profile.entity_name}</h1>
+            <p className="mt-2 text-sm text-field-fg-muted sm:text-base">
               {profile.district ? `${profile.district}, ` : ""}{profile.state} · {humaniseField(profile.sector)}
               {profile.employee_count !== null && ` · ${profile.employee_count} employees`}
             </p>
             {profile.registrations.length > 0 && (
-              <ul className="mt-4 flex flex-wrap gap-x-4 gap-y-1" aria-label="Registrations">
+              <ul className="mt-4 flex flex-wrap gap-x-4 gap-y-1 font-field text-[11px] uppercase tracking-[0.08em] text-field-fg-subtle" aria-label="Registrations">
                 {profile.registrations.map((registration) => (
-                  <li key={registration} className="meta-line">{humaniseField(registration)}</li>
+                  <li key={registration}>{humaniseField(registration)}</li>
                 ))}
               </ul>
             )}
             <div className="mt-5 flex flex-wrap gap-2">
-              <Link href="/onboarding" className="button-secondary">Edit profile</Link>
-              <Link href="/settings" className="button-quiet">Privacy &amp; data</Link>
+              <Link href="/onboarding" className="field-button">EDIT PROFILE</Link>
+              <Link href="/settings" className="field-button">PRIVACY &amp; DATA</Link>
             </div>
           </div>
 
-          <dl className="grid grid-cols-3 divide-x divide-surface-strong border border-surface-strong">
-            <div className="px-3 py-4 sm:px-5">
-              <dt className="meta-line">Assessed</dt>
-              <dd className="data-value mt-1 text-2xl font-semibold text-civic-navy sm:text-3xl">{feed.schemes_assessed}</dd>
+          <div className="field-panel px-4 py-1 sm:px-6">
+            <div className="field-readout">
+              <span className="field-readout-label">ASSESSED</span>
+              <span className="field-readout-value">{feed.schemes_assessed}</span>
             </div>
-            <div className="px-3 py-4 sm:px-5">
-              <dt className="meta-line">Fully met</dt>
-              <dd className="data-value mt-1 text-2xl font-semibold text-met-fg sm:text-3xl">{ready.length}</dd>
+            <div className="field-readout">
+              <span className="field-readout-label">FULLY MET</span>
+              <span className="field-readout-value">{ready.length}</span>
             </div>
-            <div className="px-3 py-4 sm:px-5">
-              <dt className="meta-line">Worth a look</dt>
-              <dd className="data-value mt-1 text-2xl font-semibold text-ink sm:text-3xl">{feed.matches.length}</dd>
+            <div className="field-readout">
+              <span className="field-readout-label">WORTH A LOOK</span>
+              <span className="field-readout-value">{feed.matches.length}</span>
             </div>
-          </dl>
+          </div>
         </div>
-      </section>
 
-      {/* Pipeline: an inline annotated sequence rather than a 4-up card
-         grid — same information, less "dashboard template" shape. */}
-      <p className="meta-line -mb-2">
-        Match <span className="text-ink-subtle">→</span> Verify <span className="text-ink-subtle">→</span> Prepare <span className="text-ink-subtle">→</span> Draft
-        <span className="ml-2 text-ink-subtle">— every stage stays reviewable</span>
-      </p>
+        <div className="field-wave-rule" role="separator" aria-hidden="true" />
 
-      <SectionHeading
-        eyebrow="Opportunity map"
-        title="Your matches"
-        description={<>Checked your profile against {feed.schemes_assessed} active schemes. {ready.length > 0 ? `${ready.length} meet every requirement we can check automatically.` : "None clear every automatic check yet."}</>}
-      />
+        <p className="font-field text-xs uppercase tracking-[0.1em] text-field-fg-muted">
+          MATCH → VERIFY → PREPARE → DRAFT — every stage stays reviewable
+        </p>
 
-      {feed.suggested_profile_additions.length > 0 && (
-        <aside className="notice border-unverified-border bg-unverified-bg text-unverified-fg">
-          <p className="font-semibold">Add {humaniseField(feed.suggested_profile_additions[0]!)} to settle the most open requirements</p>
-          {feed.suggested_profile_additions.length > 1 && <p className="mt-1 text-xs">Then: {feed.suggested_profile_additions.slice(1).map(humaniseField).join(", ")}.</p>}
-          <Link href="/onboarding" className="mt-2 inline-flex min-h-11 items-center font-semibold text-brand hover:underline">Update profile <span aria-hidden="true" className="ml-1">→</span></Link>
-        </aside>
-      )}
+        <FieldSectionHeading
+          index="02"
+          title="YOUR MATCHES"
+          description={
+            <>
+              Checked your profile against {feed.schemes_assessed} active schemes.{" "}
+              {ready.length > 0
+                ? `${ready.length} meet every requirement we can check automatically.`
+                : "None clear every automatic check yet."}
+            </>
+          }
+        />
 
-      {feed.matches.length === 0 && (
-        <section className="panel p-8 text-center">
-          <h2 className="section-title">No scheme currently matches your profile</h2>
-          <p className="mx-auto mt-3 max-w-lg text-sm leading-6 text-ink-muted">That is usually fixable rather than final. A missing Udyam or DPIIT registration—or a sparse profile—can gate much of the corpus.</p>
-          <Link href="/onboarding" className="button-primary mt-5">Review your profile</Link>
-        </section>
-      )}
+        {feed.suggested_profile_additions.length > 0 && (
+          <aside className="field-panel field-panel-active p-4">
+            <p className="font-semibold text-field-fg">
+              Add {humaniseField(feed.suggested_profile_additions[0]!)} to settle the most open requirements
+            </p>
+            {feed.suggested_profile_additions.length > 1 && (
+              <p className="mt-1 text-xs text-field-fg-muted">
+                Then: {feed.suggested_profile_additions.slice(1).map(humaniseField).join(", ")}.
+              </p>
+            )}
+            <Link href="/onboarding" className="mt-2 inline-flex min-h-11 items-center font-field text-xs font-semibold uppercase text-field-fg hover:text-field-fg-muted">
+              UPDATE PROFILE <span aria-hidden="true" className="ml-1">→</span>
+            </Link>
+          </aside>
+        )}
 
-      {ready.length > 0 && (
-        <section className="space-y-4" aria-labelledby="ready-heading">
-          <SectionHeading eyebrow="Best place to start" title="Every checkable requirement met" id="ready-heading" />
-          {ready.map((match) => <SchemeCard key={match.scheme_version_id} match={match} />)}
-        </section>
-      )}
+        {feed.matches.length === 0 && (
+          <section className="field-panel p-8 text-center">
+            <h2 className="font-field text-lg font-semibold uppercase text-field-fg">No scheme currently matches your profile</h2>
+            <p className="mx-auto mt-3 max-w-lg text-sm leading-6 text-field-fg-muted">
+              That is usually fixable rather than final. A missing Udyam or DPIIT registration—or a sparse profile—can gate much of the corpus.
+            </p>
+            <Link href="/onboarding" className="field-button field-button-primary mt-5">REVIEW YOUR PROFILE</Link>
+          </section>
+        )}
 
-      {partial.length > 0 && (
-        <section className="space-y-4" aria-labelledby="partial-heading">
-          <SectionHeading eyebrow="Needs evidence" title="Possible, with open questions" id="partial-heading" />
-          {partial.map((match) => <SchemeCard key={match.scheme_version_id} match={match} />)}
-        </section>
-      )}
+        {ready.length > 0 && (
+          <section className="space-y-4" aria-labelledby="ready-heading">
+            <FieldSectionHeading index="03" title="EVERY CHECKABLE REQUIREMENT MET" id="ready-heading" />
+            {ready.map((match) => <SchemeCard key={match.scheme_version_id} match={match} />)}
+          </section>
+        )}
 
-      {feed.ruled_out.length > 0 && (
-        <section className="panel overflow-hidden" aria-labelledby="ruled-out-heading">
-          <div className="p-5 sm:p-6">
-            <button
-              id="ruled-out-heading"
-              type="button"
-              onClick={() => setShowRuledOut((value) => !value)}
-              aria-expanded={showRuledOut}
-              aria-controls={ruledOutId}
-              className="flex min-h-11 w-full items-center justify-between gap-4 text-left text-sm font-semibold text-ink hover:text-brand"
-            >
-              <span>{showRuledOut ? "Hide" : "Show"} {feed.ruled_out.length} schemes you do not currently qualify for</span>
-              <span aria-hidden="true" className="data-value text-lg text-brand">{showRuledOut ? "−" : "+"}</span>
-            </button>
-            <p className="mt-1 text-xs leading-5 text-ink-subtle">Kept visible on purpose. Knowing you are one registration away is more useful than the opportunity silently disappearing.</p>
-          </div>
-          {showRuledOut && (
-            <div id={ruledOutId} className="divide-y divide-surface-border border-t border-surface-border bg-surface-sunken/40">
-              {feed.ruled_out.map((match) => <RuledOutCard key={match.scheme_version_id} match={match} />)}
+        {partial.length > 0 && (
+          <section className="space-y-4" aria-labelledby="partial-heading">
+            <FieldSectionHeading index="04" title="POSSIBLE, WITH OPEN QUESTIONS" id="partial-heading" />
+            {partial.map((match) => <SchemeCard key={match.scheme_version_id} match={match} />)}
+          </section>
+        )}
+
+        {feed.ruled_out.length > 0 && (
+          <section className="field-panel overflow-hidden" aria-labelledby="ruled-out-heading">
+            <div className="p-5 sm:p-6">
+              <button
+                id="ruled-out-heading"
+                type="button"
+                onClick={() => setShowRuledOut((value) => !value)}
+                aria-expanded={showRuledOut}
+                aria-controls={ruledOutId}
+                className="flex min-h-11 w-full items-center justify-between gap-4 text-left font-field text-sm font-semibold uppercase text-field-fg hover:text-field-fg-muted"
+              >
+                <span>{showRuledOut ? "HIDE" : "SHOW"} {feed.ruled_out.length} SCHEMES YOU DO NOT CURRENTLY QUALIFY FOR</span>
+                <span aria-hidden="true" className="font-field text-lg">{showRuledOut ? "−" : "+"}</span>
+              </button>
+              <p className="mt-1 text-xs leading-5 text-field-fg-subtle">
+                Kept visible on purpose. Knowing you are one registration away is more useful than the opportunity silently disappearing.
+              </p>
             </div>
-          )}
-        </section>
-      )}
+            {showRuledOut && (
+              <div id={ruledOutId} className="divide-y divide-field-rule border-t border-field-rule">
+                {feed.ruled_out.map((match) => <RuledOutCard key={match.scheme_version_id} match={match} />)}
+              </div>
+            )}
+          </section>
+        )}
 
-      <p className="notice border-info-border bg-info-bg text-xs text-info-fg">{feed.disclaimer}</p>
+        <p className="field-panel p-4 font-field text-[11px] uppercase leading-6 tracking-[0.04em] text-field-fg-muted">
+          {feed.disclaimer}
+        </p>
+      </main>
     </div>
   );
 }

@@ -11,7 +11,7 @@ import { AppHeader } from "@/components/AppHeader";
 // pages and the terminal-system landing page. usePathname is the least
 // disruptive way to make this split without moving every existing route
 // into a Next.js route group.
-const OWN_SHELL_ROUTES = [/^\/schemes\/[^/]+\/workspace$/, /^\/$/];
+const OWN_SHELL_ROUTES = [/^\/schemes\/[^/]+\/workspace$/, /^\/$/, /^\/dashboard$/];
 
 export function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();

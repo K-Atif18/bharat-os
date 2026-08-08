@@ -29,6 +29,7 @@ import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
+import { FieldNav } from "@/components/FieldNav";
 import {
   ApiError,
   createDraft,
@@ -124,16 +125,12 @@ export default function DraftWorkspacePage() {
 
   return (
     <div className="field-shell">
-      <nav className="field-nav" aria-label="Draft workspace navigation">
-        <div className="flex items-center gap-4">
-          <Link href={`/schemes/${params.slug}`} className="field-nav-key">
-            ← {schemeName}
-          </Link>
-        </div>
-        <span className="field-nav-key" aria-current="page">
-          DRAFT WORKSPACE
-        </span>
-      </nav>
+      <FieldNav trail={schemeName} />
+      <div className="border-b border-field-rule px-4 py-2 sm:px-6">
+        <Link href={`/schemes/${params.slug}`} className="field-nav-key">
+          ← BACK TO {schemeName}
+        </Link>
+      </div>
 
       <main className="field-page">
         <header className="field-section-label">
