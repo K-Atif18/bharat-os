@@ -50,3 +50,10 @@ playwright-report/
 # Private hackathon planning, session context, AI-generated notes —
 # never commit. Local tracking only.
 CODEAMBLE_2026_PRIVATE/
+
+# Impeccable design-skill product/design records — internal working notes
+# (competitive analysis, strategy) that must stay at the repo root for the
+# skill's tooling to auto-discover, but should never be committed publicly.
+PRODUCT.md
+DESIGN.md
+DESIGN.md.*

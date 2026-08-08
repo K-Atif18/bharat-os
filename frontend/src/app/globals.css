@@ -7,6 +7,7 @@
   --font-sans: "Segoe UI Variable", "Aptos", "Segoe UI", system-ui, -apple-system, sans-serif;
   --font-display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
   --font-mono: "Cascadia Mono", "SFMono-Regular", Consolas, monospace;
+  --font-field: "Berkeley Mono", "JetBrains Mono", "Cascadia Mono", "SFMono-Regular", Consolas, monospace;
 }
 
 @layer base {
@@ -226,6 +227,118 @@
      contents rather than a feature-grid icon slot. */
   .index-mark {
     @apply font-mono text-xs font-semibold tabular-nums text-brand;
+  }
+
+  /* --- Field system (data-instrument world for Operate surfaces) ---------
+   * A separate, self-contained visual layer for the new redesign: black
+   * ground, monospace type, hairline rules, one reserved accent
+   * (field-alert) for unmet/error states only. Not used by any page in
+   * the incumbent "civic paper" world — safe to add without touching
+   * existing pages until they are individually migrated.
+   */
+
+  .field-shell {
+    @apply min-h-screen bg-field-bg font-field text-field-fg;
+    background-image:
+      repeating-linear-gradient(
+        90deg,
+        rgb(255 255 255 / 0.025) 0,
+        rgb(255 255 255 / 0.025) 1px,
+        transparent 1px,
+        transparent 8px
+      );
+  }
+
+  /* Top bar: page address + section keys, styled after a data-instrument's
+     fixed header row rather than a marketing nav. */
+  .field-nav {
+    @apply sticky top-0 z-40 flex min-h-14 items-center justify-between gap-4 border-b border-field-rule bg-field-bg/95 px-4 backdrop-blur-sm sm:px-6;
+  }
+
+  .field-nav-key {
+    @apply font-field text-[11px] uppercase tracking-[0.16em] text-field-fg-muted transition-colors duration-150 hover:text-field-fg;
+  }
+
+  .field-nav-key[aria-current="page"] {
+    @apply text-field-fg;
+  }
+
+  .field-page {
+    @apply mx-auto w-full max-w-[1180px] px-4 py-8 sm:px-6 sm:py-12;
+  }
+
+  /* Section label styled as a numbered instrument-panel header — "01
+     COLOR & MATERIAL" register, not a generic h2. */
+  .field-section-label {
+    @apply flex items-baseline gap-3 border-b border-field-rule pb-3 font-field text-xs font-medium uppercase tracking-[0.2em] text-field-fg-muted;
+  }
+
+  .field-section-label .field-index {
+    @apply text-field-fg;
+  }
+
+  /* The single oversized display line — reserved for one moment per
+     surface, e.g. the draft's headline field or a version number. */
+  .field-display {
+    @apply font-field text-[clamp(2rem,5.5vw,3.75rem)] font-semibold uppercase leading-[1.02] tracking-tight text-field-fg;
+  }
+
+  .field-panel {
+    @apply border border-field-rule bg-field-bg-raised;
+  }
+
+  .field-panel-active {
+    @apply border-field-fg;
+  }
+
+  /* Data readout: label/value pair set in tabular mono, the vocabulary
+     used for every stat, count, confidence score and date in this world. */
+  .field-readout {
+    @apply flex items-baseline justify-between gap-4 border-b border-field-rule py-2 font-field text-xs;
+  }
+
+  .field-readout:last-child {
+    @apply border-b-0;
+  }
+
+  .field-readout-label {
+    @apply uppercase tracking-[0.1em] text-field-fg-muted;
+  }
+
+  .field-readout-value {
+    @apply tabular-nums text-field-fg;
+  }
+
+  /* Status chip: always a text label, color is a reinforcement only —
+     the alert accent is reserved exclusively for unmet/error states. */
+  .field-status {
+    @apply inline-flex items-center gap-1.5 border border-field-rule-strong px-2 py-0.5 font-field text-[10px] font-medium uppercase tracking-[0.12em] text-field-fg;
+  }
+
+  .field-status-alert {
+    @apply border-field-alert-border bg-field-alert-bg text-field-alert;
+  }
+
+  .field-button {
+    @apply inline-flex min-h-11 items-center justify-center gap-2 border border-field-rule-strong bg-field-bg px-4 font-field text-xs font-medium uppercase tracking-[0.12em] text-field-fg transition-colors duration-150 hover:border-field-fg hover:bg-field-bg-raised disabled:cursor-not-allowed disabled:opacity-40;
+  }
+
+  .field-button-primary {
+    @apply border-field-fg bg-field-fg text-field-bg hover:bg-field-fg/85;
+  }
+
+  /* Waveform rule: a section divider that reads as an instrument's signal
+     trace rather than a plain horizontal line. Pure CSS, no image asset. */
+  .field-wave-rule {
+    @apply relative h-6 overflow-hidden border-y border-field-rule;
+    background-image: repeating-linear-gradient(
+      90deg,
+      transparent 0,
+      transparent 11px,
+      rgb(242 242 240 / 0.35) 12px
+    );
+    background-size: 24px 100%;
+    mask-image: linear-gradient(180deg, transparent, black 50%, transparent);
   }
 }
 

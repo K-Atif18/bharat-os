@@ -58,11 +58,35 @@ const config: Config = {
           bg: "#EDF4FC",
           border: "#B8CEE8",
         },
+
+        /**
+         * Field system — the data-instrument visual world for Operate
+         * surfaces (dashboard, deep-dive, calibration, workspace, review
+         * queue). Deliberately monochrome: black ground, white/grey type
+         * and rules, one reserved accent (field.alert) used only for
+         * unmet/error/critical states, always paired with a text label so
+         * color is never the sole signal. Coexists with the tokens above —
+         * pages using the incumbent "civic paper" world are unaffected
+         * until they are individually migrated.
+         */
+        field: {
+          bg: "#050505",
+          "bg-raised": "#0D0D0D",
+          rule: "#2A2A2A",
+          "rule-strong": "#454545",
+          fg: "#F2F2F0",
+          "fg-muted": "#9A9A96",
+          "fg-subtle": "#5C5C58",
+          alert: "#FF3B30",
+          "alert-bg": "#1A0705",
+          "alert-border": "#4D1310",
+        },
       },
       fontFamily: {
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],
         display: ["var(--font-display)", "Georgia", "serif"],
         mono: ["var(--font-mono)", "ui-monospace", "monospace"],
+        field: ["var(--font-field)", "ui-monospace", "SFMono-Regular", "monospace"],
       },
       boxShadow: {
         panel: "0 1px 2px rgb(23 34 51 / 0.05), 0 12px 32px rgb(23 34 51 / 0.06)",
