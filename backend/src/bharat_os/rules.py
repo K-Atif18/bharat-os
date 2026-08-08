@@ -69,6 +69,8 @@ ADDRESSABLE_FIELDS: Final[frozenset[str]] = frozenset(
         "registrations",
         "is_woman_led",
         "entity_age_years",
+        "available_space_sqft",
+        "profitable_last_three_years",
     }
 )
 

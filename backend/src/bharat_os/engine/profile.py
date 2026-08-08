@@ -45,6 +45,16 @@ class ApplicantProfile:
     is_woman_led: bool | None = None
     incorporation_date: date | None = None
 
+    #: Built-up space the applicant has available, in square feet. Used by
+    #: incubator/institution-facing schemes (e.g. AIC, ASPIRE) that require a
+    #: minimum facility size — a fact, not a judgement call, so it belongs
+    #: here rather than being pushed to a soft criterion.
+    available_space_sqft: int | None = None
+
+    #: Whether the applicant entity has been profitable in each of the last
+    #: three financial years. ``None`` means not yet told, not "no".
+    profitable_last_three_years: bool | None = None
+
     #: Registrations actually held. An empty set is a positive statement that
     #: none are held, not an absence of information.
     registrations: frozenset[str] = field(default_factory=frozenset)

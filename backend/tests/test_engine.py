@@ -142,6 +142,48 @@ class TestDerivedFields:
         assert result.missing_fields == ("entity_age_years",)
 
 
+class TestInstitutionFacingFields:
+    """Facility-space and profitability facts, added for incubator/institution-
+    targeted schemes (AIC, ASPIRE) where the applicant is an implementing
+    institution rather than a startup or MSME. These are facts, not judgement
+    calls, so they belong in the engine rather than as soft/LLM criteria.
+    """
+
+    def test_available_space_meets_threshold(self) -> None:
+        profile = ApplicantProfile(available_space_sqft=10_000)
+        rule = {"op": "gte", "field": "available_space_sqft", "value": 10_000}
+        assert evaluate_rule(rule, profile).state is MET
+
+    def test_available_space_below_threshold_is_unmet(self) -> None:
+        profile = ApplicantProfile(available_space_sqft=4_000)
+        rule = {"op": "gte", "field": "available_space_sqft", "value": 5_000}
+        assert evaluate_rule(rule, profile).state is UNMET
+
+    def test_missing_available_space_is_unverifiable(self) -> None:
+        rule = {"op": "gte", "field": "available_space_sqft", "value": 5_000}
+        result = evaluate_rule(rule, ApplicantProfile())
+        assert result.state is UNKNOWN
+        assert result.missing_fields == ("available_space_sqft",)
+
+    def test_profitable_last_three_years_true(self) -> None:
+        profile = ApplicantProfile(profitable_last_three_years=True)
+        rule = {"op": "is_true", "field": "profitable_last_three_years"}
+        assert evaluate_rule(rule, profile).state is MET
+
+    def test_profitable_last_three_years_false_is_unmet(self) -> None:
+        profile = ApplicantProfile(profitable_last_three_years=False)
+        rule = {"op": "is_true", "field": "profitable_last_three_years"}
+        assert evaluate_rule(rule, profile).state is UNMET
+
+    def test_unset_profitability_is_unverifiable_not_false(self) -> None:
+        """A profile that hasn't answered this yet must not be treated as unprofitable."""
+        result = evaluate_rule(
+            {"op": "is_true", "field": "profitable_last_three_years"}, ApplicantProfile()
+        )
+        assert result.state is UNKNOWN
+        assert result.missing_fields == ("profitable_last_three_years",)
+
+
 class TestThreeValuedLogic:
     """Composites use Kleene logic: unknown is not false."""
 
