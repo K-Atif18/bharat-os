@@ -14,6 +14,7 @@ import { useEffect, useId, useState } from "react";
 const NAV_ITEMS = [
   { href: "/dashboard", label: "DASHBOARD" },
   { href: "/applications", label: "APPLICATIONS" },
+  { href: "/deadlines", label: "DEADLINES" },
   { href: "/vault", label: "VAULT" },
   { href: "/calibration", label: "CALIBRATION" },
   { href: "/onboarding", label: "PROFILE" },

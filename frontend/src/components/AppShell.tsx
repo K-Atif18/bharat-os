@@ -22,6 +22,7 @@ const OWN_SHELL_ROUTES = [
   /^\/review-queue$/,
   /^\/vault$/,
   /^\/applications$/,
+  /^\/deadlines$/,
 ];
 
 export function AppShell({ children }: { children: React.ReactNode }) {

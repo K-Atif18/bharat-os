@@ -284,6 +284,14 @@ export function recordOutcome(applicationId: string, input: OutcomeInput): Promi
   });
 }
 
+// --- Deadline calendar ---------------------------------------------------------
+
+export type DeadlineCalendar = components["schemas"]["DeadlineCalendarOut"];
+
+export function getDeadlineCalendar(): Promise<DeadlineCalendar> {
+  return request<DeadlineCalendar>("/deadlines");
+}
+
 // --- Verification queue (reviewer-only) ---------------------------------------
 
 export type PendingRevision = components["schemas"]["PendingRevisionOut"];
