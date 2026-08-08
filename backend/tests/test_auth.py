@@ -177,9 +177,13 @@ class TestUnauthenticatedAccessIsRejected:
         # data, just static capability info. /schemes/*/outcome-stats is an
         # aggregate over de-identified outcomes, containing nothing that
         # identifies a contributor by design (see services.outcomes).
+        # /freshness reports how recently each scheme's criteria were verified
+        # against their official source — a property of the scheme catalogue,
+        # not of any user, so it is public for the same reason /schemes is.
         public_prefixes = (
             "/health",
             "/schemes",
+            "/freshness",
             "/auth/register",
             "/auth/login",
             "/matches/draftable",

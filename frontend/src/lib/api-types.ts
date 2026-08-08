@@ -110,6 +110,50 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/freshness/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List Freshness
+         * @description Staleness report for the current version of every scheme.
+         *
+         *     Sorted oldest-verified-first, so the schemes most in need of a human
+         *     recheck surface at the top rather than being buried in an alphabetical
+         *     list.
+         */
+        get: operations["list_freshness_freshness__get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/freshness/{scheme_slug}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get Freshness
+         * @description Staleness report for one scheme's current version.
+         */
+        get: operations["get_freshness_freshness__scheme_slug__get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/auth/register": {
         parameters: {
             query?: never;
@@ -1594,6 +1638,28 @@ export interface components {
             benefits: components["schemas"]["BenefitOut"][];
         };
         /**
+         * SchemeFreshnessOut
+         * @description Staleness of one scheme's sourced criteria, oldest claim first.
+         */
+        SchemeFreshnessOut: {
+            /** Scheme Slug */
+            scheme_slug: string;
+            /** Scheme Name */
+            scheme_name: string;
+            /** Oldest Criterion Verified At */
+            oldest_criterion_verified_at: string | null;
+            /** Is Stale */
+            is_stale: boolean;
+            /** Days Since Last Verification */
+            days_since_last_verification: number | null;
+            /** Stale Criterion Count */
+            stale_criterion_count: number;
+            /** Total Criterion Count */
+            total_criterion_count: number;
+            /** Staleness Threshold Days */
+            staleness_threshold_days: number;
+        };
+        /**
          * SchemeOutcomeStatsOut
          * @description Aggregate statistics only. Never a per-applicant row.
          */
@@ -1925,6 +1991,57 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["SchemeDetailOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    list_freshness_freshness__get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SchemeFreshnessOut"][];
+                };
+            };
+        };
+    };
+    get_freshness_freshness__scheme_slug__get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                scheme_slug: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SchemeFreshnessOut"];
                 };
             };
             /** @description Validation Error */
