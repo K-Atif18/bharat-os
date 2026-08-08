@@ -1,0 +1,121 @@
+{
+  "slug": "cgtmse",
+  "name": "Credit Guarantee Scheme for Micro and Small Enterprises (CGTMSE)",
+  "summary": "Collateral-free credit for micro and small enterprises by guaranteeing the lender against default. You do not apply directly: your bank applies on your behalf once it has appraised the loan.",
+  "scheme_type": "credit_guarantee",
+  "status": "active",
+  "administering_ministry": "Ministry of Micro, Small and Medium Enterprises",
+  "implementing_agency": "Credit Guarantee Fund Trust for Micro and Small Enterprises (CGTMSE)",
+  "authority_slug": "cgtmse",
+  "target_segments": ["msme", "startup"],
+  "sectors": [],
+  "states": [],
+  "benefit_value_min": 0,
+  "benefit_value_max": 100000000,
+  "benefit_description": "Guarantee cover on credit facilities up to Rs 10 crore per borrower, with coverage of 75% to 90% of the amount in default depending on borrower category and region.",
+  "application_url": "https://www.cgtmse.in/",
+  "offline_process": true,
+  "application_difficulty": "medium",
+  "estimated_effort_hours": 20,
+  "drafting_lead_days": 14,
+  "effective_from": "2025-04-01T00:00:00Z",
+  "criteria": [
+    {
+      "criterion_type": "hard",
+      "description": "The enterprise must be a micro or small enterprise as defined by the Ministry of MSME. Medium enterprises are not covered.",
+      "machine_readable_rule": {
+        "op": "lte",
+        "field": "annual_turnover_inr",
+        "value": 1000000000
+      },
+      "display_order": 1,
+      "source_url": "https://www.cgtmse.in/Home/VS/3",
+      "source_quote": "Loans sanctioned to Micro and Small Enterprises (MSE) units, as per the definition of the Ministry of MSMEs.",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": true
+    },
+    {
+      "criterion_type": "hard",
+      "description": "The enterprise should hold Udyam registration, which lenders require to confirm micro or small classification.",
+      "machine_readable_rule": {
+        "op": "contains",
+        "field": "registrations",
+        "value": "udyam"
+      },
+      "display_order": 2,
+      "source_url": "https://udyamregistration.gov.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "criterion_type": "soft",
+      "description": "The lending institution must judge the proposal commercially viable on its own merits. The guarantee removes the collateral requirement; it does not remove the need for a bankable proposal.",
+      "display_order": 3,
+      "source_url": "https://www.cgtmse.in/Home/VS/3",
+      "source_quote": "CGTMSE extends them helping hand by providing guarantee to enable them access credit leading to setting up viable micro and small enterprises.",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": true
+    }
+  ],
+  "document_requirements": [
+    {
+      "document_name": "Udyam registration certificate",
+      "document_type": "udyam_certificate",
+      "issuing_authority_slug": "udyam-registration",
+      "typical_processing_days": 1,
+      "how_to_obtain": "Self-declare on the Udyam portal using PAN and Aadhaar. Issued almost immediately, and validated against your PAN and GSTIN records.",
+      "mandatory": true,
+      "display_order": 1,
+      "source_url": "https://udyamregistration.gov.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "Project report or business plan with financial projections",
+      "document_type": "project_report",
+      "issuing_authority_name": "Prepared by the applicant, often with a chartered accountant",
+      "typical_processing_days": 14,
+      "how_to_obtain": "Prepared in-house or by a CA. Banks reject weak projections more often than they reject weak businesses, so the assumptions behind the numbers matter.",
+      "mandatory": true,
+      "display_order": 2,
+      "source_url": "https://www.cgtmse.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "Bank statements for the preceding 6 to 12 months",
+      "document_type": "bank_statement",
+      "issuing_authority_name": "Your bank",
+      "typical_processing_days": 3,
+      "how_to_obtain": "Download from net banking or request at your branch.",
+      "mandatory": true,
+      "display_order": 3,
+      "source_url": "https://www.cgtmse.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "windows": [
+    {
+      "recurrence": "rolling",
+      "notification_source": "portal",
+      "notes": "No application window. The guarantee is sought by the lender at the time it sanctions your credit facility, so your timeline is your bank's timeline.",
+      "source_url": "https://www.cgtmse.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": true
+    }
+  ],
+  "benefits": [
+    {
+      "benefit_type": "credit_guarantee",
+      "description": "Guarantee cover to the lender, which is what allows the facility to be extended without collateral or third-party guarantee. The guarantee ceiling was raised from Rs 5 crore to Rs 10 crore per borrower with effect from 1 April 2025.",
+      "quantum_min": 0,
+      "quantum_max": 100000000,
+      "conditions_for_disbursement": "Coverage of 75% to 90% of the amount in default, varying by borrower category and geography. An annual guarantee fee is payable, typically passed through to the borrower.",
+      "source_url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2288366",
+      "source_quote": "The guarantee ceiling for the loan extended under CGS was enhanced from Rs. 5 crore to Rs. 10 crore w.e.f 01.04.2025.",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": true
+    }
+  ]
+}

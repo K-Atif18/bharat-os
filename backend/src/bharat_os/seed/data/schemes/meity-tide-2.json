@@ -1,0 +1,121 @@
+{
+  "slug": "meity-tide-2",
+  "name": "MeitY TIDE 2.0 (Technology Incubation and Development of Entrepreneurs)",
+  "summary": "Support for ICT startups working in emerging technologies, delivered through selected academic incubators as grant support and entrepreneur-in-residence assistance.",
+  "scheme_type": "grant",
+  "status": "active",
+  "administering_ministry": "Ministry of Electronics and Information Technology",
+  "implementing_agency": "Selected institutional incubators at academic institutions",
+  "authority_slug": "meity",
+  "target_segments": ["startup"],
+  "sectors": [
+    "information-technology",
+    "iot",
+    "artificial-intelligence",
+    "blockchain",
+    "robotics",
+    "deeptech"
+  ],
+  "states": [],
+  "benefit_value_min": 0,
+  "benefit_value_max": 4000000,
+  "benefit_description": "Grant support routed through the host incubator, alongside incubation space, mentoring and entrepreneur-in-residence support. Exact quantum is set by the incubator within scheme limits.",
+  "application_url": "https://www.meity.gov.in/",
+  "offline_process": false,
+  "application_difficulty": "high",
+  "estimated_effort_hours": 30,
+  "drafting_lead_days": 21,
+  "effective_from": "2019-04-01T00:00:00Z",
+  "criteria": [
+    {
+      "criterion_type": "hard",
+      "description": "The startup must be incorporated in India and at an early stage of development.",
+      "machine_readable_rule": {
+        "op": "in",
+        "field": "stage",
+        "value": ["idea", "early"]
+      },
+      "display_order": 1,
+      "source_url": "https://www.meity.gov.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "criterion_type": "hard",
+      "description": "The startup must not have exceeded the turnover ceiling that would take it outside startup classification.",
+      "machine_readable_rule": {
+        "op": "lte",
+        "field": "annual_turnover_inr",
+        "value": 1000000000
+      },
+      "display_order": 2,
+      "source_url": "https://www.meity.gov.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "criterion_type": "soft",
+      "description": "The product must use an emerging technology such as IoT, artificial intelligence, blockchain, robotics or an allied area. General-purpose software businesses fall outside the intended scope.",
+      "display_order": 3,
+      "source_url": "https://www.meity.gov.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "criterion_type": "soft",
+      "description": "The startup must be accepted by one of the host incubators under the scheme. Selection is made by the incubator, not centrally, so the incubator's own criteria apply on top of these.",
+      "display_order": 4,
+      "source_url": "https://www.meity.gov.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "document_requirements": [
+    {
+      "document_name": "Technical proposal describing the product and the technology used",
+      "document_type": "project_report",
+      "issuing_authority_name": "Prepared by the applicant",
+      "typical_processing_days": 14,
+      "how_to_obtain": "Prepared in-house. Must make the emerging-technology component explicit, since that is the scheme's gate.",
+      "mandatory": true,
+      "display_order": 1,
+      "source_url": "https://www.meity.gov.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "Certificate of incorporation",
+      "document_type": "incorporation_certificate",
+      "issuing_authority_slug": "mca",
+      "typical_processing_days": 0,
+      "how_to_obtain": "Already issued at incorporation; download from the MCA portal if needed.",
+      "mandatory": true,
+      "display_order": 2,
+      "source_url": "https://www.meity.gov.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "windows": [
+    {
+      "recurrence": "rolling",
+      "notification_source": "portal",
+      "notes": "Each host incubator runs its own intake. There is no single central deadline, which means the practical deadline is whichever incubator you are targeting.",
+      "source_url": "https://www.meity.gov.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "benefits": [
+    {
+      "benefit_type": "cash",
+      "description": "Grant support through the host incubator, with incubation facilities and mentoring alongside.",
+      "quantum_min": 0,
+      "quantum_max": 4000000,
+      "conditions_for_disbursement": "Released by the incubator against agreed milestones.",
+      "source_url": "https://www.meity.gov.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    }
+  ]
+}

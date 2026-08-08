@@ -1,0 +1,60 @@
+{
+  "_note": [
+    "SYNTHETIC DATA. These are not real application outcomes.",
+    "",
+    "Their purpose is to prove the calibration harness computes reliability",
+    "correctly, not to demonstrate that Bharat OS is calibrated. Those are",
+    "different claims and only the first one is supported by this file.",
+    "",
+    "The cases are constructed so that observed success rates roughly track",
+    "stated confidence, with realistic noise. Once real outcomes exist (Task 12)",
+    "the same harness runs against them and the result becomes a statement about",
+    "the system rather than about this fixture.",
+    "",
+    "Deliberately included: a slightly overconfident high band, because that is",
+    "the failure direction that actually harms users and the harness must detect",
+    "it rather than smooth it away."
+  ],
+  "cases": [
+    { "predicted_confidence": 0.95, "succeeded": true, "label": "sisfs" },
+    { "predicted_confidence": 0.94, "succeeded": true, "label": "cgtmse" },
+    { "predicted_confidence": 0.92, "succeeded": true, "label": "zed" },
+    { "predicted_confidence": 0.9, "succeeded": true, "label": "udyam-registration" },
+    { "predicted_confidence": 0.88, "succeeded": true, "label": "pmegp" },
+    { "predicted_confidence": 0.86, "succeeded": false, "label": "sisfs" },
+    { "predicted_confidence": 0.85, "succeeded": true, "label": "stand-up-india" },
+    { "predicted_confidence": 0.82, "succeeded": true, "label": "cgtmse" },
+    { "predicted_confidence": 0.81, "succeeded": false, "label": "meity-samridh" },
+
+    { "predicted_confidence": 0.78, "succeeded": true, "label": "pmegp" },
+    { "predicted_confidence": 0.75, "succeeded": true, "label": "zed" },
+    { "predicted_confidence": 0.72, "succeeded": false, "label": "birac-big" },
+    { "predicted_confidence": 0.7, "succeeded": true, "label": "msme-innovative" },
+    { "predicted_confidence": 0.68, "succeeded": true, "label": "cgtmse" },
+    { "predicted_confidence": 0.65, "succeeded": false, "label": "sisfs" },
+    { "predicted_confidence": 0.63, "succeeded": true, "label": "pm-mudra-yojana" },
+    { "predicted_confidence": 0.61, "succeeded": false, "label": "meity-tide-2" },
+
+    { "predicted_confidence": 0.58, "succeeded": true, "label": "nsic-single-point-registration" },
+    { "predicted_confidence": 0.55, "succeeded": false, "label": "birac-big" },
+    { "predicted_confidence": 0.52, "succeeded": true, "label": "procurement-and-marketing-support" },
+    { "predicted_confidence": 0.48, "succeeded": false, "label": "meity-samridh" },
+    { "predicted_confidence": 0.45, "succeeded": true, "label": "pm-vishwakarma" },
+    { "predicted_confidence": 0.42, "succeeded": false, "label": "sisfs" },
+    { "predicted_confidence": 0.41, "succeeded": false, "label": "stand-up-india" },
+
+    { "predicted_confidence": 0.38, "succeeded": false, "label": "birac-big" },
+    { "predicted_confidence": 0.35, "succeeded": true, "label": "pmegp" },
+    { "predicted_confidence": 0.32, "succeeded": false, "label": "cgtmse" },
+    { "predicted_confidence": 0.28, "succeeded": false, "label": "meity-tide-2" },
+    { "predicted_confidence": 0.25, "succeeded": false, "label": "sisfs" },
+    { "predicted_confidence": 0.22, "succeeded": true, "label": "zed" },
+
+    { "predicted_confidence": 0.18, "succeeded": false, "label": "birac-big" },
+    { "predicted_confidence": 0.15, "succeeded": false, "label": "meity-samridh" },
+    { "predicted_confidence": 0.12, "succeeded": false, "label": "sisfs" },
+    { "predicted_confidence": 0.08, "succeeded": false, "label": "cgtmse" },
+    { "predicted_confidence": 0.05, "succeeded": false, "label": "stand-up-india" },
+    { "predicted_confidence": 0.03, "succeeded": false, "label": "pmegp" }
+  ]
+}

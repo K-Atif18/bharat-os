@@ -1,0 +1,105 @@
+{
+  "slug": "zed",
+  "name": "MSME Sustainable (ZED) Certification Scheme",
+  "summary": "Subsidised Zero Defect Zero Effect certification for MSME manufacturers, covering most of the certification cost and unlocking downstream benefits such as higher credit guarantee coverage.",
+  "scheme_type": "certification",
+  "status": "active",
+  "administering_ministry": "Ministry of Micro, Small and Medium Enterprises",
+  "implementing_agency": "Quality Council of India and empanelled assessment bodies",
+  "authority_slug": "ministry-of-msme",
+  "target_segments": ["msme"],
+  "sectors": ["manufacturing"],
+  "states": [],
+  "benefit_value_min": 0,
+  "benefit_value_max": 200000,
+  "benefit_description": "Subsidy of 80% for micro, 60% for small and 50% for medium enterprises on certification cost, with an additional 10% for enterprises owned by women, SC or ST entrepreneurs or located in NER, Himalayan, LWE-affected, island or aspirational districts.",
+  "application_url": "https://zed.msme.gov.in/",
+  "offline_process": false,
+  "application_difficulty": "low",
+  "estimated_effort_hours": 12,
+  "drafting_lead_days": 10,
+  "effective_from": "2022-04-01T00:00:00Z",
+  "criteria": [
+    {
+      "criterion_type": "hard",
+      "description": "The enterprise must hold a valid Udyam registration.",
+      "machine_readable_rule": {
+        "op": "contains",
+        "field": "registrations",
+        "value": "udyam"
+      },
+      "display_order": 1,
+      "source_url": "https://zed.msme.gov.in/",
+      "source_quote": "with Udyam Registration.",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": true
+    },
+    {
+      "criterion_type": "soft",
+      "description": "The enterprise should be engaged in manufacturing. ZED assessment is built around manufacturing practices, so pure service businesses are outside its scope.",
+      "display_order": 2,
+      "source_url": "https://zed.msme.gov.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "criterion_type": "soft",
+      "description": "The enterprise must be willing to undergo assessment against the ZED parameters and to pay its share of the certification cost in advance of each surveillance assessment.",
+      "display_order": 3,
+      "source_url": "https://zed.msme.gov.in/uploads/Surveillance_MSME_25.03.2025.pdf",
+      "source_quote": "The MSME shall require to pay the beneficiary contribution in advance (as applicable) at the beginning of each Surveillance Assessment.",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": true
+    }
+  ],
+  "document_requirements": [
+    {
+      "document_name": "Udyam registration certificate",
+      "document_type": "udyam_certificate",
+      "issuing_authority_slug": "udyam-registration",
+      "typical_processing_days": 1,
+      "how_to_obtain": "Self-declare on the Udyam portal using PAN and Aadhaar.",
+      "mandatory": true,
+      "display_order": 1,
+      "source_url": "https://zed.msme.gov.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": true
+    },
+    {
+      "document_name": "Category certificate, if claiming the additional 10% subsidy",
+      "document_type": "caste_certificate",
+      "issuing_authority_slug": "state-revenue-department",
+      "typical_processing_days": 30,
+      "how_to_obtain": "Apply at the tehsil or district office, or via your state e-district portal. Only needed if you are claiming the women, SC or ST top-up.",
+      "mandatory": false,
+      "display_order": 2,
+      "source_url": "https://zed.msme.gov.in/subsidy-on-cost-of-certification",
+      "source_quote": "There will be an additional subsidy of 10% for the MSMEs owned by Women/SC/ST Entrepreneurs OR MSMEs in NER/Himalayan/LWE/Island territories/aspirational districts.",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": true
+    }
+  ],
+  "windows": [
+    {
+      "recurrence": "rolling",
+      "notification_source": "portal",
+      "notes": "Open on a rolling basis through the ZED portal.",
+      "source_url": "https://zed.msme.gov.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": true
+    }
+  ],
+  "benefits": [
+    {
+      "benefit_type": "service",
+      "description": "Subsidised ZED certification at 80% for micro, 60% for small and 50% for medium enterprises, plus 10% for women, SC or ST owned enterprises and specified regions, and a further 5% for enterprises in a SFURTI or MSE-CDP cluster.",
+      "quantum_min": 0,
+      "quantum_max": 200000,
+      "conditions_for_disbursement": "Paid as a reduction in certification cost rather than as cash to the enterprise.",
+      "source_url": "https://www.vikaspedia.in/schemesall/schemes-for-entrepreneurs/technology-up-gradation/msme-sustainable-certification-scheme",
+      "source_quote": "80%-60%-50% for Micro, Small & Medium Enterprises respectively.",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    }
+  ]
+}

@@ -1,0 +1,221 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --font-sans: "Segoe UI Variable", "Aptos", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  --font-mono: "Cascadia Mono", "SFMono-Regular", Consolas, monospace;
+}
+
+@layer base {
+  * {
+    border-color: theme("colors.surface.border");
+  }
+
+  html {
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply min-h-screen bg-surface-canvas font-sans text-ink antialiased;
+    background-image:
+      linear-gradient(rgb(255 254 251 / 0.58), rgb(255 254 251 / 0.58)),
+      repeating-linear-gradient(
+        90deg,
+        transparent 0,
+        transparent 79px,
+        rgb(23 34 51 / 0.025) 80px
+      );
+  }
+
+  h1,
+  h2 {
+    @apply font-display;
+    text-wrap: balance;
+  }
+
+  p,
+  li,
+  dd {
+    text-wrap: pretty;
+  }
+
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
+  }
+
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  ::selection {
+    @apply bg-brand text-white;
+  }
+
+  :focus-visible {
+    @apply outline outline-2 outline-offset-2 outline-brand;
+  }
+}
+
+@layer components {
+  .page-shell {
+    @apply mx-auto w-full max-w-[1180px] px-4 sm:px-6 lg:px-8;
+  }
+
+  .page-stack {
+    @apply space-y-8 sm:space-y-10;
+  }
+
+  .eyebrow {
+    @apply font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-brand;
+  }
+
+  .display-title {
+    @apply font-display text-4xl font-semibold leading-[1.04] tracking-[-0.035em] text-ink sm:text-5xl lg:text-6xl;
+  }
+
+  .page-title {
+    @apply font-display text-3xl font-semibold leading-tight tracking-[-0.025em] text-ink sm:text-4xl;
+  }
+
+  .section-title {
+    @apply font-display text-2xl font-semibold leading-tight tracking-[-0.02em] text-ink;
+  }
+
+  .panel {
+    @apply rounded-2xl border border-surface-border bg-surface shadow-panel;
+  }
+
+  .panel-muted {
+    @apply rounded-2xl border border-surface-border bg-surface-sunken/65;
+  }
+
+  .button-primary,
+  .button-secondary,
+  .button-quiet,
+  .button-danger {
+    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold transition-[transform,background-color,border-color,color,box-shadow] duration-150 ease-out disabled:cursor-not-allowed disabled:opacity-55;
+  }
+
+  .button-primary {
+    @apply border border-brand bg-brand text-white shadow-sm hover:border-brand-hover hover:bg-brand-hover hover:shadow-md active:scale-[0.98];
+  }
+
+  .button-secondary {
+    @apply border border-surface-strong bg-surface-raised text-ink hover:border-ink-muted hover:bg-white active:scale-[0.98];
+  }
+
+  .button-quiet {
+    @apply border border-transparent bg-transparent text-brand hover:border-brand-border hover:bg-brand-subtle active:scale-[0.98];
+  }
+
+  .button-danger {
+    @apply border border-unmet-fg bg-unmet-fg text-white hover:bg-[#7f1d1d] active:scale-[0.98];
+  }
+
+  .field-label {
+    @apply block text-sm font-semibold text-ink;
+  }
+
+  .field-control {
+    @apply mt-2 min-h-11 w-full rounded-lg border border-surface-strong bg-white px-3.5 py-2.5 text-[15px] text-ink shadow-sm transition-[border-color,box-shadow,background-color] duration-150 placeholder:text-ink-subtle hover:border-ink-subtle focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20 disabled:cursor-not-allowed disabled:bg-surface-sunken;
+  }
+
+  .field-hint {
+    @apply mt-2 text-xs leading-5 text-ink-subtle;
+  }
+
+  .choice-row {
+    @apply flex min-h-11 cursor-pointer items-start gap-3 rounded-lg border border-surface-border bg-surface px-3 py-2.5 text-sm transition-[border-color,background-color] duration-150 hover:border-surface-strong hover:bg-white;
+  }
+
+  .choice-row input {
+    @apply mt-0.5 h-4 w-4 shrink-0 accent-brand;
+  }
+
+  .notice {
+    @apply rounded-xl border px-4 py-3 text-sm leading-6;
+  }
+
+  .data-value {
+    @apply font-mono tabular-nums;
+  }
+
+  .evidence-rail {
+    @apply relative border-l-2 pl-4 sm:pl-5;
+  }
+
+  .link-inline {
+    @apply font-semibold text-brand underline decoration-brand/30 underline-offset-4 transition-[color,text-decoration-color] duration-150 hover:text-brand-hover hover:decoration-brand-hover;
+  }
+
+  .loading-line {
+    @apply relative overflow-hidden rounded bg-surface-sunken;
+  }
+
+  .loading-line::after {
+    content: "";
+    @apply absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/70 to-transparent;
+    animation: shimmer 1.4s ease-in-out infinite;
+  }
+
+  .reveal {
+    animation: reveal 320ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: theme("colors.surface.strong") transparent;
+  }
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

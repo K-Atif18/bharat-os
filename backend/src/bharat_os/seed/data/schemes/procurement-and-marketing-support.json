@@ -1,0 +1,101 @@
+{
+  "slug": "procurement-and-marketing-support",
+  "name": "Procurement and Marketing Support (PMS) Scheme",
+  "summary": "Reimbursement of most of the cost of participating in domestic trade fairs, exhibitions and vendor development programmes, so a small manufacturer can afford to show up where buyers are.",
+  "scheme_type": "subsidy",
+  "status": "active",
+  "administering_ministry": "Ministry of Micro, Small and Medium Enterprises",
+  "implementing_agency": "Office of Development Commissioner (MSME) and MSME-DFOs",
+  "authority_slug": "ministry-of-msme",
+  "target_segments": ["msme"],
+  "sectors": [],
+  "states": [],
+  "benefit_value_min": 0,
+  "benefit_value_max": 200000,
+  "benefit_description": "Reimbursement of a substantial share of space rent, and contribution towards travel and freight, for participation in approved domestic exhibitions and trade fairs. Higher reimbursement rates apply to women, SC and ST entrepreneurs and NER units.",
+  "application_url": "https://msme.gov.in/",
+  "offline_process": false,
+  "application_difficulty": "low",
+  "estimated_effort_hours": 8,
+  "drafting_lead_days": 10,
+  "effective_from": "2022-04-01T00:00:00Z",
+  "criteria": [
+    {
+      "criterion_type": "hard",
+      "description": "The enterprise must hold a valid Udyam registration.",
+      "machine_readable_rule": {
+        "op": "contains",
+        "field": "registrations",
+        "value": "udyam"
+      },
+      "display_order": 1,
+      "source_url": "https://msme.gov.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "criterion_type": "soft",
+      "description": "The event must be one approved under the scheme. Attending an unapproved fair and claiming afterwards does not work, so approval must be confirmed before booking.",
+      "display_order": 2,
+      "source_url": "https://msme.gov.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "criterion_type": "soft",
+      "description": "The enterprise should have a product or service suitable for display to buyers at the event, and must actually participate rather than merely register.",
+      "display_order": 3,
+      "source_url": "https://msme.gov.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "document_requirements": [
+    {
+      "document_name": "Udyam registration certificate",
+      "document_type": "udyam_certificate",
+      "issuing_authority_slug": "udyam-registration",
+      "typical_processing_days": 1,
+      "how_to_obtain": "Self-declare on the Udyam portal.",
+      "mandatory": true,
+      "display_order": 1,
+      "source_url": "https://msme.gov.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "Proof of participation and payment receipts for stall space and travel",
+      "document_type": "unknown",
+      "issuing_authority_name": "Event organiser and travel providers",
+      "typical_processing_days": 7,
+      "how_to_obtain": "Collect the allotment letter, invoices and tickets at the time of the event. Reimbursement is against documented spend, and missing receipts are the usual cause of a rejected claim.",
+      "mandatory": true,
+      "display_order": 2,
+      "source_url": "https://msme.gov.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "windows": [
+    {
+      "recurrence": "rolling",
+      "notification_source": "portal",
+      "notes": "Tied to individual approved events rather than a single window. Apply before the event, not after: post-facto claims are generally not entertained.",
+      "source_url": "https://msme.gov.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "benefits": [
+    {
+      "benefit_type": "cash",
+      "description": "Reimbursement of stall space rent and a contribution towards travel and freight for approved domestic events.",
+      "quantum_min": 0,
+      "quantum_max": 200000,
+      "conditions_for_disbursement": "Paid after the event against submitted proof of participation and expenditure.",
+      "source_url": "https://msme.gov.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    }
+  ]
+}

@@ -1,0 +1,109 @@
+{
+  "slug": "pm-vishwakarma",
+  "name": "PM Vishwakarma Scheme",
+  "summary": "Support package for traditional artisans and craftspeople working with their hands and tools: skill training with a stipend, a toolkit incentive, and collateral-free credit in two tranches.",
+  "scheme_type": "loan",
+  "status": "active",
+  "administering_ministry": "Ministry of Micro, Small and Medium Enterprises",
+  "implementing_agency": "Ministry of MSME with Ministry of Skill Development and Department of Financial Services",
+  "authority_slug": "ministry-of-msme",
+  "target_segments": ["msme"],
+  "sectors": ["handicrafts", "traditional-crafts"],
+  "states": [],
+  "benefit_value_min": 0,
+  "benefit_value_max": 300000,
+  "benefit_description": "Collateral-free enterprise development loan of up to Rs 1 lakh in the first tranche and up to Rs 2 lakh in the second, at a concessional interest rate, plus a toolkit incentive and a stipend during skill training.",
+  "application_url": "https://pmvishwakarma.gov.in/",
+  "offline_process": true,
+  "application_difficulty": "medium",
+  "estimated_effort_hours": 10,
+  "drafting_lead_days": 14,
+  "effective_from": "2023-09-17T00:00:00Z",
+  "criteria": [
+    {
+      "criterion_type": "hard",
+      "description": "The applicant must be working in one of the trades recognised under the scheme, in the traditional crafts sector.",
+      "machine_readable_rule": {
+        "op": "in",
+        "field": "sector",
+        "value": ["handicrafts", "traditional-crafts"]
+      },
+      "display_order": 1,
+      "source_url": "https://pmvishwakarma.gov.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "criterion_type": "soft",
+      "description": "The applicant must be an artisan or craftsperson working with hands and tools, engaged in the trade on a self-employed basis in the unorganised sector.",
+      "display_order": 2,
+      "source_url": "https://pmvishwakarma.gov.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "criterion_type": "soft",
+      "description": "The applicant must be at least 18 years old at the time of registration, and must not have taken a similar credit-based loan under comparable central or state schemes in recent years.",
+      "display_order": 3,
+      "source_url": "https://pmvishwakarma.gov.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "criterion_type": "soft",
+      "description": "Government employees and their family members are not eligible, and only one member per family may benefit.",
+      "display_order": 4,
+      "source_url": "https://pmvishwakarma.gov.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "document_requirements": [
+    {
+      "document_name": "Aadhaar and mobile number linked for verification",
+      "document_type": "unknown",
+      "issuing_authority_name": "UIDAI",
+      "typical_processing_days": 0,
+      "how_to_obtain": "Existing Aadhaar. Registration is biometric, done at a Common Service Centre, so the Aadhaar record must be current.",
+      "mandatory": true,
+      "display_order": 1,
+      "source_url": "https://pmvishwakarma.gov.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "Bank account details",
+      "document_type": "bank_statement",
+      "issuing_authority_name": "Your bank",
+      "typical_processing_days": 7,
+      "how_to_obtain": "An account in the applicant's own name is needed for the toolkit incentive and stipend to be credited.",
+      "mandatory": true,
+      "display_order": 2,
+      "source_url": "https://pmvishwakarma.gov.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "windows": [
+    {
+      "recurrence": "rolling",
+      "notification_source": "portal",
+      "notes": "Registration is through Common Service Centres on a rolling basis, followed by three-stage verification at village, district and screening committee level. The verification chain, not the application, is what takes the time.",
+      "source_url": "https://pmvishwakarma.gov.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "benefits": [
+    {
+      "benefit_type": "cash",
+      "description": "Collateral-free credit up to Rs 1 lakh, then up to Rs 2 lakh on repayment of the first tranche, at a concessional rate, plus a toolkit incentive and a training stipend.",
+      "quantum_min": 0,
+      "quantum_max": 300000,
+      "conditions_for_disbursement": "The second tranche requires the first to have been repaid and standard digital transaction or training conditions to be met.",
+      "source_url": "https://pmvishwakarma.gov.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    }
+  ]
+}

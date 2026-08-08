@@ -1,0 +1,156 @@
+{
+  "slug": "pmegp",
+  "name": "Prime Minister's Employment Generation Programme (PMEGP)",
+  "summary": "Margin money subsidy on a bank loan to set up a new micro enterprise in the non-farm sector. For first-time entrepreneurs only: existing units and anyone who has already taken a government subsidy are excluded.",
+  "scheme_type": "subsidy",
+  "status": "active",
+  "administering_ministry": "Ministry of Micro, Small and Medium Enterprises",
+  "implementing_agency": "Khadi and Village Industries Commission (KVIC), State KVIBs and District Industries Centres",
+  "authority_slug": "kvic",
+  "target_segments": ["msme"],
+  "sectors": [],
+  "states": [],
+  "benefit_value_min": 0,
+  "benefit_value_max": 5000000,
+  "benefit_description": "Margin money subsidy of 15% to 35% of project cost depending on applicant category and whether the unit is rural or urban. Maximum project cost Rs 50 lakh for manufacturing and Rs 20 lakh for service or trading units.",
+  "application_url": "https://pmegp.msme.gov.in/",
+  "offline_process": false,
+  "application_difficulty": "medium",
+  "estimated_effort_hours": 30,
+  "drafting_lead_days": 21,
+  "effective_from": "2022-04-01T00:00:00Z",
+  "criteria": [
+    {
+      "criterion_type": "soft",
+      "description": "The applicant must be an individual above 18 years of age. This is a fact about the person applying, which an entity profile does not capture, so it needs confirming rather than computing.",
+      "display_order": 1,
+      "source_url": "https://pmegp.msme.gov.in/",
+      "source_quote": "Any individual, above 18 years of age.",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": true
+    },
+    {
+      "criterion_type": "hard",
+      "description": "The unit must be newly established. Assistance is available only for new projects sanctioned specifically under PMEGP.",
+      "machine_readable_rule": {
+        "op": "in",
+        "field": "stage",
+        "value": ["idea", "early"]
+      },
+      "display_order": 2,
+      "source_url": "https://pmegp.msme.gov.in/",
+      "source_quote": "Assistance under the Scheme is available only for new projects sanctioned specifically under the PMEGP.",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": true
+    },
+    {
+      "criterion_type": "soft",
+      "description": "For a project costing above Rs 10 lakh in manufacturing or above Rs 5 lakh in business or service, the applicant must have passed at least class VIII.",
+      "display_order": 3,
+      "source_url": "https://pmegp.msme.gov.in/",
+      "source_quote": "For setting up of project costing above Rs. 10 lakh in the manufacturing sector and above Rs. 5 lakh in the business/service sector, the beneficiaries should possess at least VIII standard pass educational qualification.",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": true
+    },
+    {
+      "criterion_type": "soft",
+      "description": "Existing units under PMRY, REGP or any other central or state government scheme, and units that have already availed a government subsidy under any such scheme, are not eligible.",
+      "display_order": 4,
+      "source_url": "https://pmegp.msme.gov.in/",
+      "source_quote": "Existing Units (under PMRY, REGP or any other scheme of Government of India or State Government) and the units that have already availed Government Subsidy under any other scheme of Government of India or State Government are not eligible.",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": true
+    },
+    {
+      "criterion_type": "soft",
+      "description": "Only one person per family may receive assistance for a new enterprise, where family means self, spouse and unmarried children.",
+      "display_order": 5,
+      "source_url": "https://pmegp.msme.gov.in/",
+      "source_quote": "Only one person from one family is eligible for obtaining financial assistance for setting up of new enterprise under PMEGP. The 'family' includes self, spouse and unmarried children.",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": true
+    },
+    {
+      "criterion_type": "soft",
+      "description": "The project must involve capital expenditure. Projects without capital expenditure are not financed, and the cost of land cannot be counted in project cost.",
+      "display_order": 6,
+      "source_url": "https://pmegp.msme.gov.in/",
+      "source_quote": "Projects without Capital Expenditure are not eligible for Financing under the Scheme. Cost of the land should not be included in the Project cost.",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": true
+    }
+  ],
+  "document_requirements": [
+    {
+      "document_name": "Detailed project report",
+      "document_type": "project_report",
+      "issuing_authority_name": "Prepared by the applicant; sample projects are published on the PMEGP portal",
+      "typical_processing_days": 14,
+      "how_to_obtain": "Prepare using the sample projects published under Knowledge Center on the PMEGP portal, then adapt to your actual costs and NIC code.",
+      "mandatory": true,
+      "display_order": 1,
+      "source_url": "https://pmegp.msme.gov.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": true
+    },
+    {
+      "document_name": "Educational qualification certificate (class VIII or above)",
+      "document_type": "unknown",
+      "issuing_authority_name": "School or examination board",
+      "typical_processing_days": 21,
+      "how_to_obtain": "Obtain from your school or board. Required only where project cost exceeds Rs 10 lakh in manufacturing or Rs 5 lakh in service. Project cost is not something the profile captures, so decide this one yourself rather than relying on a match.",
+      "mandatory": false,
+      "display_order": 2,
+      "source_url": "https://pmegp.msme.gov.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": true
+    },
+    {
+      "document_name": "Udyam registration",
+      "document_type": "udyam_certificate",
+      "issuing_authority_slug": "udyam-registration",
+      "typical_processing_days": 1,
+      "how_to_obtain": "Register on the Udyam portal. Mandatory before physical verification of the unit and before margin money is adjusted in your loan account, so it can follow sanction but must not be forgotten.",
+      "mandatory": true,
+      "display_order": 3,
+      "source_url": "https://pmegp.msme.gov.in/",
+      "source_quote": "All new units setup under PMEGP will be mandatorily registered under Udyam Portal before Physical Verification of the Unit and the adjustment of the Margin Money.",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": true
+    },
+    {
+      "document_name": "Caste or special category certificate, if claiming a higher subsidy rate",
+      "document_type": "caste_certificate",
+      "issuing_authority_slug": "state-revenue-department",
+      "typical_processing_days": 30,
+      "how_to_obtain": "Apply at the tehsil or district office, or through your state e-district portal. This is frequently the slowest document in the set — start it first if you need it.",
+      "mandatory": false,
+      "display_order": 4,
+      "source_url": "https://pmegp.msme.gov.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "windows": [
+    {
+      "recurrence": "annual",
+      "notification_source": "portal",
+      "notes": "Applications are accepted through the year, but sanctions are constrained by each state's annual financial allocation, so applying early in the financial year materially improves your odds.",
+      "source_url": "https://pmegp.msme.gov.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "benefits": [
+    {
+      "benefit_type": "cash",
+      "description": "Margin money subsidy credited to the loan account, ranging from 15% to 35% of project cost by applicant category and rural or urban location.",
+      "quantum_min": 0,
+      "quantum_max": 17500000,
+      "conditions_for_disbursement": "Held as a term deposit and adjusted against the loan after the unit passes physical verification and the mandatory EDP training is completed.",
+      "source_url": "https://msme.gov.in/1-prime-ministers-employment-generation-programme-pmegp",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    }
+  ]
+}

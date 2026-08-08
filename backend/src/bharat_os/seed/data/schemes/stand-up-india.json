@@ -1,0 +1,132 @@
+{
+  "slug": "stand-up-india",
+  "name": "Stand-Up India Scheme",
+  "summary": "Bank loans from Rs 10 lakh to Rs 1 crore for SC, ST and women entrepreneurs setting up their first venture in manufacturing, services, trading or activities allied to agriculture.",
+  "scheme_type": "loan",
+  "status": "active",
+  "administering_ministry": "Department of Financial Services, Ministry of Finance",
+  "implementing_agency": "Scheduled commercial banks, through the Stand-Up Mitra portal",
+  "authority_slug": "sidbi",
+  "target_segments": ["msme", "startup"],
+  "sectors": [],
+  "states": [],
+  "benefit_value_min": 1000000,
+  "benefit_value_max": 10000000,
+  "benefit_description": "Composite loan of Rs 10 lakh to Rs 1 crore covering 75% of the project cost, including term loan and working capital.",
+  "application_url": "https://www.standupmitra.in/",
+  "offline_process": false,
+  "application_difficulty": "medium",
+  "estimated_effort_hours": 25,
+  "drafting_lead_days": 21,
+  "effective_from": "2016-04-05T00:00:00Z",
+  "criteria": [
+    {
+      "criterion_type": "hard",
+      "description": "The borrower must belong to a Scheduled Caste or Scheduled Tribe, or be a woman entrepreneur.",
+      "machine_readable_rule": {
+        "op": "any",
+        "rules": [
+          { "op": "in", "field": "social_category", "value": ["sc", "st"] },
+          { "op": "is_true", "field": "is_woman_led" }
+        ]
+      },
+      "display_order": 1,
+      "source_url": "https://www.standupmitra.in/",
+      "source_quote": "Facilitates bank loans between 10 lakh and 1 Crore to at least one Scheduled Caste (SC) or Scheduled Tribe (ST) borrower and at least one woman borrower per bank branch for setting up a greenfield enterprise.",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": true
+    },
+    {
+      "criterion_type": "hard",
+      "description": "The enterprise must be greenfield, meaning this is the beneficiary's first venture in manufacturing, services or trading.",
+      "machine_readable_rule": {
+        "op": "in",
+        "field": "stage",
+        "value": ["idea", "early"]
+      },
+      "display_order": 2,
+      "source_url": "https://bankofmaharashtra.bank.in/stand-up-india",
+      "source_quote": "Green field signifies, in this context, the first time venture of the beneficiary in the manufacturing or services or trading sector.",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": true
+    },
+    {
+      "criterion_type": "soft",
+      "description": "For a non-individual enterprise, at least 51% of the shareholding and controlling stake must be held by SC, ST or women entrepreneurs.",
+      "display_order": 3,
+      "source_url": "https://www.vikaspedia.in/schemesall/schemes-for-entrepreneurs/stand-up-india--sui--scheme",
+      "source_quote": "In case of non-individual enterprises, 51% of the shareholding and controlling stake should be held by either SC/ST and/or Women Entrepreneur.",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": true
+    },
+    {
+      "criterion_type": "soft",
+      "description": "The borrower should not be in default to any bank or financial institution.",
+      "display_order": 4,
+      "source_url": "https://www.standupmitra.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "document_requirements": [
+    {
+      "document_name": "Caste certificate (for SC or ST applicants)",
+      "document_type": "caste_certificate",
+      "issuing_authority_slug": "state-revenue-department",
+      "typical_processing_days": 30,
+      "how_to_obtain": "Apply at the tehsil or district office, or via your state e-district portal. Not required for women applicants claiming on gender alone.",
+      "mandatory": false,
+      "display_order": 1,
+      "source_url": "https://www.standupmitra.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "Project report with financial projections",
+      "document_type": "project_report",
+      "issuing_authority_name": "Prepared by the applicant, often with a chartered accountant",
+      "typical_processing_days": 14,
+      "how_to_obtain": "Prepared in-house or by a CA. The Stand-Up Mitra portal offers handholding support to help prepare it.",
+      "mandatory": true,
+      "display_order": 2,
+      "source_url": "https://www.standupmitra.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "PAN of the applicant and the entity",
+      "document_type": "pan_card",
+      "issuing_authority_slug": "income-tax-department",
+      "typical_processing_days": 15,
+      "how_to_obtain": "Apply online through the Income Tax e-filing portal or NSDL.",
+      "mandatory": true,
+      "display_order": 3,
+      "source_url": "https://www.standupmitra.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "windows": [
+    {
+      "recurrence": "rolling",
+      "notification_source": "portal",
+      "notes": "No fixed window. Applications are routed to banks through the Stand-Up Mitra portal at any time.",
+      "source_url": "https://www.standupmitra.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": true
+    }
+  ],
+  "benefits": [
+    {
+      "benefit_type": "cash",
+      "description": "Composite bank loan of Rs 10 lakh to Rs 1 crore, typically covering up to 75% of project cost.",
+      "quantum_min": 1000000,
+      "quantum_max": 10000000,
+      "conditions_for_disbursement": "This is credit, not a grant: it carries interest and repayment obligations. Disbursed by the lending bank after sanction.",
+      "source_url": "https://sbi.co.in/web/get-business-product-information/stand-up-india",
+      "source_quote": "The objective of Stand-Up India scheme is to facilitate bank loans between Rs 10 lakh and Rs 1 crore to Scheduled Caste (SC) or Scheduled Tribe (ST) borrower and Woman borrower for setting up a greenfield enterprise.",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": true
+    }
+  ]
+}

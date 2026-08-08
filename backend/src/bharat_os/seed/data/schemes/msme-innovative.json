@@ -1,0 +1,113 @@
+{
+  "slug": "msme-innovative",
+  "name": "MSME Innovative Scheme (Incubation, Design and IPR)",
+  "summary": "Combined support for MSMEs across three components: incubating new product ideas, subsidised professional design intervention, and reimbursement of intellectual property filing costs.",
+  "scheme_type": "grant",
+  "status": "active",
+  "administering_ministry": "Ministry of Micro, Small and Medium Enterprises",
+  "implementing_agency": "Host institutions, design institutes and the Office of Development Commissioner (MSME)",
+  "authority_slug": "ministry-of-msme",
+  "target_segments": ["msme", "startup"],
+  "sectors": [],
+  "states": [],
+  "benefit_value_min": 0,
+  "benefit_value_max": 1500000,
+  "benefit_description": "Support for developing and validating an innovative idea through a host institution, subsidised design projects, and reimbursement towards patent, trademark, design and GI registration costs.",
+  "application_url": "https://innovative.msme.gov.in/",
+  "offline_process": false,
+  "application_difficulty": "medium",
+  "estimated_effort_hours": 20,
+  "drafting_lead_days": 14,
+  "effective_from": "2022-04-01T00:00:00Z",
+  "criteria": [
+    {
+      "criterion_type": "hard",
+      "description": "For the design and IPR components the applicant must hold a valid Udyam registration. The incubation component is also open to individual innovators through a host institution.",
+      "machine_readable_rule": {
+        "op": "contains",
+        "field": "registrations",
+        "value": "udyam"
+      },
+      "display_order": 1,
+      "source_url": "https://innovative.msme.gov.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "criterion_type": "soft",
+      "description": "The idea must be genuinely new in the applicant's market rather than a replication of an existing product, and must be described concretely enough to be assessed.",
+      "display_order": 2,
+      "source_url": "https://innovative.msme.gov.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "criterion_type": "soft",
+      "description": "For the IPR component, the filing must be made in the name of the MSME and reimbursement is claimed against actual costs incurred, so proof of payment matters as much as eligibility.",
+      "display_order": 3,
+      "source_url": "https://innovative.msme.gov.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "document_requirements": [
+    {
+      "document_name": "Udyam registration certificate",
+      "document_type": "udyam_certificate",
+      "issuing_authority_slug": "udyam-registration",
+      "typical_processing_days": 1,
+      "how_to_obtain": "Self-declare on the Udyam portal.",
+      "mandatory": true,
+      "display_order": 1,
+      "source_url": "https://innovative.msme.gov.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "Idea or design proposal",
+      "document_type": "project_report",
+      "issuing_authority_name": "Prepared by the applicant",
+      "typical_processing_days": 14,
+      "how_to_obtain": "Prepared in-house, often with the host institution or design institute you intend to work with.",
+      "mandatory": true,
+      "display_order": 2,
+      "source_url": "https://innovative.msme.gov.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "IP filing receipts and fee proofs, for IPR reimbursement claims",
+      "document_type": "unknown",
+      "issuing_authority_name": "Patent or trademark office, and your IP attorney",
+      "typical_processing_days": 7,
+      "how_to_obtain": "Collect from your IP attorney and the filing portal. Reimbursement is against documented cost, so keep every receipt.",
+      "mandatory": false,
+      "display_order": 3,
+      "source_url": "https://innovative.msme.gov.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "windows": [
+    {
+      "recurrence": "rolling",
+      "notification_source": "portal",
+      "notes": "Applications are accepted through the MSME Innovative portal on a rolling basis, subject to annual budget availability.",
+      "source_url": "https://innovative.msme.gov.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "benefits": [
+    {
+      "benefit_type": "cash",
+      "description": "Grant support for idea incubation and design projects, and reimbursement of intellectual property registration costs.",
+      "quantum_min": 0,
+      "quantum_max": 1500000,
+      "conditions_for_disbursement": "Component dependent. Incubation support is routed through the host institution; IPR support is reimbursement against costs already paid.",
+      "source_url": "https://innovative.msme.gov.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    }
+  ]
+}

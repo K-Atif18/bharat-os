@@ -1,0 +1,126 @@
+{
+  "slug": "birac-big",
+  "name": "BIRAC Biotechnology Ignition Grant (BIG)",
+  "summary": "Early-stage grant for biotechnology and life sciences ideas that need to establish proof of concept. One of the few genuinely pre-revenue grants available in India, and correspondingly competitive.",
+  "scheme_type": "grant",
+  "status": "active",
+  "administering_ministry": "Department of Biotechnology, Ministry of Science and Technology",
+  "implementing_agency": "Biotechnology Industry Research Assistance Council (BIRAC)",
+  "authority_slug": "birac",
+  "target_segments": ["startup"],
+  "sectors": ["biotechnology", "life-sciences", "healthcare", "agritech"],
+  "states": [],
+  "benefit_value_min": 0,
+  "benefit_value_max": 5000000,
+  "benefit_description": "Grant of up to Rs 50 lakh over roughly 18 months to establish proof of concept, available to a startup or to an individual entrepreneur through a host institution.",
+  "application_url": "https://birac.nic.in/",
+  "offline_process": false,
+  "application_difficulty": "high",
+  "estimated_effort_hours": 60,
+  "drafting_lead_days": 30,
+  "effective_from": "2012-01-01T00:00:00Z",
+  "criteria": [
+    {
+      "criterion_type": "hard",
+      "description": "The applicant entity must be early stage. BIG funds ideas at the proof-of-concept stage, not established revenue businesses.",
+      "machine_readable_rule": {
+        "op": "in",
+        "field": "stage",
+        "value": ["idea", "early"]
+      },
+      "display_order": 1,
+      "source_url": "https://birac.nic.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "criterion_type": "hard",
+      "description": "The company, where the applicant is a company, must be incorporated in India with majority Indian shareholding.",
+      "machine_readable_rule": {
+        "op": "lte",
+        "field": "entity_age_years",
+        "value": 10
+      },
+      "display_order": 2,
+      "source_url": "https://birac.nic.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "criterion_type": "soft",
+      "description": "The proposal must be in biotechnology or an allied life sciences area, and must be technically novel rather than an incremental variation on an existing product.",
+      "display_order": 3,
+      "source_url": "https://birac.nic.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "criterion_type": "soft",
+      "description": "The proposal must define a clear, measurable proof-of-concept milestone achievable within the grant period. Vague research directions do not survive review.",
+      "display_order": 4,
+      "source_url": "https://birac.nic.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "document_requirements": [
+    {
+      "document_name": "Detailed technical proposal with milestones and budget",
+      "document_type": "project_report",
+      "issuing_authority_name": "Prepared by the applicant",
+      "typical_processing_days": 30,
+      "how_to_obtain": "Prepared in-house. This is the application: reviewers are domain scientists, and a weak experimental plan is the usual reason for rejection.",
+      "mandatory": true,
+      "display_order": 1,
+      "source_url": "https://birac.nic.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "Certificate of incorporation",
+      "document_type": "incorporation_certificate",
+      "issuing_authority_slug": "mca",
+      "typical_processing_days": 0,
+      "how_to_obtain": "Already issued at incorporation. Individual applicants apply through a host institution instead.",
+      "mandatory": false,
+      "display_order": 2,
+      "source_url": "https://birac.nic.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "CVs of the principal investigator and key team members",
+      "document_type": "unknown",
+      "issuing_authority_name": "Prepared by the applicant",
+      "typical_processing_days": 3,
+      "how_to_obtain": "Prepared in-house. Reviewers weigh whether the team can actually execute the science proposed.",
+      "mandatory": true,
+      "display_order": 3,
+      "source_url": "https://birac.nic.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "windows": [
+    {
+      "recurrence": "annual",
+      "notification_source": "portal",
+      "notes": "BIG runs in discrete calls announced on the BIRAC portal, typically once or twice a year. Missing a call means waiting for the next, so the call announcement is the date that matters.",
+      "source_url": "https://birac.nic.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "benefits": [
+    {
+      "benefit_type": "cash",
+      "description": "Grant of up to Rs 50 lakh to establish proof of concept.",
+      "quantum_min": 0,
+      "quantum_max": 5000000,
+      "conditions_for_disbursement": "Released against agreed technical milestones and periodic review, not as a lump sum.",
+      "source_url": "https://birac.nic.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    }
+  ]
+}

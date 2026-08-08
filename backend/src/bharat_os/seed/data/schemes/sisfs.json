@@ -1,0 +1,183 @@
+{
+  "slug": "sisfs",
+  "name": "Startup India Seed Fund Scheme (SISFS)",
+  "summary": "Seed funding for DPIIT-recognised startups, routed through selected incubators, for proof of concept, prototype development, product trials, market entry and commercialisation.",
+  "scheme_type": "grant",
+  "status": "active",
+  "administering_ministry": "Department for Promotion of Industry and Internal Trade, Ministry of Commerce and Industry",
+  "implementing_agency": "DPIIT-selected incubators",
+  "authority_slug": "dpiit",
+  "target_segments": ["startup"],
+  "sectors": [],
+  "states": [],
+  "benefit_value_min": 2000000,
+  "benefit_value_max": 5000000,
+  "benefit_description": "Up to Rs 20 lakh as grant for proof of concept, prototype development or product trials; up to Rs 50 lakh for market entry, commercialisation or scaling via convertible debentures, debt or debt-linked instruments.",
+  "application_url": "https://seedfund.startupindia.gov.in/",
+  "offline_process": false,
+  "application_difficulty": "high",
+  "estimated_effort_hours": 40,
+  "drafting_lead_days": 21,
+  "effective_from": "2021-04-01T00:00:00Z",
+  "criteria": [
+    {
+      "criterion_type": "hard",
+      "description": "The startup must be recognised by DPIIT.",
+      "machine_readable_rule": {
+        "op": "contains",
+        "field": "registrations",
+        "value": "dpiit"
+      },
+      "display_order": 1,
+      "source_url": "https://seedfund.startupindia.gov.in/",
+      "source_quote": "A startup, recognized by DPIIT, incorporated not more than 2 years ago at the time of application.",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": true
+    },
+    {
+      "criterion_type": "hard",
+      "description": "The startup must have been incorporated not more than 2 years before the date of application.",
+      "machine_readable_rule": {
+        "op": "lte",
+        "field": "entity_age_years",
+        "value": 2
+      },
+      "display_order": 2,
+      "source_url": "https://seedfund.startupindia.gov.in/",
+      "source_quote": "incorporated not more than 2 years ago at the time of application",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": true
+    },
+    {
+      "criterion_type": "soft",
+      "description": "The startup must have a business idea to develop a product or service with market fit, viable commercialisation and scope of scaling.",
+      "display_order": 3,
+      "source_url": "https://seedfund.startupindia.gov.in/",
+      "source_quote": "Startup should have a business idea to develop a product or a service with market fit, viable commercialization, and scope of scaling.",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": true
+    },
+    {
+      "criterion_type": "soft",
+      "description": "The startup should be using technology in its core product or service, business model, distribution model or methodology to solve a targeted problem.",
+      "display_order": 4,
+      "source_url": "https://seedfund.startupindia.gov.in/",
+      "source_quote": "Startup should be using technology in its core product or service, or business model, or distribution model, or methodology to solve the problem being targeted.",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": true
+    },
+    {
+      "criterion_type": "soft",
+      "description": "The startup must not have received more than Rs 10 lakh of monetary support under any other central or state government scheme. Subsidised working space, founder monthly allowance, lab access and prototyping facilities do not count towards this limit.",
+      "display_order": 5,
+      "source_url": "https://seedfund.startupindia.gov.in/",
+      "source_quote": "Startup should not have received more than Rs 10 lakh of monetary support under any other Central or State Government scheme.",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": true
+    },
+    {
+      "criterion_type": "soft",
+      "description": "Shareholding by Indian promoters in the startup should be at least 51% at the time of application, as per Companies Act 2013 and SEBI regulations.",
+      "display_order": 6,
+      "source_url": "https://seedfund.startupindia.gov.in/",
+      "source_quote": "Shareholding by Indian promoters in the startup should be at least 51% at the time of application.",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": true
+    }
+  ],
+  "document_requirements": [
+    {
+      "document_name": "DPIIT recognition certificate",
+      "document_type": "dpiit_certificate",
+      "issuing_authority_slug": "dpiit",
+      "typical_processing_days": 14,
+      "how_to_obtain": "Apply on the Startup India portal with your incorporation certificate and a description of how the business is innovative or scalable. Recognition is usually granted within about two weeks, but incomplete applications are returned for clarification, which restarts the clock.",
+      "mandatory": true,
+      "display_order": 1,
+      "source_url": "https://seedfund.startupindia.gov.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": true
+    },
+    {
+      "document_name": "Certificate of incorporation or registration",
+      "document_type": "incorporation_certificate",
+      "issuing_authority_slug": "mca",
+      "typical_processing_days": 0,
+      "how_to_obtain": "Already issued at incorporation. Download a fresh copy from the MCA portal if the original is unavailable.",
+      "mandatory": true,
+      "display_order": 2,
+      "source_url": "https://seedfund.startupindia.gov.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": true
+    },
+    {
+      "document_name": "PAN of the entity",
+      "document_type": "pan_card",
+      "issuing_authority_slug": "income-tax-department",
+      "typical_processing_days": 15,
+      "how_to_obtain": "Apply online through the Income Tax e-filing portal or NSDL if the entity does not already hold one.",
+      "mandatory": true,
+      "display_order": 3,
+      "source_url": "https://seedfund.startupindia.gov.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": true
+    },
+    {
+      "document_name": "Pitch deck covering the problem, solution, traction and use of funds",
+      "document_type": "pitch_deck",
+      "issuing_authority_name": "Prepared by the applicant",
+      "typical_processing_days": 7,
+      "how_to_obtain": "Prepared in-house. Incubators weight the use-of-funds and milestone sections heavily, because disbursal is milestone-linked.",
+      "mandatory": true,
+      "display_order": 4,
+      "source_url": "https://seedfund.startupindia.gov.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "Audited financial statements, where available",
+      "document_type": "audited_financials",
+      "issuing_authority_name": "Statutory auditor of the entity",
+      "typical_processing_days": 30,
+      "how_to_obtain": "Obtained from your statutory auditor. A newly incorporated startup with no completed financial year may not have these; provide provisional statements instead.",
+      "mandatory": false,
+      "display_order": 5,
+      "source_url": "https://seedfund.startupindia.gov.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "windows": [
+    {
+      "recurrence": "rolling",
+      "notification_source": "portal",
+      "notes": "Applications are accepted on a rolling basis, but each incubator runs its own selection cycles and may close intake between cycles. Check the specific incubators you apply to.",
+      "source_url": "https://seedfund.startupindia.gov.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": true
+    }
+  ],
+  "benefits": [
+    {
+      "benefit_type": "cash",
+      "description": "Grant for validation of proof of concept, prototype development or product trials, disbursed in milestone-based instalments.",
+      "quantum_min": 0,
+      "quantum_max": 2000000,
+      "conditions_for_disbursement": "Released against agreed milestones such as prototype completion or product testing, not as a lump sum.",
+      "source_url": "https://seedfund.startupindia.gov.in/faq",
+      "source_quote": "Up to Rs. 20 Lakhs as grant for validation of Proof of Concept, or prototype development, or product trials. The grant shall be disbursed in milestone-based installments.",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": true
+    },
+    {
+      "benefit_type": "cash",
+      "description": "Investment for market entry, commercialisation or scaling, through convertible debentures, debt or debt-linked instruments.",
+      "quantum_min": 0,
+      "quantum_max": 5000000,
+      "conditions_for_disbursement": "Not a grant. Provided as a convertible or debt-linked instrument, so it carries repayment or conversion obligations.",
+      "source_url": "https://seedfund.startupindia.gov.in/faq",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": true
+    }
+  ]
+}

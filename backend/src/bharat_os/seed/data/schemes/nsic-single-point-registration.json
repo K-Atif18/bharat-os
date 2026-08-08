@@ -1,0 +1,113 @@
+{
+  "slug": "nsic-single-point-registration",
+  "name": "NSIC Single Point Registration Scheme (SPRS)",
+  "summary": "Registration that gives micro and small enterprises preference in central government procurement: exemption from tender fee and earnest money deposit, and access to the reserved share of public purchases.",
+  "scheme_type": "certification",
+  "status": "active",
+  "administering_ministry": "Ministry of Micro, Small and Medium Enterprises",
+  "implementing_agency": "National Small Industries Corporation (NSIC)",
+  "authority_slug": "nsic",
+  "target_segments": ["msme"],
+  "sectors": [],
+  "states": [],
+  "benefit_value_min": 0,
+  "benefit_value_max": 0,
+  "benefit_description": "Exemption from tender document fee and earnest money deposit in central government tenders, plus eligibility for the share of procurement reserved for micro and small enterprises under the Public Procurement Policy.",
+  "application_url": "https://www.nsic.co.in/",
+  "offline_process": false,
+  "application_difficulty": "medium",
+  "estimated_effort_hours": 15,
+  "drafting_lead_days": 14,
+  "effective_from": "2012-04-01T00:00:00Z",
+  "criteria": [
+    {
+      "criterion_type": "hard",
+      "description": "The enterprise must hold Udyam registration as a micro or small enterprise. Medium enterprises are outside the scheme.",
+      "machine_readable_rule": {
+        "op": "contains",
+        "field": "registrations",
+        "value": "udyam"
+      },
+      "display_order": 1,
+      "source_url": "https://www.nsic.co.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "criterion_type": "soft",
+      "description": "The enterprise must already be in commercial production or providing services, and must have the technical and financial capacity to execute government orders. NSIC conducts a technical inspection before registering.",
+      "display_order": 2,
+      "source_url": "https://www.nsic.co.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "criterion_type": "soft",
+      "description": "Traders are not eligible. The scheme is for manufacturers and service providers.",
+      "display_order": 3,
+      "source_url": "https://www.nsic.co.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "document_requirements": [
+    {
+      "document_name": "Udyam registration certificate",
+      "document_type": "udyam_certificate",
+      "issuing_authority_slug": "udyam-registration",
+      "typical_processing_days": 1,
+      "how_to_obtain": "Self-declare on the Udyam portal.",
+      "mandatory": true,
+      "display_order": 1,
+      "source_url": "https://www.nsic.co.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "Audited financial statements for the last three years",
+      "document_type": "audited_financials",
+      "issuing_authority_name": "Statutory auditor of the entity",
+      "typical_processing_days": 30,
+      "how_to_obtain": "Obtain from your auditor. A newly established unit without three years of accounts will generally not qualify yet.",
+      "mandatory": true,
+      "display_order": 2,
+      "source_url": "https://www.nsic.co.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "List of plant, machinery and testing equipment",
+      "document_type": "unknown",
+      "issuing_authority_name": "Prepared by the applicant, verified at technical inspection",
+      "typical_processing_days": 7,
+      "how_to_obtain": "Prepared in-house. It is checked physically during the NSIC technical inspection, so it must match what is actually on the floor.",
+      "mandatory": true,
+      "display_order": 3,
+      "source_url": "https://www.nsic.co.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "windows": [
+    {
+      "recurrence": "rolling",
+      "notification_source": "portal",
+      "notes": "Open year round. Registration must be renewed periodically, and lapsed registration silently removes your tender exemptions.",
+      "source_url": "https://www.nsic.co.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "benefits": [
+    {
+      "benefit_type": "service",
+      "description": "Tender fee and earnest money deposit exemption in central government tenders, and access to procurement reserved for micro and small enterprises.",
+      "quantum_min": 0,
+      "quantum_max": 0,
+      "conditions_for_disbursement": "Benefit realised per tender, not as a payment. Value depends entirely on how much you actually bid for.",
+      "source_url": "https://www.nsic.co.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    }
+  ]
+}

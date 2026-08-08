@@ -1,0 +1,114 @@
+{
+  "slug": "pm-mudra-yojana",
+  "name": "Pradhan Mantri MUDRA Yojana (PMMY)",
+  "summary": "Collateral-free loans up to Rs 20 lakh for non-farm micro enterprises in manufacturing, trading, services and activities allied to agriculture, across four size categories.",
+  "scheme_type": "loan",
+  "status": "active",
+  "administering_ministry": "Department of Financial Services, Ministry of Finance",
+  "implementing_agency": "Banks, NBFCs and micro finance institutions, refinanced by MUDRA Ltd",
+  "authority_slug": "sidbi",
+  "target_segments": ["msme"],
+  "sectors": [],
+  "states": [],
+  "benefit_value_min": 0,
+  "benefit_value_max": 2000000,
+  "benefit_description": "Collateral-free loans in four categories: Shishu up to Rs 50,000; Kishor Rs 50,001 to Rs 5 lakh; Tarun Rs 5 lakh to Rs 10 lakh; Tarun Plus Rs 10 lakh to Rs 20 lakh.",
+  "application_url": "https://www.mudra.org.in/",
+  "offline_process": true,
+  "application_difficulty": "low",
+  "estimated_effort_hours": 8,
+  "drafting_lead_days": 7,
+  "effective_from": "2015-04-08T00:00:00Z",
+  "criteria": [
+    {
+      "criterion_type": "hard",
+      "description": "The enterprise must be a micro unit. Turnover well within the micro threshold is expected, since the facility is capped at Rs 20 lakh.",
+      "machine_readable_rule": {
+        "op": "lte",
+        "field": "annual_turnover_inr",
+        "value": 100000000
+      },
+      "display_order": 1,
+      "source_url": "https://www.mudra.org.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "criterion_type": "soft",
+      "description": "The activity must be non-farm income generating in manufacturing, trading, services or allied to agriculture. Direct crop agriculture is excluded.",
+      "display_order": 2,
+      "source_url": "https://www.mudra.org.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "criterion_type": "soft",
+      "description": "The borrower should not be a defaulter with any bank or financial institution and should have a satisfactory credit record.",
+      "display_order": 3,
+      "source_url": "https://www.mudra.org.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "document_requirements": [
+    {
+      "document_name": "Identity and address proof",
+      "document_type": "unknown",
+      "issuing_authority_name": "Aadhaar, voter ID, passport or driving licence",
+      "typical_processing_days": 0,
+      "how_to_obtain": "Existing documents are accepted; no new issuance needed in most cases.",
+      "mandatory": true,
+      "display_order": 1,
+      "source_url": "https://www.mudra.org.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "Business existence proof or quotation for machinery to be purchased",
+      "document_type": "unknown",
+      "issuing_authority_name": "Applicant, or the equipment supplier",
+      "typical_processing_days": 7,
+      "how_to_obtain": "Registration documents for an existing unit, or supplier quotations where the loan funds an asset purchase.",
+      "mandatory": true,
+      "display_order": 2,
+      "source_url": "https://www.mudra.org.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "Bank statements for the preceding 6 months",
+      "document_type": "bank_statement",
+      "issuing_authority_name": "Your bank",
+      "typical_processing_days": 3,
+      "how_to_obtain": "Download from net banking or request at your branch.",
+      "mandatory": false,
+      "display_order": 3,
+      "source_url": "https://www.mudra.org.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "windows": [
+    {
+      "recurrence": "rolling",
+      "notification_source": "portal",
+      "notes": "No window. Apply at any participating bank branch, or through the Jan Samarth portal, at any time.",
+      "source_url": "https://www.mudra.org.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "benefits": [
+    {
+      "benefit_type": "cash",
+      "description": "Collateral-free term loan or working capital facility, in the Shishu, Kishor, Tarun or Tarun Plus category by amount.",
+      "quantum_min": 0,
+      "quantum_max": 2000000,
+      "conditions_for_disbursement": "Credit, not a grant. Interest and repayment apply, at rates set by the lending institution.",
+      "source_url": "https://tradebrains.in/money/7-best-government-business-loan-schemes-for-msmes-in-india-2026-eligibility-benefits-loan-amounts/",
+      "source_quote": "four categories namely Shishu (up to Rs 50,000), Kishor (Rs 50,001 to Rs 5 lakh), Tarun (Rs 5 lakh to Rs 10 lakh) and Tarun Plus (Rs 10 lakh up to Rs 20 lakh).",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    }
+  ]
+}

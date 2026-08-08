@@ -1,0 +1,134 @@
+{
+  "slug": "dpiit-startup-recognition",
+  "name": "DPIIT Startup Recognition",
+  "summary": "Official recognition as a startup by DPIIT. Not funding in itself, but the gate that most startup schemes, tax exemptions and public procurement relaxations sit behind, so it is usually the first thing to obtain.",
+  "scheme_type": "certification",
+  "status": "active",
+  "administering_ministry": "Department for Promotion of Industry and Internal Trade, Ministry of Commerce and Industry",
+  "implementing_agency": "Startup India, DPIIT",
+  "authority_slug": "dpiit",
+  "target_segments": ["startup"],
+  "sectors": [],
+  "states": [],
+  "benefit_value_min": 0,
+  "benefit_value_max": 0,
+  "benefit_description": "No direct cash benefit. Unlocks eligibility for SISFS and other startup schemes, self-certification under labour and environment laws, IPR fast-tracking with fee rebates, and exemption from prior turnover and experience requirements in public procurement.",
+  "application_url": "https://www.startupindia.gov.in/",
+  "offline_process": false,
+  "application_difficulty": "low",
+  "estimated_effort_hours": 4,
+  "drafting_lead_days": 5,
+  "effective_from": "2019-02-19T00:00:00Z",
+  "criteria": [
+    {
+      "criterion_type": "hard",
+      "description": "The entity must be incorporated not more than 10 years before the date of application.",
+      "machine_readable_rule": {
+        "op": "lte",
+        "field": "entity_age_years",
+        "value": 10
+      },
+      "display_order": 1,
+      "source_url": "https://www.startupindia.gov.in/content/sih/en/startupgov/startup-recognition-page.html",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "criterion_type": "hard",
+      "description": "Annual turnover must not have exceeded Rs 100 crore in any financial year since incorporation.",
+      "machine_readable_rule": {
+        "op": "lte",
+        "field": "annual_turnover_inr",
+        "value": 1000000000
+      },
+      "display_order": 2,
+      "source_url": "https://www.startupindia.gov.in/content/sih/en/startupgov/startup-recognition-page.html",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "criterion_type": "soft",
+      "description": "The entity must be a private limited company, registered partnership firm or limited liability partnership. Sole proprietorships are not eligible.",
+      "display_order": 3,
+      "source_url": "https://www.startupindia.gov.in/content/sih/en/startupgov/startup-recognition-page.html",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "criterion_type": "soft",
+      "description": "The entity must be working towards innovation, development or improvement of products, processes or services, or have a scalable business model with high potential for employment generation or wealth creation.",
+      "display_order": 4,
+      "source_url": "https://www.startupindia.gov.in/content/sih/en/startupgov/startup-recognition-page.html",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "criterion_type": "soft",
+      "description": "The entity must not have been formed by splitting up or reconstructing an existing business.",
+      "display_order": 5,
+      "source_url": "https://www.startupindia.gov.in/content/sih/en/startupgov/startup-recognition-page.html",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "document_requirements": [
+    {
+      "document_name": "Certificate of incorporation or registration",
+      "document_type": "incorporation_certificate",
+      "issuing_authority_slug": "mca",
+      "typical_processing_days": 0,
+      "how_to_obtain": "Already issued at incorporation; download a fresh copy from the MCA portal if needed.",
+      "mandatory": true,
+      "display_order": 1,
+      "source_url": "https://www.startupindia.gov.in/content/sih/en/startupgov/startup-recognition-page.html",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "Write-up on how the business is innovative or scalable",
+      "document_type": "unknown",
+      "issuing_authority_name": "Prepared by the applicant",
+      "typical_processing_days": 3,
+      "how_to_obtain": "Prepared in-house. This is the field applications are most often returned on, so it deserves real attention rather than boilerplate.",
+      "mandatory": true,
+      "display_order": 2,
+      "source_url": "https://www.startupindia.gov.in/content/sih/en/startupgov/startup-recognition-page.html",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "PAN of the entity",
+      "document_type": "pan_card",
+      "issuing_authority_slug": "income-tax-department",
+      "typical_processing_days": 15,
+      "how_to_obtain": "Apply online through the Income Tax e-filing portal or NSDL.",
+      "mandatory": true,
+      "display_order": 3,
+      "source_url": "https://www.startupindia.gov.in/content/sih/en/startupgov/startup-recognition-page.html",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "windows": [
+    {
+      "recurrence": "rolling",
+      "notification_source": "portal",
+      "notes": "Always open. Recognition is granted on a rolling basis.",
+      "source_url": "https://www.startupindia.gov.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "benefits": [
+    {
+      "benefit_type": "recognition",
+      "description": "DPIIT recognition certificate, which is a prerequisite for SISFS and several other startup schemes.",
+      "quantum_min": 0,
+      "quantum_max": 0,
+      "conditions_for_disbursement": "No disbursement. Recognition may be revoked if the entity ceases to meet the criteria.",
+      "source_url": "https://www.startupindia.gov.in/content/sih/en/startupgov/startup-recognition-page.html",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    }
+  ]
+}

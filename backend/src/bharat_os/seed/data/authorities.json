@@ -1,0 +1,85 @@
+[
+  {
+    "slug": "dpiit",
+    "name": "Department for Promotion of Industry and Internal Trade, Ministry of Commerce and Industry",
+    "authority_type": "department",
+    "portal_url": "https://www.startupindia.gov.in/",
+    "document_acceptance_method": "Online upload via Startup India portal"
+  },
+  {
+    "slug": "ministry-of-msme",
+    "name": "Ministry of Micro, Small and Medium Enterprises",
+    "authority_type": "ministry",
+    "portal_url": "https://msme.gov.in/",
+    "document_acceptance_method": "Online upload via scheme portal"
+  },
+  {
+    "slug": "cgtmse",
+    "name": "Credit Guarantee Fund Trust for Micro and Small Enterprises",
+    "authority_type": "implementing_agency",
+    "portal_url": "https://www.cgtmse.in/",
+    "document_acceptance_method": "Submitted by the lending institution, not by the borrower"
+  },
+  {
+    "slug": "kvic",
+    "name": "Khadi and Village Industries Commission",
+    "authority_type": "implementing_agency",
+    "portal_url": "https://www.kvic.gov.in/",
+    "document_acceptance_method": "Online application via PMEGP portal, then bank and agency verification"
+  },
+  {
+    "slug": "sidbi",
+    "name": "Small Industries Development Bank of India",
+    "authority_type": "bank",
+    "portal_url": "https://www.sidbi.in/",
+    "document_acceptance_method": "Online and branch submission"
+  },
+  {
+    "slug": "udyam-registration",
+    "name": "Udyam Registration Portal, Ministry of MSME",
+    "authority_type": "department",
+    "portal_url": "https://udyamregistration.gov.in/",
+    "document_acceptance_method": "Self-declaration online, validated against PAN and GSTIN"
+  },
+  {
+    "slug": "income-tax-department",
+    "name": "Income Tax Department, Ministry of Finance",
+    "authority_type": "department",
+    "portal_url": "https://www.incometax.gov.in/",
+    "document_acceptance_method": "Online via e-filing portal"
+  },
+  {
+    "slug": "mca",
+    "name": "Ministry of Corporate Affairs",
+    "authority_type": "ministry",
+    "portal_url": "https://www.mca.gov.in/",
+    "document_acceptance_method": "Online via MCA21 portal"
+  },
+  {
+    "slug": "state-revenue-department",
+    "name": "State Revenue Department (district administration)",
+    "authority_type": "state_agency",
+    "document_acceptance_method": "Tehsil or district office, and increasingly state e-district portals"
+  },
+  {
+    "slug": "meity",
+    "name": "Ministry of Electronics and Information Technology",
+    "authority_type": "ministry",
+    "portal_url": "https://www.meity.gov.in/",
+    "document_acceptance_method": "Online submission via implementing agency"
+  },
+  {
+    "slug": "birac",
+    "name": "Biotechnology Industry Research Assistance Council",
+    "authority_type": "implementing_agency",
+    "portal_url": "https://birac.nic.in/",
+    "document_acceptance_method": "Online via BIRAC application portal"
+  },
+  {
+    "slug": "nsic",
+    "name": "National Small Industries Corporation",
+    "authority_type": "psu",
+    "portal_url": "https://www.nsic.co.in/",
+    "document_acceptance_method": "Online and branch submission"
+  }
+]

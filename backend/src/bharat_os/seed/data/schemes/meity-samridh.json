@@ -1,0 +1,126 @@
+{
+  "slug": "meity-samridh",
+  "name": "MeitY SAMRIDH Scheme",
+  "summary": "Startup accelerator programme for software product startups, providing investment alongside structured acceleration through selected accelerators. Funding is matched against investment the startup raises itself.",
+  "scheme_type": "equity",
+  "status": "active",
+  "administering_ministry": "Ministry of Electronics and Information Technology",
+  "implementing_agency": "MeitY Startup Hub and selected accelerators",
+  "authority_slug": "meity",
+  "target_segments": ["startup"],
+  "sectors": ["software", "information-technology", "deeptech"],
+  "states": [],
+  "benefit_value_min": 0,
+  "benefit_value_max": 4000000,
+  "benefit_description": "Investment of up to Rs 40 lakh per startup through the selected accelerator, based on evaluation and matched against investment raised by the startup.",
+  "application_url": "https://www.meity.gov.in/",
+  "offline_process": false,
+  "application_difficulty": "high",
+  "estimated_effort_hours": 35,
+  "drafting_lead_days": 21,
+  "effective_from": "2021-08-25T00:00:00Z",
+  "criteria": [
+    {
+      "criterion_type": "hard",
+      "description": "The startup must be incorporated in India.",
+      "machine_readable_rule": {
+        "op": "lte",
+        "field": "entity_age_years",
+        "value": 10
+      },
+      "display_order": 1,
+      "source_url": "https://www.meity.gov.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "criterion_type": "hard",
+      "description": "The startup must have a working product, not only an idea. SAMRIDH accelerates existing products rather than funding concept validation.",
+      "machine_readable_rule": {
+        "op": "in",
+        "field": "stage",
+        "value": ["early", "growth"]
+      },
+      "display_order": 2,
+      "source_url": "https://www.meity.gov.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "criterion_type": "soft",
+      "description": "The startup should have a software product with demonstrated customer traction and a credible path to scaling.",
+      "display_order": 3,
+      "source_url": "https://www.meity.gov.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "criterion_type": "soft",
+      "description": "The startup must be able to bring matching investment, since the scheme co-invests rather than funding alone.",
+      "display_order": 4,
+      "source_url": "https://www.meity.gov.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "document_requirements": [
+    {
+      "document_name": "Pitch deck with traction metrics",
+      "document_type": "pitch_deck",
+      "issuing_authority_name": "Prepared by the applicant",
+      "typical_processing_days": 7,
+      "how_to_obtain": "Prepared in-house. Accelerators screen primarily on traction, so revenue, retention and pipeline numbers carry the deck.",
+      "mandatory": true,
+      "display_order": 1,
+      "source_url": "https://www.meity.gov.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "Certificate of incorporation",
+      "document_type": "incorporation_certificate",
+      "issuing_authority_slug": "mca",
+      "typical_processing_days": 0,
+      "how_to_obtain": "Already issued at incorporation; download from the MCA portal if needed.",
+      "mandatory": true,
+      "display_order": 2,
+      "source_url": "https://www.meity.gov.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "Financial statements or provisional accounts",
+      "document_type": "audited_financials",
+      "issuing_authority_name": "Statutory auditor of the entity",
+      "typical_processing_days": 30,
+      "how_to_obtain": "From your auditor. Provisional statements are usually accepted where a financial year is incomplete.",
+      "mandatory": true,
+      "display_order": 3,
+      "source_url": "https://www.meity.gov.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "windows": [
+    {
+      "recurrence": "annual",
+      "notification_source": "portal",
+      "notes": "Intake happens through cohort calls run by individual accelerators rather than a single central window, so the accelerator's calendar is the one to track.",
+      "source_url": "https://www.meity.gov.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "benefits": [
+    {
+      "benefit_type": "cash",
+      "description": "Investment of up to Rs 40 lakh routed through the accelerator, plus structured mentoring and customer connections.",
+      "quantum_min": 0,
+      "quantum_max": 4000000,
+      "conditions_for_disbursement": "Not a grant. Provided as investment, so it involves dilution or a convertible instrument. Matched against investment the startup raises.",
+      "source_url": "https://www.meity.gov.in/",
+      "last_verified_at": "2026-07-28T00:00:00Z",
+      "verified_by_human": false
+    }
+  ]
+}
