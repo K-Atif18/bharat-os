@@ -153,6 +153,7 @@ class TestUnauthenticatedAccessIsRejected:
         ("GET", "/deadlines/calendar.ics"),
         ("POST", "/matches/{slug}/draft"),
         ("GET", "/matches/{slug}/draft"),
+        ("GET", "/matches/drafts/{draft_id}/diff/{other_draft_id}"),
         ("GET", "/applications"),
         ("POST", "/matches/{slug}/applications"),
         ("PATCH", "/applications/{application_id}"),

@@ -40,3 +40,19 @@ class DraftOut(BaseModel):
 
 class SupportedSchemesOut(BaseModel):
     slugs: list[str]
+
+
+class DraftFieldDiffOut(BaseModel):
+    key: str
+    label: str
+    value_a: str | None
+    value_b: str | None
+    changed: bool
+
+
+class DraftDiffOut(BaseModel):
+    draft_id_a: uuid.UUID
+    draft_id_b: uuid.UUID
+    version_a: int
+    version_b: int
+    fields: list[DraftFieldDiffOut]
