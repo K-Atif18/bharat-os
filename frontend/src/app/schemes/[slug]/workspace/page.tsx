@@ -78,6 +78,32 @@ export default function DraftWorkspacePage() {
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const [localEdits, setLocalEdits] = useState<Record<string, string>>({});
+
+  const LOCAL_EDITS_KEY = `bharat_os_draft_edits:${params.slug}`;
+
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem(LOCAL_EDITS_KEY);
+      if (raw) setLocalEdits(JSON.parse(raw));
+    } catch {
+      // Corrupt or unavailable storage — start fresh rather than block the page.
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [params.slug]);
+
+  function setLocalEdit(key: string, value: string) {
+    setLocalEdits((current) => {
+      const next = { ...current, [key]: value };
+      try {
+        localStorage.setItem(LOCAL_EDITS_KEY, JSON.stringify(next));
+      } catch {
+        // Storage unavailable (private browsing, quota) — edit still works
+        // for this session, just won't survive a refresh.
+      }
+      return next;
+    });
+  }
 
   useEffect(() => {
     getDeepDive(params.slug)
@@ -110,7 +136,14 @@ export default function DraftWorkspacePage() {
 
   function download() {
     if (!draft || !scheme) return;
-    const blob = new Blob([exportAsText(draft, scheme.name)], { type: "text/plain" });
+    const merged = {
+      ...draft,
+      fields: draft.fields.map((f) => {
+        const local = localEdits[`${draft.id}:${draft.version}:${f.key}`];
+        return local ? { ...f, value: local } : f;
+      }),
+    };
+    const blob = new Blob([exportAsText(merged, scheme.name)], { type: "text/plain" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
@@ -228,12 +261,15 @@ export default function DraftWorkspacePage() {
             <ol className="mt-6 space-y-0">
               {draft.fields.map((field, index) => {
                 const isAlert = field.source === "human_required" && !field.value;
+                const isEditable = field.source === "human_required";
+                const editKey = `${draft.id}:${draft.version}:${field.key}`;
+                const localValue = localEdits[editKey] ?? "";
                 return (
                   <li
                     key={field.key}
                     className={`field-panel border-t-0 px-4 py-5 sm:px-6 ${
                       index === 0 ? "border-t" : ""
-                    } ${isAlert ? "field-panel-active" : ""}`}
+                    } ${isAlert && !localValue ? "field-panel-active" : ""}`}
                   >
                     <div className="flex flex-wrap items-baseline justify-between gap-2">
                       <h3 className="font-field text-sm font-medium text-field-fg">
@@ -241,16 +277,29 @@ export default function DraftWorkspacePage() {
                       </h3>
                       <span
                         className={
-                          isAlert ? "field-status field-status-alert" : "field-status"
+                          isAlert && !localValue ? "field-status field-status-alert" : "field-status"
                         }
                       >
-                        {SOURCE_LABEL[field.source] ?? field.source}
+                        {localValue ? "SAVED IN THIS BROWSER" : SOURCE_LABEL[field.source] ?? field.source}
                       </span>
                     </div>
                     {field.value ? (
                       <p className="mt-3 whitespace-pre-wrap font-sans text-sm leading-6 text-field-fg-muted">
                         {field.value}
                       </p>
+                    ) : isEditable ? (
+                      <div className="mt-3">
+                        <textarea
+                          value={localValue}
+                          onChange={(e) => setLocalEdit(editKey, e.target.value)}
+                          placeholder={field.reason ?? "Type your answer here"}
+                          rows={3}
+                          className="field-input font-sans"
+                        />
+                        <p className="mt-1 font-field text-[11px] text-field-fg-subtle">
+                          SAVED ONLY IN THIS BROWSER — NOT SUBMITTED, NOT SYNCED. THE BACKEND HAS NO EDIT ENDPOINT FOR DRAFTS.
+                        </p>
+                      </div>
                     ) : (
                       <p className="mt-3 font-field text-xs leading-6 text-field-alert">
                         {field.reason}
