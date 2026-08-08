@@ -1,0 +1,121 @@
+{
+  "slug": "pmfme",
+  "name": "PM Formalisation of Micro Food Processing Enterprises (PMFME)",
+  "summary": "Provides credit-linked capital subsidy for the formalization and upgradation of micro food processing enterprises.",
+  "scheme_type": "subsidy",
+  "status": "active",
+  "administering_ministry": "Ministry of Food Processing Industries",
+  "implementing_agency": null,
+  "authority_slug": "ministry-of-food-processing-industries",
+  "target_segments": [
+    "msme"
+  ],
+  "sectors": [
+    "Food Processing"
+  ],
+  "states": [],
+  "benefit_value_min": null,
+  "benefit_value_max": 1000000,
+  "benefit_description": "Credit-linked capital subsidy @35% of the eligible project cost with a maximum ceiling of Rs. 10,00,000 per unit.",
+  "application_url": "https://pmfme.mofpi.gov.in/",
+  "offline_process": false,
+  "application_difficulty": "medium",
+  "estimated_effort_hours": 15,
+  "drafting_lead_days": 10,
+  "effective_from": "2020-06-29T00:00:00Z",
+  "criteria": [
+    {
+      "criterion_type": "hard",
+      "description": "The enterprise should employ less than 10 workers.",
+      "machine_readable_rule": {
+        "op": "lt",
+        "field": "employee_count",
+        "value": 10
+      },
+      "display_order": 1,
+      "source_url": "https://www.myscheme.gov.in/schemes/pmfmpe",
+      "source_quote": "The enterprise should be unincorporated and should employ less than 10 workers.",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "criterion_type": "soft",
+      "description": "Applicant should be above 18 years of age and possess at least VIII standard pass educational qualification.",
+      "machine_readable_rule": null,
+      "display_order": 2,
+      "source_url": "https://www.myscheme.gov.in/schemes/pmfmpe",
+      "source_quote": "The applicant should be above 18 years of age and should possess at least VIII standard pass educational qualification.",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "document_requirements": [
+    {
+      "document_name": "PAN Card",
+      "document_type": "pan_card",
+      "issuing_authority_slug": null,
+      "issuing_authority_name": "Income Tax Department",
+      "typical_processing_days": 15,
+      "how_to_obtain": "Apply for Permanent Account Number via NSDL/UTIITSL",
+      "mandatory": true,
+      "display_order": 1,
+      "source_url": "https://www.myscheme.gov.in/schemes/pmfmpe",
+      "source_quote": "PAN Card of concern.",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "Bank Statement",
+      "document_type": "bank_statement",
+      "issuing_authority_slug": null,
+      "issuing_authority_name": "Bank",
+      "typical_processing_days": 2,
+      "how_to_obtain": "Provide a 6-month transaction statement from your operating bank",
+      "mandatory": true,
+      "display_order": 2,
+      "source_url": "https://www.myscheme.gov.in/schemes/pmfmpe",
+      "source_quote": "Photocopy of Bank Statement/ Bank Passbook for the last 6 months of the firm.",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "Udyam Registration Certificate",
+      "document_type": "udyam_certificate",
+      "issuing_authority_slug": "ministry-of-msme",
+      "issuing_authority_name": "Ministry of MSME",
+      "typical_processing_days": 3,
+      "how_to_obtain": "Register the firm on the official Udyam portal",
+      "mandatory": true,
+      "display_order": 3,
+      "source_url": "https://www.myscheme.gov.in/schemes/pmfmpe",
+      "source_quote": "Udhayam Registration Certificate/s",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "windows": [
+    {
+      "open_date": null,
+      "close_date": null,
+      "recurrence": "rolling",
+      "notification_source": "portal",
+      "notes": "Open year-round via the PMFME portal online.",
+      "source_url": "https://pmfme.mofpi.gov.in/",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "benefits": [
+    {
+      "benefit_type": "cash",
+      "description": "Credit-linked capital subsidy at 35% of eligible project cost",
+      "quantum_min": null,
+      "quantum_max": 1000000,
+      "conditions_for_disbursement": "The beneficiary contribution should be a minimum of 10% of the project cost with the balance being loaned from the Bank.",
+      "source_url": "https://www.myscheme.gov.in/schemes/pmfmpe",
+      "source_quote": "Individual micro food processing units would be provided credit-linked capital subsidy @35% of the eligible project cost with a maximum ceiling of ₹ 10,00,000 per unit.",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ]
+}

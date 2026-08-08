@@ -1,0 +1,124 @@
+{
+  "slug": "aspire",
+  "name": "A Scheme for Promotion of Innovation, Rural Industry and Entrepreneurship (ASPIRE)",
+  "summary": "Sets up technology and incubation centers to accelerate entrepreneurship in the agro-rural sector.",
+  "scheme_type": "grant",
+  "status": "active",
+  "administering_ministry": "Ministry of Micro, Small and Medium Enterprises",
+  "implementing_agency": "Ministry of MSME",
+  "authority_slug": "ministry-of-msme",
+  "target_segments": [
+    "msme",
+    "startup",
+    "ngo"
+  ],
+  "sectors": [
+    "Agro-Industry",
+    "Rural Industry"
+  ],
+  "states": [],
+  "benefit_value_min": null,
+  "benefit_value_max": 10000000,
+  "benefit_description": "Grant of up to Rs. 100 lakhs (100% of Plant & Machinery cost) for setting up incubation centers.",
+  "application_url": "https://aspire.msme.gov.in/",
+  "offline_process": false,
+  "application_difficulty": "high",
+  "estimated_effort_hours": 40,
+  "drafting_lead_days": 30,
+  "effective_from": "2023-11-21T00:00:00Z",
+  "criteria": [
+    {
+      "criterion_type": "soft",
+      "description": "Not-for-profit private institutions with experience in executing incubation or skill development programs are eligible to apply.",
+      "machine_readable_rule": null,
+      "display_order": 1,
+      "source_url": "https://aspire.msme.gov.in/WriteReadData/DocumentFile/ASPIRE_New_21112023.pdf",
+      "source_quote": "Any not-for-profit private institutions with experience in successfully executing incubation and/or skill development programs may be eligible to set up an LBI.",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "criterion_type": "hard",
+      "description": "Applicant must have at least 5000 sq ft space to set up the proposed Livelihood Business Incubator.",
+      "machine_readable_rule": {
+        "op": "gte",
+        "field": "available_space_sqft",
+        "value": 5000
+      },
+      "display_order": 2,
+      "source_url": "https://aspire.msme.gov.in/WriteReadData/DocumentFile/ASPIRE_New_21112023.pdf",
+      "source_quote": "Ensuring availability of all necessary compliance documents, and space (5000 sq ft) with the HI to set up the proposed LBIs.",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "document_requirements": [
+    {
+      "document_name": "Detailed Project Report",
+      "document_type": "project_report",
+      "issuing_authority_slug": null,
+      "issuing_authority_name": "Self",
+      "typical_processing_days": 20,
+      "how_to_obtain": "Prepare a DPR based on regional industrial landscape analysis and skill gaps",
+      "mandatory": true,
+      "display_order": 1,
+      "source_url": "https://aspire.msme.gov.in/WriteReadData/DocumentFile/ASPIRE_New_21112023.pdf",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "Audited Financials",
+      "document_type": "audited_financials",
+      "issuing_authority_slug": null,
+      "issuing_authority_name": "Chartered Accountant",
+      "typical_processing_days": 7,
+      "how_to_obtain": "Obtain audited accounts to prove organizational track record and fund utilization",
+      "mandatory": true,
+      "display_order": 2,
+      "source_url": "https://aspire.msme.gov.in/WriteReadData/DocumentFile/ASPIRE_New_21112023.pdf",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "Registration Certificate",
+      "document_type": "incorporation_certificate",
+      "issuing_authority_slug": null,
+      "issuing_authority_name": "Registrar of Societies / Companies",
+      "typical_processing_days": 15,
+      "how_to_obtain": "Submit registration under Societies Registration Act 1860, Trusts Act, or Companies Act",
+      "mandatory": true,
+      "display_order": 3,
+      "source_url": "https://aspire.msme.gov.in/WriteReadData/DocumentFile/ASPIRE_New_21112023.pdf",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "windows": [
+    {
+      "open_date": null,
+      "close_date": null,
+      "recurrence": "rolling",
+      "notification_source": "portal",
+      "notes": "Proposals can be submitted by eligible institutions via the ASPIRE portal.",
+      "source_url": "https://aspire.msme.gov.in/",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "benefits": [
+    {
+      "benefit_type": "cash",
+      "description": "One-time grant of up to 100% of cost of Plant & Machinery",
+      "quantum_min": null,
+      "quantum_max": 10000000,
+      "conditions_for_disbursement": "Based on project approval and execution milestones.",
+      "source_url": "https://www.indiascienceandtechnology.gov.in/funding-opportunities/startups/aspire-scheme-promotion-innovation-entrepreneurship-and-agro-industry",
+      "source_quote": "one-time grant of 100% of cost of Plant & Machinery other than the land and infrastructure or an amount up to Rs. 100 lakhs whichever is less",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ]
+}

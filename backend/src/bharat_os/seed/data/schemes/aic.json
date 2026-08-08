@@ -1,0 +1,124 @@
+{
+  "slug": "aic",
+  "name": "Atal Incubation Centres (AIC) Grant",
+  "summary": "Supports the establishment of world-class incubation facilities to promote a culture of innovation and entrepreneurship.",
+  "scheme_type": "grant",
+  "status": "active",
+  "administering_ministry": "NITI Aayog",
+  "implementing_agency": "Atal Innovation Mission",
+  "authority_slug": "niti-aayog",
+  "target_segments": [
+    "startup",
+    "researcher",
+    "ngo"
+  ],
+  "sectors": [],
+  "states": [],
+  "benefit_value_min": null,
+  "benefit_value_max": 100000000,
+  "benefit_description": "Grant-in-aid of up to Rs. 10 crores for a maximum period of 5 years to cover capital and operational expenditures.",
+  "application_url": "https://aim.gov.in/atal-incubation-centres.php",
+  "offline_process": false,
+  "application_difficulty": "high",
+  "estimated_effort_hours": 60,
+  "drafting_lead_days": 45,
+  "effective_from": "2016-01-01T00:00:00Z",
+  "criteria": [
+    {
+      "criterion_type": "hard",
+      "description": "Applicant must provide at least 10,000 sq. ft. of ready-to-use built-up space for the incubation centre.",
+      "machine_readable_rule": {
+        "op": "gte",
+        "field": "available_space_sqft",
+        "value": 10000
+      },
+      "display_order": 1,
+      "source_url": "https://aim.gov.in/atal-incubation-centres.php",
+      "source_quote": "The applicant institution would have to provide at least 10,000 sq. ft. of ready-to-use, built-up space, for the exclusive use of the proposed AIC.",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "criterion_type": "hard",
+      "description": "Non-government applicants must not be loss-making in any of the previous three years.",
+      "machine_readable_rule": {
+        "op": "is_true",
+        "field": "profitable_last_three_years"
+      },
+      "display_order": 2,
+      "source_url": "https://aim.gov.in/pdf/AIC-Guidelines-Final_24Nov-2023.pdf",
+      "source_quote": "Non-government applicants that are loss-making in any of the previous three years will not be considered.",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "document_requirements": [
+    {
+      "document_name": "Audited Financial Statements",
+      "document_type": "audited_financials",
+      "issuing_authority_slug": null,
+      "issuing_authority_name": "Chartered Accountant",
+      "typical_processing_days": 14,
+      "how_to_obtain": "Obtain past 3 years of audited financials to prove profitability",
+      "mandatory": true,
+      "display_order": 1,
+      "source_url": "https://aim.gov.in/pdf/AIC-Guidelines-Final_24Nov-2023.pdf",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "Legal Entity Registration Certificate",
+      "document_type": "incorporation_certificate",
+      "issuing_authority_slug": null,
+      "issuing_authority_name": "Registrar of Companies / Societies",
+      "typical_processing_days": 30,
+      "how_to_obtain": "Provide proof of being a registered trust, society, or section 8 company",
+      "mandatory": true,
+      "display_order": 2,
+      "source_url": "https://aim.gov.in/pdf/AIC-Guidelines-Final_24Nov-2023.pdf",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "Detailed Project Report / Business Plan",
+      "document_type": "project_report",
+      "issuing_authority_slug": null,
+      "issuing_authority_name": "Self",
+      "typical_processing_days": 30,
+      "how_to_obtain": "Develop a comprehensive 5-year operational plan detailing business planning support and mentor accessibility",
+      "mandatory": true,
+      "display_order": 3,
+      "source_url": "https://aim.gov.in/pdf/AIC-Guidelines-Final_24Nov-2023.pdf",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "windows": [
+    {
+      "open_date": null,
+      "close_date": null,
+      "recurrence": "one_time",
+      "notification_source": "portal",
+      "notes": "Calls for applications are announced periodically on the AIM portal.",
+      "source_url": "https://aim.gov.in/atal-incubation-centres.php",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "benefits": [
+    {
+      "benefit_type": "cash",
+      "description": "Grants-in-aid to cover capital and operational expenditures over 5 years.",
+      "quantum_min": null,
+      "quantum_max": 100000000,
+      "conditions_for_disbursement": "Funds disbursed in tranches over 5 years; separate third-party auditable bank accounts are required.",
+      "source_url": "https://aim.gov.in/atal-incubation-centres.php",
+      "source_quote": "AIM will provide a grant-in-aid of up to Rs. 10 crores for a maximum period of 5 years to cover the capital and operational expenditures to establish the proposed AIC.",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ]
+}

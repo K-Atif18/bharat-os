@@ -81,5 +81,19 @@
     "authority_type": "psu",
     "portal_url": "https://www.nsic.co.in/",
     "document_acceptance_method": "Online and branch submission"
+  },
+  {
+    "slug": "ministry-of-food-processing-industries",
+    "name": "Ministry of Food Processing Industries",
+    "authority_type": "ministry",
+    "portal_url": "https://www.mofpi.gov.in/",
+    "document_acceptance_method": "Online upload via scheme portal"
+  },
+  {
+    "slug": "niti-aayog",
+    "name": "NITI Aayog",
+    "authority_type": "department",
+    "portal_url": "https://niti.gov.in/",
+    "document_acceptance_method": "Online submission via Atal Innovation Mission portal"
   }
 ]
