@@ -373,6 +373,29 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/matches/drafts/{draft_id}/diff/{other_draft_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Diff Drafts
+         * @description Compare two versions of the same applicant's draft, field by field.
+         *
+         *     Pure string comparison — no LLM involved. Both drafts must belong to the
+         *     calling user; this never compares across applicants.
+         */
+        get: operations["diff_drafts_matches_drafts__draft_id__diff__other_draft_id__get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/matches": {
         parameters: {
             query?: never;
@@ -1256,6 +1279,38 @@ export interface components {
          * @enum {string}
          */
         DocumentType: "dpiit_certificate" | "udyam_certificate" | "gst_certificate" | "pan_card" | "incorporation_certificate" | "audited_financials" | "bank_statement" | "pitch_deck" | "project_report" | "caste_certificate" | "income_certificate" | "land_record" | "noc" | "unknown";
+        /** DraftDiffOut */
+        DraftDiffOut: {
+            /**
+             * Draft Id A
+             * Format: uuid
+             */
+            draft_id_a: string;
+            /**
+             * Draft Id B
+             * Format: uuid
+             */
+            draft_id_b: string;
+            /** Version A */
+            version_a: number;
+            /** Version B */
+            version_b: number;
+            /** Fields */
+            fields: components["schemas"]["DraftFieldDiffOut"][];
+        };
+        /** DraftFieldDiffOut */
+        DraftFieldDiffOut: {
+            /** Key */
+            key: string;
+            /** Label */
+            label: string;
+            /** Value A */
+            value_a: string | null;
+            /** Value B */
+            value_b: string | null;
+            /** Changed */
+            changed: boolean;
+        };
         /** DraftFieldOut */
         DraftFieldOut: {
             /** Key */
@@ -2692,6 +2747,40 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["DraftOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    diff_drafts_matches_drafts__draft_id__diff__other_draft_id__get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                draft_id: string;
+                other_draft_id: string;
+            };
+            cookie?: {
+                bharat_os_session?: string | null;
+            };
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DraftDiffOut"];
                 };
             };
             /** @description Validation Error */
