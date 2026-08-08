@@ -74,8 +74,13 @@ test.describe("profile to ranked feed", () => {
     await toggle.click();
 
     // CGTMSE requires Udyam registration, so it must be listed as ruled out
-    // rather than silently omitted.
-    await expect(page.getByRole("link", { name: /Credit Guarantee Scheme/i })).toBeVisible();
+    // rather than silently omitted. Matched by full name, since the corpus
+    // also contains the Credit Guarantee Scheme for Startups (CGSS), a
+    // different, real scheme that would otherwise also match a loose
+    // "Credit Guarantee Scheme" substring.
+    await expect(
+      page.getByRole("link", { name: /Credit Guarantee Scheme for Micro and Small Enterprises/i })
+    ).toBeVisible();
     await expect(page.getByText(/requirement not met/i).first()).toBeVisible();
   });
 
