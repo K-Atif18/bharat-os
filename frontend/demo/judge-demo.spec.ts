@@ -148,7 +148,7 @@ test.describe("Bharat OS judge demo media", () => {
       if (mode === "discover") await dumpInteractiveElements(page, "dashboard");
       await capture(page, "02-dashboard.png");
       await injectDemoChrome(page);
-      await showSubtitle(page, "30 schemes ranked against the same profile");
+      await showSubtitle(page, "34 schemes ranked against the same profile");
       await panElements(page, page.locator("section").first().locator("dd"), 3);
       await pause(page, 1_200);
 

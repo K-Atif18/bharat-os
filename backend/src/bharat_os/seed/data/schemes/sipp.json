@@ -1,0 +1,119 @@
+{
+  "slug": "sipp",
+  "name": "Scheme for Facilitating Start-Ups Intellectual Property Protection (SIPP)",
+  "summary": "Reimburses the statutory and facilitator fees for DPIIT-recognised startups filing patents, trademarks and designs, using government-empanelled facilitators.",
+  "scheme_type": "grant",
+  "status": "active",
+  "administering_ministry": "Department for Promotion of Industry and Internal Trade",
+  "implementing_agency": "Office of the Controller General of Patents, Designs and Trade Marks (CGPDTM)",
+  "authority_slug": "dpiit",
+  "target_segments": [
+    "startup"
+  ],
+  "sectors": [],
+  "states": [],
+  "benefit_value_min": null,
+  "benefit_value_max": 1000000,
+  "benefit_description": "Central Government bears the entire facilitator fee for any number of patents, trademarks or designs filed; startup only pays the statutory fee. Domestic patent filing/prosecution costs reimbursed up to Rs. 2 lakh per patent awarded; foreign patents up to Rs. 10 lakh.",
+  "application_url": "https://ipindia.gov.in/page-content/startups-intellectual-property-protection-sipp",
+  "offline_process": false,
+  "application_difficulty": "medium",
+  "estimated_effort_hours": 15,
+  "drafting_lead_days": 10,
+  "effective_from": "2016-01-01T00:00:00Z",
+  "criteria": [
+    {
+      "criterion_type": "hard",
+      "description": "Applicant must be a startup recognised by DPIIT under the notification GSR 127(E) dated 19.2.2019, as amended from time to time.",
+      "machine_readable_rule": {
+        "op": "contains",
+        "field": "registrations",
+        "value": "dpiit"
+      },
+      "display_order": 1,
+      "source_url": "https://static.investindia.gov.in/s3fs-public/2020-12/SIPP_extension_as_approved_by_SIIT.pdf",
+      "source_quote": "Any startup recognised in terms of the notification GSR 127(E) published in the Gazette of India dated 19.2.2019, as may be amended from time to time.",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "criterion_type": "soft",
+      "description": "The Certificate of Recognition given by DPIIT can be verified from the Startup India web portal before facilitator assistance is confirmed.",
+      "machine_readable_rule": null,
+      "display_order": 2,
+      "source_url": "https://static.investindia.gov.in/s3fs-public/2020-12/SIPP_extension_as_approved_by_SIIT.pdf",
+      "source_quote": "The Certificate of Recognition given by DPIIT may be verified from the Startup India web portal http://www.startupindia.gov.in.",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "document_requirements": [
+    {
+      "document_name": "DPIIT Startup Recognition Certificate",
+      "document_type": "dpiit_certificate",
+      "issuing_authority_slug": "dpiit",
+      "issuing_authority_name": "DPIIT",
+      "typical_processing_days": 15,
+      "how_to_obtain": "Register on the Startup India portal; recognition certificate is issued after review.",
+      "mandatory": true,
+      "display_order": 1,
+      "source_url": "https://static.investindia.gov.in/s3fs-public/2020-12/SIPP_extension_as_approved_by_SIIT.pdf",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "Patent/Trademark/Design application draft",
+      "document_type": "unknown",
+      "issuing_authority_slug": null,
+      "issuing_authority_name": "Empanelled facilitator (patent agent/attorney)",
+      "typical_processing_days": 30,
+      "how_to_obtain": "Engage a facilitator from the panel published by the Office of the CGPDTM.",
+      "mandatory": true,
+      "display_order": 2,
+      "source_url": "https://ipindia.gov.in/page-content/startups-intellectual-property-protection-sipp",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "Statutory fee payment proof",
+      "document_type": "unknown",
+      "issuing_authority_slug": null,
+      "issuing_authority_name": "Self",
+      "typical_processing_days": 1,
+      "how_to_obtain": "Pay the statutory fee for the IP filing; the facilitator fee itself is reimbursed by government.",
+      "mandatory": true,
+      "display_order": 3,
+      "source_url": "https://ipindia.gov.in/page-content/startups-intellectual-property-protection-sipp",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "windows": [
+    {
+      "open_date": null,
+      "close_date": null,
+      "recurrence": "rolling",
+      "notification_source": "portal",
+      "notes": "Rolling scheme, extended in three-year cycles since its initial pilot phase (in force to 31-3-2020, then extended).",
+      "source_url": "https://static.investindia.gov.in/s3fs-public/2020-12/SIPP_extension_as_approved_by_SIIT.pdf",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "benefits": [
+    {
+      "benefit_type": "cash",
+      "description": "Reimbursement of facilitator fees for patent, trademark and design filings; capped reimbursement of statutory patent costs.",
+      "quantum_min": null,
+      "quantum_max": 1000000,
+      "conditions_for_disbursement": "Facilitator files reimbursement claim online after completing the filing on the startup's behalf.",
+      "source_url": "https://www.startupindia.gov.in/manipuri/content/sih/en/intellectual-property-rights.html",
+      "source_quote": "the Central Government shall bear the entire fees of the facilitators for any number of patents, trademarks or designs that a recognised startup may file, and the Startups shall bear the cost of only the statutory fees payable to facilitator as per the notification.",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ]
+}

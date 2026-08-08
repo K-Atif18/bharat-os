@@ -1,0 +1,119 @@
+{
+  "slug": "public-procurement-policy-msme",
+  "name": "Public Procurement Policy for Micro and Small Enterprises",
+  "summary": "Mandates that Central Government Ministries, Departments and CPSEs source a minimum 25% of their annual procurement value from Micro and Small Enterprises, with sub-targets reserved for SC/ST and women-owned MSEs.",
+  "scheme_type": "certification",
+  "status": "active",
+  "administering_ministry": "Ministry of Micro, Small and Medium Enterprises",
+  "implementing_agency": "National Small Industries Corporation (NSIC)",
+  "authority_slug": "nsic",
+  "target_segments": [
+    "msme"
+  ],
+  "sectors": [],
+  "states": [],
+  "benefit_value_min": null,
+  "benefit_value_max": null,
+  "benefit_description": "Preferential access to Central Government procurement: 25% of total annual procurement is reserved for MSEs, with 4% sub-reserved for SC/ST-owned MSEs and 3% sub-reserved for women-owned MSEs.",
+  "application_url": "https://msme.gov.in/public-procurement-policy",
+  "offline_process": false,
+  "application_difficulty": "low",
+  "estimated_effort_hours": 10,
+  "drafting_lead_days": 5,
+  "effective_from": "2015-04-01T00:00:00Z",
+  "criteria": [
+    {
+      "criterion_type": "hard",
+      "description": "Enterprise must hold a valid Udyam Registration to be classified as a Micro or Small Enterprise for procurement preference purposes.",
+      "machine_readable_rule": {
+        "op": "contains",
+        "field": "registrations",
+        "value": "udyam"
+      },
+      "display_order": 1,
+      "source_url": "https://msmedi-chennai.gov.in/GARMS_Admin/basictools/images/FAQonPPPforMSEs.pdf",
+      "source_quote": "Under amended Public Procurement Policy for MSEs, Order 2012 a minimum 25 per cent share out of the total annual procurement by Central Government Ministries / Departments / Public Sector Undertakings are to be made from MSEs.",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "criterion_type": "soft",
+      "description": "For the SC/ST sub-target (4%) or women sub-target (3%) within the 25% reservation, the enterprise must be majority-owned by the relevant category and register on the Government e-Marketplace or with NSIC accordingly.",
+      "machine_readable_rule": null,
+      "display_order": 2,
+      "source_url": "https://www.sportsauthorityofindia.nic.in/sai_new/public/assets/uploads/circulars/1643437554_Revised%20FAQs%20for%20PPP-MSE_27012022.pdf",
+      "source_quote": "out of 25% target of annual procurement from MSEs (Not in the specific tender), a sub-target of 4% (within the 25%) of annual procurement from MSEs is earmarked for procurement from MSEs owned by Scheduled Caste (SC) / Scheduled Tribe (ST) entrepreneurs and 3% (within the 25%) of annual procurement from MSEs is earmarked for procurement from MSEs owned by women entrepreneur.",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "document_requirements": [
+    {
+      "document_name": "Udyam Registration Certificate",
+      "document_type": "udyam_certificate",
+      "issuing_authority_slug": "udyam-registration",
+      "issuing_authority_name": "Ministry of MSME",
+      "typical_processing_days": 3,
+      "how_to_obtain": "Register on the national Udyam portal.",
+      "mandatory": true,
+      "display_order": 1,
+      "source_url": "https://msme.gov.in/public-procurement-policy",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "NSIC / Government e-Marketplace (GeM) vendor registration",
+      "document_type": "unknown",
+      "issuing_authority_slug": "nsic",
+      "issuing_authority_name": "NSIC / GeM",
+      "typical_processing_days": 10,
+      "how_to_obtain": "Register as a seller on the Government e-Marketplace and/or with NSIC to be discoverable by procuring ministries.",
+      "mandatory": true,
+      "display_order": 2,
+      "source_url": "https://msme.gov.in/public-procurement-policy",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "Caste/ownership proof (if claiming SC/ST or women sub-target)",
+      "document_type": "caste_certificate",
+      "issuing_authority_slug": "state-revenue-department",
+      "issuing_authority_name": "State Revenue Department",
+      "typical_processing_days": 30,
+      "how_to_obtain": "Obtain caste certificate or ownership proof establishing majority SC/ST or women ownership, if claiming the reserved sub-target.",
+      "mandatory": false,
+      "display_order": 3,
+      "source_url": "https://www.sportsauthorityofindia.nic.in/sai_new/public/assets/uploads/circulars/1643437554_Revised%20FAQs%20for%20PPP-MSE_27012022.pdf",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "windows": [
+    {
+      "open_date": null,
+      "close_date": null,
+      "recurrence": "rolling",
+      "notification_source": "gazette",
+      "notes": "Standing policy, not a time-bound application window; procurement preference applies to every eligible government tender.",
+      "source_url": "https://msme.gov.in/public-procurement-policy",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "benefits": [
+    {
+      "benefit_type": "recognition",
+      "description": "Priority access to a mandated share of Central Government procurement value.",
+      "quantum_min": null,
+      "quantum_max": null,
+      "conditions_for_disbursement": "Not a cash disbursement; benefit is realised through winning reserved-category tenders and purchase orders.",
+      "source_url": "https://msme.gov.in/public-procurement-policy",
+      "source_quote": "Overall procurement goal of minimum 25% has become mandatory from 1st April 2015.",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ]
+}

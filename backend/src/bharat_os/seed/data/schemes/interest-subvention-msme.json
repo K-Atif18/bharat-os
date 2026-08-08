@@ -1,0 +1,119 @@
+{
+  "slug": "interest-subvention-msme",
+  "name": "Interest Subvention Scheme for MSMEs",
+  "summary": "Provides a 2% interest subvention on fresh or incremental working capital/term loans for GST-registered MSMEs, to ease credit access after GST formalisation.",
+  "scheme_type": "subsidy",
+  "status": "active",
+  "administering_ministry": "Ministry of Micro, Small and Medium Enterprises",
+  "implementing_agency": "Reserve Bank of India (through scheduled banks and NBFCs)",
+  "authority_slug": "ministry-of-msme",
+  "target_segments": [
+    "msme"
+  ],
+  "sectors": [],
+  "states": [],
+  "benefit_value_min": null,
+  "benefit_value_max": null,
+  "benefit_description": "2% interest subvention on fresh or incremental loans to GST-registered MSMEs, disbursed by the lending bank/NBFC as a reduction on the applicable interest rate.",
+  "application_url": "https://www.rbi.org.in/",
+  "offline_process": false,
+  "application_difficulty": "low",
+  "estimated_effort_hours": 5,
+  "drafting_lead_days": 3,
+  "effective_from": "2018-11-02T00:00:00Z",
+  "criteria": [
+    {
+      "criterion_type": "hard",
+      "description": "MSME must hold a valid GST registration, unless exempt from GST registration in which case a PAN or bank MSME-loan categorisation suffices.",
+      "machine_readable_rule": {
+        "op": "contains",
+        "field": "registrations",
+        "value": "gst"
+      },
+      "display_order": 1,
+      "source_url": "https://gjepc.org/pdf/MSME/2-percent-Interest-Subvention.pdf",
+      "source_quote": "Requirement of Udyog Aadhar Number (UAN) may be dispensed with for units eligible for GST. Unit not required to obtain GST, may either submit Income Tax Permanent Account Number (PAN) or their loan account must be categorized as MSME by the concerned bank.",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "criterion_type": "soft",
+      "description": "The loan account must be current/standard and eligible under the scheme's operational guidelines as certified by the lending bank's auditor.",
+      "machine_readable_rule": null,
+      "display_order": 2,
+      "source_url": "https://gjepc.org/pdf/MSME/2-percent-Interest-Subvention.pdf",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "document_requirements": [
+    {
+      "document_name": "GST Registration Certificate",
+      "document_type": "gst_certificate",
+      "issuing_authority_slug": "income-tax-department",
+      "issuing_authority_name": "GST Network",
+      "typical_processing_days": 7,
+      "how_to_obtain": "Register on the GST portal, or provide PAN if exempt from GST registration.",
+      "mandatory": true,
+      "display_order": 1,
+      "source_url": "https://gjepc.org/pdf/MSME/2-percent-Interest-Subvention.pdf",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "Statutory auditor certificate (loan eligibility)",
+      "document_type": "audited_financials",
+      "issuing_authority_slug": null,
+      "issuing_authority_name": "Chartered Accountant / Statutory Auditor",
+      "typical_processing_days": 15,
+      "how_to_obtain": "Obtain a certificate from your statutory auditor confirming loan eligibility under the scheme.",
+      "mandatory": true,
+      "display_order": 2,
+      "source_url": "https://gjepc.org/pdf/MSME/2-percent-Interest-Subvention.pdf",
+      "source_quote": "Submission of statutory auditor certificate by June 30, 2020 and in the meantime, settle claims based on internal/concurrent auditor certificate.",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "Bank loan account statement",
+      "document_type": "bank_statement",
+      "issuing_authority_slug": null,
+      "issuing_authority_name": "Lending bank/NBFC",
+      "typical_processing_days": 2,
+      "how_to_obtain": "Request from the bank or NBFC servicing the MSME loan.",
+      "mandatory": true,
+      "display_order": 3,
+      "source_url": "https://gjepc.org/pdf/MSME/2-percent-Interest-Subvention.pdf",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "windows": [
+    {
+      "open_date": null,
+      "close_date": null,
+      "recurrence": "rolling",
+      "notification_source": "circular",
+      "notes": "Operationalised via periodic RBI circulars to scheduled banks and NBFCs; claims settled half-yearly.",
+      "source_url": "https://gjepc.org/pdf/MSME/2-percent-Interest-Subvention.pdf",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "benefits": [
+    {
+      "benefit_type": "interest_subvention",
+      "description": "2% reduction on the interest rate applicable to fresh or incremental MSME loans.",
+      "quantum_min": null,
+      "quantum_max": null,
+      "conditions_for_disbursement": "Interest subvention credited by the lending bank/NBFC after claim settlement with the government.",
+      "source_url": "https://www.phdcci.in/wp-content/uploads/2022/01/Salient-features-and-operational-guidelines-on-Interest-Subvention-Scheme-for-MSMEs.pdf",
+      "source_quote": "Prime Minister announced 2% interest subvention for all GST registered MSMEs, on fresh or incremental loans.",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ]
+}

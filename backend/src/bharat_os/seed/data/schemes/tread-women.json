@@ -1,0 +1,119 @@
+{
+  "slug": "tread-women",
+  "name": "Trade Related Entrepreneurship Assistance and Development scheme for Women (TREAD)",
+  "summary": "Provides grant assistance routed through NGOs to give women access to credit for non-farm income-generating activities, alongside training and counselling.",
+  "scheme_type": "grant",
+  "status": "active",
+  "administering_ministry": "Ministry of Micro, Small and Medium Enterprises",
+  "implementing_agency": "Office of the Development Commissioner (MSME)",
+  "authority_slug": "ministry-of-msme",
+  "target_segments": [
+    "msme",
+    "women_entrepreneur"
+  ],
+  "sectors": [],
+  "states": [],
+  "benefit_value_min": null,
+  "benefit_value_max": null,
+  "benefit_description": "Grant assistance to a nodal NGO of up to 30% of the total project cost as appraised by lending banks/financial institutions, passed through to eligible women entrepreneurs for non-farm activities.",
+  "application_url": "https://msme.gov.in/know-about-scheme",
+  "offline_process": false,
+  "application_difficulty": "medium",
+  "estimated_effort_hours": 25,
+  "drafting_lead_days": 21,
+  "effective_from": "2011-01-01T00:00:00Z",
+  "criteria": [
+    {
+      "criterion_type": "hard",
+      "description": "Applicant must be a woman.",
+      "machine_readable_rule": {
+        "op": "is_true",
+        "field": "is_woman_led"
+      },
+      "display_order": 1,
+      "source_url": "http://www.dcmsme.gov.in/publications/women_schemes.pdf",
+      "source_quote": "The scheme envisages economic empowerment of women through the development of their entrepreneurial skills in non-farm activities.",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "criterion_type": "soft",
+      "description": "The proposed activity must be a non-farm income-generating activity, and the applicant must access credit through a nodal NGO with a bank-sanctioned loan.",
+      "machine_readable_rule": null,
+      "display_order": 2,
+      "source_url": "http://www.dcmsme.gov.in/schemes/TREAD-Guidlines-Scheme.pdf",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "document_requirements": [
+    {
+      "document_name": "NGO sponsorship / nodal agency endorsement",
+      "document_type": "noc",
+      "issuing_authority_slug": null,
+      "issuing_authority_name": "Nodal NGO",
+      "typical_processing_days": 20,
+      "how_to_obtain": "Approach an NGO registered as a nodal agency for TREAD in your state or district.",
+      "mandatory": true,
+      "display_order": 1,
+      "source_url": "https://msme.gov.in/know-about-scheme",
+      "source_quote": "The focal point of the scheme is to provide grant assistance to the nodal NGO which has been sanctioned bank loan for passing through the same to eligible women for taking up non-farm activities.",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "Bank loan sanction letter",
+      "document_type": "bank_statement",
+      "issuing_authority_slug": null,
+      "issuing_authority_name": "Lending bank/financial institution",
+      "typical_processing_days": 30,
+      "how_to_obtain": "The nodal NGO arranges a bank-sanctioned loan on behalf of the group of women applicants.",
+      "mandatory": true,
+      "display_order": 2,
+      "source_url": "http://www.dcmsme.gov.in/schemes/TREAD-Guidlines-Scheme.pdf",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "Project/business proposal",
+      "document_type": "project_report",
+      "issuing_authority_slug": null,
+      "issuing_authority_name": "Self, with NGO handholding",
+      "typical_processing_days": 15,
+      "how_to_obtain": "Prepare with support from the nodal NGO's counselling programme.",
+      "mandatory": true,
+      "display_order": 3,
+      "source_url": "http://www.dcmsme.gov.in/schemes/TREAD-Guidlines-Scheme.pdf",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "windows": [
+    {
+      "open_date": null,
+      "close_date": null,
+      "recurrence": "rolling",
+      "notification_source": "portal",
+      "notes": "Accepted on a rolling basis through nodal NGOs across states.",
+      "source_url": "https://msme.gov.in/know-about-scheme",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "benefits": [
+    {
+      "benefit_type": "cash",
+      "description": "Grant assistance passed through the nodal NGO to fund non-farm activities for women.",
+      "quantum_min": null,
+      "quantum_max": null,
+      "conditions_for_disbursement": "Grant released to the NGO against a bank-sanctioned loan for the beneficiary group; NGO passes the benefit through.",
+      "source_url": "https://msme.gov.in/know-about-scheme",
+      "source_quote": "passing through the same to eligible women for taking up non-farm activities.",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ]
+}
