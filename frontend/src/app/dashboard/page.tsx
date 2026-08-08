@@ -90,10 +90,10 @@ export default function DashboardPage() {
       <FieldNav />
 
       <main className="field-page space-y-8">
-        <section className="field-section-label">
+        <h2 className="field-section-label">
           <span className="field-index">01</span>
           <span>WORKSPACE</span>
-        </section>
+        </h2>
 
         <div className="grid gap-6 lg:grid-cols-[1.4fr_1fr] lg:items-start lg:gap-10">
           <div>

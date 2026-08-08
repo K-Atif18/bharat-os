@@ -97,7 +97,7 @@ export function FieldSectionHeading({
       <div className="max-w-2xl">
         <div className="field-section-label border-none pb-0">
           {index && <span className="field-index">{index}</span>}
-          <span id={id}>{title}</span>
+          <h2 id={id} className="inline">{title}</h2>
         </div>
         {description && <div className="mt-2 text-sm leading-6 text-field-fg-muted">{description}</div>}
       </div>
@@ -136,7 +136,7 @@ export function FieldPageIntro({
       <div className="max-w-3xl">
         <div className="field-section-label border-none pb-0">
           {index && <span className="field-index">{index}</span>}
-          <span>{title}</span>
+          <h1 className="inline">{title}</h1>
         </div>
         {description && <div className="mt-3 max-w-2xl text-sm leading-6 text-field-fg-muted sm:text-base">{description}</div>}
       </div>

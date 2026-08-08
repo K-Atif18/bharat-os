@@ -166,10 +166,10 @@ export default function DraftWorkspacePage() {
       </div>
 
       <main className="field-page">
-        <header className="field-section-label">
+        <h1 className="field-section-label">
           <span className="field-index">01</span>
           <span>APPLICATION DRAFT</span>
-        </header>
+        </h1>
 
         {!loaded && (
           <p className="mt-6 font-field text-xs uppercase tracking-[0.12em] text-field-fg-muted">
@@ -239,10 +239,10 @@ export default function DraftWorkspacePage() {
             <div className="field-wave-rule mt-8" role="separator" aria-hidden="true" />
 
             <div className="mt-8 flex items-baseline justify-between gap-4">
-              <span className="field-section-label border-none pb-0">
+              <h2 className="field-section-label border-none pb-0">
                 <span className="field-index">02</span>
                 <span>FIELDS</span>
-              </span>
+              </h2>
               <div className="flex gap-2">
                 <button type="button" onClick={download} className="field-button">
                   DOWNLOAD

@@ -119,8 +119,8 @@ test.describe("one-click judge demo", () => {
     await expect(page.getByRole("heading", { name: /Startup India Seed Fund Scheme/i })).toBeVisible();
     await expect(page.getByText(/3 have · 1 missing/i)).toBeVisible();
 
-    await page.getByRole("button", { name: "Generate draft" }).click();
-    await expect(page.getByText("Application workspace generated")).toBeVisible();
+    await page.getByRole("button", { name: /Generate draft/i }).click();
+    await expect(page.getByText(/Application workspace generated/i)).toBeVisible();
     await expect(page.getByText(/fields prepared/i)).toBeVisible();
     await expect(page.getByText(/This is a draft, not a submission/i)).toBeVisible();
   });
