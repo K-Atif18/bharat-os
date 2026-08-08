@@ -9,13 +9,6 @@ import { LoadingState, SectionHeading } from "@/components/Ui";
 import { ApiError, getMatches, getProfile, type MatchFeed, type Profile } from "@/lib/api";
 import { humaniseField } from "@/lib/format";
 
-const PIPELINE = [
-  ["01", "Matched", "Ranked by fit, value, and effort"],
-  ["02", "Verified", "Hard rules and AI judgement separated"],
-  ["03", "Prepared", "Document gaps placed on a critical path"],
-  ["04", "Drafted", "Editable workspace, never auto-submitted"],
-];
-
 export default function DashboardPage() {
   const router = useRouter();
   const [feed, setFeed] = useState<MatchFeed | null>(null);
@@ -53,64 +46,54 @@ export default function DashboardPage() {
 
   return (
     <div className="page-stack">
-      <section className="panel overflow-hidden border-l-4 border-l-brand">
-        <div className="p-5 sm:p-7">
-          <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
-            <div>
-              <p className="eyebrow">Funding command center</p>
-              <h1 className="page-title mt-2">{profile.entity_name}</h1>
-              <p className="mt-2 text-sm text-ink-muted sm:text-base">
-                {profile.district ? `${profile.district}, ` : ""}{profile.state} · {humaniseField(profile.sector)}
-                {profile.employee_count !== null && ` · ${profile.employee_count} employees`}
-              </p>
-              {profile.registrations.length > 0 && (
-                <ul className="mt-4 flex flex-wrap gap-2" aria-label="Registrations">
-                  {profile.registrations.map((registration) => (
-                    <li key={registration} className="rounded-full border border-surface-strong bg-surface-sunken px-3 py-1 text-xs font-semibold text-ink-muted">
-                      {humaniseField(registration)}
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
-            <div className="flex flex-wrap gap-2">
+      {/* Masthead: asymmetric — profile identity on the left, the three
+         load-bearing numbers on the right as a tight ledger rather than
+         three equal-weight stat tiles. */}
+      <section className="folio-rule" data-folio="Workspace">
+        <div className="grid gap-6 lg:grid-cols-editorial-b lg:items-start lg:gap-10">
+          <div>
+            <p className="eyebrow">Funding command centre</p>
+            <h1 className="page-title mt-2">{profile.entity_name}</h1>
+            <p className="mt-2 text-sm text-ink-muted sm:text-base">
+              {profile.district ? `${profile.district}, ` : ""}{profile.state} · {humaniseField(profile.sector)}
+              {profile.employee_count !== null && ` · ${profile.employee_count} employees`}
+            </p>
+            {profile.registrations.length > 0 && (
+              <ul className="mt-4 flex flex-wrap gap-x-4 gap-y-1" aria-label="Registrations">
+                {profile.registrations.map((registration) => (
+                  <li key={registration} className="meta-line">{humaniseField(registration)}</li>
+                ))}
+              </ul>
+            )}
+            <div className="mt-5 flex flex-wrap gap-2">
               <Link href="/onboarding" className="button-secondary">Edit profile</Link>
-              <Link href="/settings" className="button-primary">Privacy &amp; data</Link>
+              <Link href="/settings" className="button-quiet">Privacy &amp; data</Link>
             </div>
           </div>
 
-          <dl className="mt-7 grid grid-cols-3 divide-x divide-surface-strong border-y border-surface-strong py-4">
-            <div className="pr-3 sm:pr-6">
-              <dt className="text-[11px] leading-4 text-ink-subtle sm:text-xs">Schemes assessed</dt>
+          <dl className="grid grid-cols-3 divide-x divide-surface-strong border border-surface-strong">
+            <div className="px-3 py-4 sm:px-5">
+              <dt className="meta-line">Assessed</dt>
               <dd className="data-value mt-1 text-2xl font-semibold text-civic-navy sm:text-3xl">{feed.schemes_assessed}</dd>
             </div>
-            <div className="px-3 sm:px-6">
-              <dt className="text-[11px] leading-4 text-ink-subtle sm:text-xs">All checks met</dt>
+            <div className="px-3 py-4 sm:px-5">
+              <dt className="meta-line">Fully met</dt>
               <dd className="data-value mt-1 text-2xl font-semibold text-met-fg sm:text-3xl">{ready.length}</dd>
             </div>
-            <div className="pl-3 sm:pl-6">
-              <dt className="text-[11px] leading-4 text-ink-subtle sm:text-xs">Worth investigating</dt>
+            <div className="px-3 py-4 sm:px-5">
+              <dt className="meta-line">Worth a look</dt>
               <dd className="data-value mt-1 text-2xl font-semibold text-ink sm:text-3xl">{feed.matches.length}</dd>
             </div>
           </dl>
         </div>
       </section>
 
-      <section aria-labelledby="pipeline-heading">
-        <div className="flex items-center justify-between gap-4">
-          <h2 id="pipeline-heading" className="text-sm font-semibold text-ink">Application execution path</h2>
-          <p className="hidden text-xs text-ink-subtle sm:block">Every stage stays reviewable</p>
-        </div>
-        <ol className="mt-3 grid border-y border-surface-strong sm:grid-cols-2 lg:grid-cols-4">
-          {PIPELINE.map(([number, title, detail], index) => (
-            <li key={number} className={`py-4 sm:px-5 ${index > 0 ? "border-t border-surface-border sm:border-l sm:border-t-0" : ""}`}>
-              <span className="data-value text-[10px] font-semibold text-brand">{number}</span>
-              <h3 className="mt-1 text-sm font-semibold text-ink">{title}</h3>
-              <p className="mt-1 text-xs leading-5 text-ink-subtle">{detail}</p>
-            </li>
-          ))}
-        </ol>
-      </section>
+      {/* Pipeline: an inline annotated sequence rather than a 4-up card
+         grid — same information, less "dashboard template" shape. */}
+      <p className="meta-line -mb-2">
+        Match <span className="text-ink-subtle">→</span> Verify <span className="text-ink-subtle">→</span> Prepare <span className="text-ink-subtle">→</span> Draft
+        <span className="ml-2 text-ink-subtle">— every stage stays reviewable</span>
+      </p>
 
       <SectionHeading
         eyebrow="Opportunity map"
