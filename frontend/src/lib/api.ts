@@ -198,6 +198,15 @@ export function getFreshness(slug: string): Promise<SchemeFreshness> {
   return request<SchemeFreshness>(`/freshness/${encodeURIComponent(slug)}`);
 }
 
+// --- Confidence calibration -----------------------------------------------
+
+export type Calibration = components["schemas"]["CalibrationOut"];
+export type CalibrationBucket = components["schemas"]["BucketOut"];
+
+export function getCalibration(): Promise<Calibration> {
+  return request<Calibration>("/calibration/");
+}
+
 // --- Document vault ----------------------------------------------------------
 
 export type UserDocument = components["schemas"]["UserDocumentOut"];

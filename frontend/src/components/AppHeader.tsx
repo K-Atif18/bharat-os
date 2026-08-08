@@ -6,6 +6,7 @@ import { useEffect, useId, useState } from "react";
 
 const NAV_ITEMS = [
   { href: "/dashboard", label: "Dashboard" },
+  { href: "/calibration", label: "Calibration" },
   { href: "/onboarding", label: "Profile" },
   { href: "/settings", label: "Privacy & data" },
 ];
