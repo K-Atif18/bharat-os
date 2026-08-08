@@ -16,6 +16,7 @@ const OWN_SHELL_ROUTES = [
   /^\/schemes\/[^/]+$/,
   /^\/$/,
   /^\/dashboard$/,
+  /^\/calibration$/,
 ];
 
 export function AppShell({ children }: { children: React.ReactNode }) {
