@@ -77,14 +77,16 @@ export function AuthForm() {
   const waiting = busy || demoBusy;
 
   return (
-    <aside className="panel reveal overflow-hidden" aria-label="Access Bharat OS">
-      <div className="bg-civic-navy p-5 text-white sm:p-6">
+    <aside className="terminal-panel overflow-hidden" aria-label="Access Bharat OS">
+      <div className="border-b border-terminal-faint p-5 sm:p-6">
         <div className="flex items-center justify-between gap-4">
-          <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-orange-200">Fastest path · live workspace</p>
-          <span className="rounded-full border border-white/20 px-2.5 py-1 font-mono text-[9px] uppercase tracking-wider text-slate-200">~3 min</span>
+          <p className="font-field text-[10px] font-semibold uppercase tracking-[0.16em] terminal-glow">
+            {"// fastest path — live workspace"}
+          </p>
+          <span className="border border-terminal-faint px-2.5 py-1 font-field text-[9px] uppercase tracking-wider terminal-muted">~3 min</span>
         </div>
-        <h2 className="mt-3 font-display text-2xl font-semibold">Open ZEN Club&apos;s dossier</h2>
-        <p className="mt-2 text-sm leading-6 text-slate-300">
+        <h2 className="mt-3 font-field text-xl font-semibold uppercase terminal-glow-strong">Open ZEN Club&apos;s dossier</h2>
+        <p className="mt-2 text-sm leading-6 terminal-muted">
           Creates an isolated account, profile, and document vault through the same APIs as every applicant.
         </p>
         <button
@@ -92,26 +94,26 @@ export function AuthForm() {
           onClick={launchDemo}
           disabled={waiting}
           aria-busy={demoBusy}
-          className="mt-5 inline-flex min-h-12 w-full items-center justify-between rounded-lg bg-brand px-4 py-3 text-sm font-semibold text-white shadow-sm transition-[background-color,transform,box-shadow] duration-150 hover:bg-[#b3461c] hover:shadow-md active:scale-[0.99] disabled:cursor-wait disabled:opacity-60"
+          className="terminal-button terminal-button-primary mt-5 w-full justify-between"
         >
-          <span>{demoBusy ? "Building the funding workspace…" : "Launch live judge demo"}</span>
+          <span>{demoBusy ? "BUILDING THE FUNDING WORKSPACE…" : "LAUNCH LIVE JUDGE DEMO"}</span>
           <span aria-hidden="true">→</span>
         </button>
       </div>
 
       <div className="p-5 sm:p-6">
         <div className="flex items-center gap-3" aria-hidden="true">
-          <span className="h-px flex-1 bg-surface-border" />
-          <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-ink-subtle">or use your profile</span>
-          <span className="h-px flex-1 bg-surface-border" />
+          <span className="h-px flex-1 bg-terminal-faint" />
+          <span className="font-field text-[10px] uppercase tracking-[0.14em] terminal-faint">or use your profile</span>
+          <span className="h-px flex-1 bg-terminal-faint" />
         </div>
 
         <div className="mt-5 flex items-end justify-between gap-4">
           <div>
-            <h2 className="font-display text-2xl font-semibold tracking-tight">
+            <h2 className="font-field text-xl font-semibold uppercase terminal-glow">
               {mode === "register" ? "Create your account" : "Sign in"}
             </h2>
-            <p className="mt-1 text-sm text-ink-muted">
+            <p className="mt-1 text-sm terminal-muted">
               {mode === "register" ? "One profile, checked consistently." : "Return to your workspace."}
             </p>
           </div>
@@ -121,7 +123,7 @@ export function AuthForm() {
               setMode(mode === "register" ? "login" : "register");
               setError(null);
             }}
-            className="min-h-11 shrink-0 text-xs font-semibold text-brand underline decoration-brand/30 underline-offset-4 hover:text-brand-hover"
+            className="min-h-11 shrink-0 font-field text-xs font-semibold uppercase terminal-glow hover:text-terminal-bloom"
           >
             {mode === "register" ? "Sign in" : "Register"}
           </button>
@@ -129,7 +131,7 @@ export function AuthForm() {
 
         <form onSubmit={submit} className="mt-5 space-y-4" aria-busy={busy}>
           <div>
-            <label htmlFor="email" className="field-label">Email</label>
+            <label htmlFor="email" className="font-field text-xs uppercase tracking-[0.06em] terminal-muted">Email</label>
             <input
               id="email"
               type="email"
@@ -137,12 +139,12 @@ export function AuthForm() {
               autoComplete="email"
               value={email}
               onChange={(event) => setEmail(event.target.value)}
-              className="field-control"
+              className="terminal-field mt-2"
             />
           </div>
 
           <div>
-            <label htmlFor="password" className="field-label">Password</label>
+            <label htmlFor="password" className="font-field text-xs uppercase tracking-[0.06em] terminal-muted">Password</label>
             <input
               id="password"
               type="password"
@@ -152,22 +154,22 @@ export function AuthForm() {
               value={password}
               onChange={(event) => setPassword(event.target.value)}
               aria-describedby={mode === "register" ? "password-hint" : undefined}
-              className="field-control"
+              className="terminal-field mt-2"
             />
             {mode === "register" && (
-              <p id="password-hint" className="field-hint">At least 12 characters. A memorable phrase is stronger than a short complex string.</p>
+              <p id="password-hint" className="mt-2 text-xs leading-5 terminal-faint">At least 12 characters. A memorable phrase is stronger than a short complex string.</p>
             )}
           </div>
 
           {mode === "register" && (
-            <fieldset className="border-t border-surface-border pt-4">
-              <legend className="text-sm font-semibold text-ink">Optional data purposes</legend>
-              <p className="mt-1 text-xs leading-5 text-ink-muted">
+            <fieldset className="border-t border-terminal-shadow pt-4">
+              <legend className="text-sm font-semibold text-terminal-fg">Optional data purposes</legend>
+              <p className="mt-1 text-xs leading-5 terminal-muted">
                 Matching is required for the service. Everything below is independently optional and reversible.
               </p>
               <div className="mt-3 space-y-2">
                 {OPTIONAL_CONSENTS.map((consent) => (
-                  <label key={consent.purpose} className="choice-row">
+                  <label key={consent.purpose} className="flex min-h-11 cursor-pointer items-start gap-3 border border-terminal-shadow px-3 py-2.5 text-sm transition-colors duration-150 hover:border-terminal-faint">
                     <input
                       type="checkbox"
                       checked={optional.includes(consent.purpose)}
@@ -178,10 +180,11 @@ export function AuthForm() {
                             : current.filter((purpose) => purpose !== consent.purpose),
                         )
                       }
+                      className="mt-0.5 h-4 w-4 shrink-0 accent-terminal-fg"
                     />
                     <span>
-                      <span className="block font-semibold text-ink">{consent.label}</span>
-                      <span className="mt-0.5 block text-xs leading-5 text-ink-subtle">{consent.detail}</span>
+                      <span className="block font-semibold text-terminal-fg">{consent.label}</span>
+                      <span className="mt-0.5 block text-xs leading-5 terminal-faint">{consent.detail}</span>
                     </span>
                   </label>
                 ))}
@@ -190,11 +193,11 @@ export function AuthForm() {
           )}
 
           <div aria-live="polite" aria-atomic="true">
-            {error && <p role="alert" className="notice border-unmet-border bg-unmet-bg text-unmet-fg">{error}</p>}
+            {error && <p role="alert" className="border border-terminal-alert-border bg-red-950/40 px-3 py-2 text-sm text-terminal-alert">{error}</p>}
           </div>
 
-          <button type="submit" disabled={waiting} className="button-secondary w-full" aria-busy={busy}>
-            {busy ? "Working…" : mode === "register" ? "Create account" : "Sign in"}
+          <button type="submit" disabled={waiting} className="terminal-button w-full" aria-busy={busy}>
+            {busy ? "WORKING…" : mode === "register" ? "CREATE ACCOUNT" : "SIGN IN"}
           </button>
         </form>
 
@@ -204,7 +207,7 @@ export function AuthForm() {
             setMode(mode === "register" ? "login" : "register");
             setError(null);
           }}
-          className="mt-2 min-h-11 text-sm font-semibold text-brand hover:text-brand-hover hover:underline"
+          className="mt-2 min-h-11 font-field text-sm font-semibold uppercase terminal-glow hover:text-terminal-bloom"
         >
           {mode === "register" ? "I already have an account" : "Create an account instead"}
         </button>

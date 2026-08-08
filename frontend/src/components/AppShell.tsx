@@ -5,18 +5,19 @@ import { usePathname } from "next/navigation";
 
 import { AppHeader } from "@/components/AppHeader";
 
-// Field-system pages (the Operate-surface redesign) own their full page —
-// header, main and footer included — and must never be sandwiched inside
-// the incumbent civic-paper shell below. usePathname is the least
-// disruptive way to make that split without moving every existing route
+// Pages that own their full viewport — header, main and footer included —
+// and must never be sandwiched inside the incumbent civic-paper shell
+// below. Covers both redesigned visual worlds: the field-system Operate
+// pages and the terminal-system landing page. usePathname is the least
+// disruptive way to make this split without moving every existing route
 // into a Next.js route group.
-const FIELD_SYSTEM_ROUTES = [/^\/schemes\/[^/]+\/workspace$/];
+const OWN_SHELL_ROUTES = [/^\/schemes\/[^/]+\/workspace$/, /^\/$/];
 
 export function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const isFieldSystem = FIELD_SYSTEM_ROUTES.some((pattern) => pattern.test(pathname ?? ""));
+  const ownsShell = OWN_SHELL_ROUTES.some((pattern) => pattern.test(pathname ?? ""));
 
-  if (isFieldSystem) {
+  if (ownsShell) {
     return <>{children}</>;
   }
 

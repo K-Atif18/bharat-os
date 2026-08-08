@@ -497,6 +497,85 @@
   }
 }
 
+@keyframes matrix-rain-fall {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(100vh);
+  }
+}
+
+.matrix-rain-column {
+  position: absolute;
+  top: 0;
+  font-family: var(--font-field);
+  color: theme("colors.terminal.faint");
+  font-size: 14px;
+  line-height: 1.1;
+  white-space: pre;
+  animation: matrix-rain-fall linear infinite;
+  will-change: transform;
+}
+
+/* --- Headline glitch (terminal landing page, final direction) ---------
+ * A periodic, repeating glitch on the hero headline only: brief RGB-
+ * channel split + a couple of horizontal slice jumps, then settles back
+ * to the normal glow. Runs continuously at a long interval so it reads
+ * as "this text is alive" without being distracting.
+ */
+@keyframes headline-glitch {
+  0%,
+  92%,
+  100% {
+    text-shadow:
+      0 0 2px rgb(167 255 194 / 0.9),
+      0 0 12px rgb(51 255 102 / 0.6),
+      0 0 36px rgb(51 255 102 / 0.35);
+    transform: translate(0, 0);
+    clip-path: none;
+  }
+  92.5% {
+    text-shadow:
+      -2px 0 rgb(255 51 102 / 0.8),
+      2px 0 rgb(51 255 255 / 0.8);
+    transform: translate(-2px, 0);
+    clip-path: inset(10% 0 60% 0);
+  }
+  93% {
+    text-shadow:
+      2px 0 rgb(255 51 102 / 0.8),
+      -2px 0 rgb(51 255 255 / 0.8);
+    transform: translate(2px, 0);
+    clip-path: inset(70% 0 5% 0);
+  }
+  93.5% {
+    text-shadow: none;
+    transform: translate(-1px, 1px);
+    clip-path: inset(40% 0 40% 0);
+  }
+  94%,
+  99% {
+    text-shadow:
+      0 0 2px rgb(167 255 194 / 0.9),
+      0 0 12px rgb(51 255 102 / 0.6),
+      0 0 36px rgb(51 255 102 / 0.35);
+    transform: translate(0, 0);
+    clip-path: none;
+  }
+}
+
+.terminal-headline-glitch {
+  animation: headline-glitch 6s steps(1, end) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .terminal-headline-glitch,
+  .matrix-rain-column {
+    animation: none !important;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
