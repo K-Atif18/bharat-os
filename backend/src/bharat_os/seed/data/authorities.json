@@ -123,5 +123,26 @@
     "authority_type": "state_agency",
     "portal_url": "https://startupmission.kerala.gov.in/",
     "document_acceptance_method": "Online submission via KSUM portal"
+  },
+  {
+    "slug": "nstedb",
+    "name": "National Science & Technology Entrepreneurship Development Board, Department of Science and Technology",
+    "authority_type": "department",
+    "portal_url": "https://nstedb.gov.in/",
+    "document_acceptance_method": "Online submission via NIDHI incubator network"
+  },
+  {
+    "slug": "stpi",
+    "name": "Software Technology Parks of India",
+    "authority_type": "implementing_agency",
+    "portal_url": "https://stpi.in/",
+    "document_acceptance_method": "Online submission via STPI portal"
+  },
+  {
+    "slug": "doitc-rajasthan",
+    "name": "Department of Information Technology & Communication, Government of Rajasthan",
+    "authority_type": "state_agency",
+    "portal_url": "https://istart.rajasthan.gov.in/",
+    "document_acceptance_method": "Online submission via iStart Rajasthan portal"
   }
 ]

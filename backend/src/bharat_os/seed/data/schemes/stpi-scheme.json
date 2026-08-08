@@ -1,0 +1,124 @@
+{
+  "slug": "stpi-scheme",
+  "name": "Software Technology Parks of India (STPI) Scheme",
+  "summary": "Promotes software exports by offering 100% export-oriented unit status and statutory services to IT/ITES startups.",
+  "scheme_type": "certification",
+  "status": "active",
+  "administering_ministry": "Ministry of Electronics and Information Technology",
+  "implementing_agency": "Software Technology Parks of India",
+  "authority_slug": "stpi",
+  "target_segments": [
+    "startup",
+    "msme"
+  ],
+  "sectors": [
+    "IT",
+    "ITES",
+    "Software"
+  ],
+  "states": [],
+  "benefit_value_min": null,
+  "benefit_value_max": null,
+  "benefit_description": "Allows duty-free import of hardware/software and single-window clearance for software exporters.",
+  "application_url": "https://stpi.in/",
+  "offline_process": false,
+  "application_difficulty": "medium",
+  "estimated_effort_hours": 20,
+  "drafting_lead_days": 14,
+  "effective_from": "1991-06-05T00:00:00Z",
+  "criteria": [
+    {
+      "criterion_type": "hard",
+      "description": "Company must be a registered Indian entity (Private Limited/LLP/Proprietorship).",
+      "machine_readable_rule": {
+        "op": "contains",
+        "field": "registrations",
+        "value": "mca"
+      },
+      "display_order": 1,
+      "source_url": "https://stpi.in/",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "criterion_type": "soft",
+      "description": "Must be engaged in the development and export of computer software or IT enabled services.",
+      "machine_readable_rule": null,
+      "display_order": 2,
+      "source_url": "https://stpi.in/",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "document_requirements": [
+    {
+      "document_name": "Incorporation Document",
+      "document_type": "incorporation_certificate",
+      "issuing_authority_slug": "mca",
+      "issuing_authority_name": "Ministry of Corporate Affairs",
+      "typical_processing_days": 10,
+      "how_to_obtain": "Register firm legitimately.",
+      "mandatory": true,
+      "display_order": 1,
+      "source_url": "https://stpi.in/",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "Detailed Project Report",
+      "document_type": "project_report",
+      "issuing_authority_slug": null,
+      "issuing_authority_name": "Self",
+      "typical_processing_days": 15,
+      "how_to_obtain": "Detailed report outlining software export targets.",
+      "mandatory": true,
+      "display_order": 2,
+      "source_url": "https://stpi.in/",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "GST Certificate",
+      "document_type": "gst_certificate",
+      "issuing_authority_slug": "income-tax-department",
+      "issuing_authority_name": "Government of India",
+      "typical_processing_days": 5,
+      "how_to_obtain": "Obtain GST registration.",
+      "mandatory": true,
+      "display_order": 3,
+      "source_url": "https://stpi.in/",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "windows": [
+    {
+      "open_date": null,
+      "close_date": null,
+      "recurrence": "rolling",
+      "notification_source": "portal",
+      "notes": "Open throughout the year.",
+      "source_url": "https://stpi.in/",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "benefits": [
+    {
+      "benefit_type": "service",
+      "description": "Duty-free imports of hardware and software, 100% FDI permitted.",
+      "quantum_min": null,
+      "quantum_max": null,
+      "conditions_for_disbursement": "Requires compliance with STPI export norms.",
+      "source_url": "https://stpi.in/",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ]
+}

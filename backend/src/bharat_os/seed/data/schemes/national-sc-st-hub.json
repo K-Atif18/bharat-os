@@ -1,0 +1,126 @@
+{
+  "slug": "national-sc-st-hub",
+  "name": "National SC-ST Hub Scheme",
+  "summary": "Supports SC/ST entrepreneurs in fulfilling the mandate of the Public Procurement Policy for MSMEs.",
+  "scheme_type": "subsidy",
+  "status": "active",
+  "administering_ministry": "Ministry of Micro, Small and Medium Enterprises",
+  "implementing_agency": "National Small Industries Corporation (NSIC)",
+  "authority_slug": "nsic",
+  "target_segments": [
+    "msme"
+  ],
+  "sectors": [],
+  "states": [],
+  "benefit_value_min": null,
+  "benefit_value_max": 1000000,
+  "benefit_description": "Subsidy on membership fees, participation in exhibitions, and vendor development. Supports the 4% public procurement target from SC/ST-owned enterprises under the Public Procurement Policy for Micro and Small Enterprises.",
+  "application_url": "https://www.scsthub.in/",
+  "offline_process": false,
+  "application_difficulty": "low",
+  "estimated_effort_hours": 10,
+  "drafting_lead_days": 7,
+  "effective_from": "2016-10-18T00:00:00Z",
+  "criteria": [
+    {
+      "criterion_type": "hard",
+      "description": "Enterprise must be promoted by an SC/ST individual.",
+      "machine_readable_rule": {
+        "op": "in",
+        "field": "social_category",
+        "value": [
+          "SC",
+          "ST"
+        ]
+      },
+      "display_order": 1,
+      "source_url": "https://www.scsthub.in/",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "criterion_type": "hard",
+      "description": "Must possess a valid Udyam Registration.",
+      "machine_readable_rule": {
+        "op": "contains",
+        "field": "registrations",
+        "value": "udyam"
+      },
+      "display_order": 2,
+      "source_url": "https://www.scsthub.in/",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "document_requirements": [
+    {
+      "document_name": "Caste Certificate",
+      "document_type": "caste_certificate",
+      "issuing_authority_slug": "state-revenue-department",
+      "issuing_authority_name": "State Revenue Department",
+      "typical_processing_days": 30,
+      "how_to_obtain": "Obtain from the designated state revenue authority.",
+      "mandatory": true,
+      "display_order": 1,
+      "source_url": "https://www.scsthub.in/",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "Udyam Certificate",
+      "document_type": "udyam_certificate",
+      "issuing_authority_slug": "udyam-registration",
+      "issuing_authority_name": "Ministry of MSME",
+      "typical_processing_days": 3,
+      "how_to_obtain": "Register on Udyam portal.",
+      "mandatory": true,
+      "display_order": 2,
+      "source_url": "https://www.scsthub.in/",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "Bank Details",
+      "document_type": "bank_statement",
+      "issuing_authority_slug": null,
+      "issuing_authority_name": "Bank",
+      "typical_processing_days": 2,
+      "how_to_obtain": "Provide active banking proofs.",
+      "mandatory": true,
+      "display_order": 3,
+      "source_url": "https://www.scsthub.in/",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "windows": [
+    {
+      "open_date": null,
+      "close_date": null,
+      "recurrence": "rolling",
+      "notification_source": "portal",
+      "notes": "Continual application via NSIC branches.",
+      "source_url": "https://www.scsthub.in/",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "benefits": [
+    {
+      "benefit_type": "cash",
+      "description": "Subsidies for procurement and exhibition participation.",
+      "quantum_min": null,
+      "quantum_max": 1000000,
+      "conditions_for_disbursement": "Subject to verified expenses and NSIC guidelines.",
+      "source_url": "https://www.scsthub.in/",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ]
+}

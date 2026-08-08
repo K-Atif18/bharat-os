@@ -1,0 +1,125 @@
+{
+  "slug": "birac-sparsh",
+  "name": "Social Innovation programme for Products: Affordable & Relevant to Societal Health (SPARSH)",
+  "summary": "Supports social innovators and entrepreneurs to develop affordable products addressing societal health challenges.",
+  "scheme_type": "grant",
+  "status": "active",
+  "administering_ministry": "Ministry of Science & Technology",
+  "implementing_agency": "Biotechnology Industry Research Assistance Council (BIRAC)",
+  "authority_slug": "birac",
+  "target_segments": [
+    "startup",
+    "researcher",
+    "ngo"
+  ],
+  "sectors": [
+    "Healthcare",
+    "Biotechnology",
+    "Social Innovation"
+  ],
+  "states": [],
+  "benefit_value_min": null,
+  "benefit_value_max": 5000000,
+  "benefit_description": "Grant-in-aid support up to Rs. 50 Lakhs for product development.",
+  "application_url": "https://birac.nic.in/desc_new.php?id=75",
+  "offline_process": false,
+  "application_difficulty": "high",
+  "estimated_effort_hours": 40,
+  "drafting_lead_days": 30,
+  "effective_from": "2013-01-01T00:00:00Z",
+  "criteria": [
+    {
+      "criterion_type": "hard",
+      "description": "The applicant company must be incorporated in India.",
+      "machine_readable_rule": {
+        "op": "contains",
+        "field": "registrations",
+        "value": "mca"
+      },
+      "display_order": 1,
+      "source_url": "https://birac.nic.in/desc_new.php?id=75",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "criterion_type": "soft",
+      "description": "The proposed product must address a clearly defined unmet societal health need.",
+      "machine_readable_rule": null,
+      "display_order": 2,
+      "source_url": "https://birac.nic.in/desc_new.php?id=75",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "document_requirements": [
+    {
+      "document_name": "Detailed Project Proposal",
+      "document_type": "project_report",
+      "issuing_authority_slug": null,
+      "issuing_authority_name": "Self",
+      "typical_processing_days": 20,
+      "how_to_obtain": "Prepare scientific and business milestones in BIRAC format.",
+      "mandatory": true,
+      "display_order": 1,
+      "source_url": "https://birac.nic.in/desc_new.php?id=75",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "Incorporation Certificate",
+      "document_type": "incorporation_certificate",
+      "issuing_authority_slug": "mca",
+      "issuing_authority_name": "Ministry of Corporate Affairs",
+      "typical_processing_days": 10,
+      "how_to_obtain": "Provide proof of active MCA status.",
+      "mandatory": true,
+      "display_order": 2,
+      "source_url": "https://birac.nic.in/desc_new.php?id=75",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "Audited Financials",
+      "document_type": "audited_financials",
+      "issuing_authority_slug": null,
+      "issuing_authority_name": "Chartered Accountant",
+      "typical_processing_days": 7,
+      "how_to_obtain": "Submit past financial statements.",
+      "mandatory": true,
+      "display_order": 3,
+      "source_url": "https://birac.nic.in/desc_new.php?id=75",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "windows": [
+    {
+      "open_date": null,
+      "close_date": null,
+      "recurrence": "annual",
+      "notification_source": "portal",
+      "notes": "Announced generally in thematic calls once or twice a year.",
+      "source_url": "https://birac.nic.in/desc_new.php?id=75",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "benefits": [
+    {
+      "benefit_type": "cash",
+      "description": "Milestone-based grant for product realization.",
+      "quantum_min": null,
+      "quantum_max": 5000000,
+      "conditions_for_disbursement": "Paid in tranches based on technical milestones.",
+      "source_url": "https://birac.nic.in/desc_new.php?id=75",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ]
+}

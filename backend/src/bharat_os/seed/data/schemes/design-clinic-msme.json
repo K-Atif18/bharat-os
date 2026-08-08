@@ -1,0 +1,121 @@
+{
+  "slug": "design-clinic-msme",
+  "name": "Design Clinic Scheme for Design Expertise to MSMEs",
+  "summary": "Provides design support and financial assistance to MSMEs to enhance product and process design.",
+  "scheme_type": "grant",
+  "status": "active",
+  "administering_ministry": "Ministry of Micro, Small and Medium Enterprises",
+  "implementing_agency": "National Institute of Design (NID)",
+  "authority_slug": "ministry-of-msme",
+  "target_segments": [
+    "msme"
+  ],
+  "sectors": [
+    "Manufacturing"
+  ],
+  "states": [],
+  "benefit_value_min": null,
+  "benefit_value_max": 1500000,
+  "benefit_description": "Grant support for design awareness and design project funding for MSMEs; individual project funding assistance up to Rs. 15 Lakh.",
+  "application_url": "https://msme.gov.in/design-clinic",
+  "offline_process": false,
+  "application_difficulty": "medium",
+  "estimated_effort_hours": 20,
+  "drafting_lead_days": 15,
+  "effective_from": "2010-02-15T00:00:00Z",
+  "criteria": [
+    {
+      "criterion_type": "hard",
+      "description": "Enterprise must have a valid Udyam Registration.",
+      "machine_readable_rule": {
+        "op": "contains",
+        "field": "registrations",
+        "value": "udyam"
+      },
+      "display_order": 1,
+      "source_url": "https://msme.gov.in/design-clinic",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "criterion_type": "soft",
+      "description": "The project must exhibit a tangible design improvement to manufacturing processes or products.",
+      "machine_readable_rule": null,
+      "display_order": 2,
+      "source_url": "https://msme.gov.in/design-clinic",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "document_requirements": [
+    {
+      "document_name": "Udyam Certificate",
+      "document_type": "udyam_certificate",
+      "issuing_authority_slug": "udyam-registration",
+      "issuing_authority_name": "Ministry of MSME",
+      "typical_processing_days": 3,
+      "how_to_obtain": "Register on the national portal.",
+      "mandatory": true,
+      "display_order": 1,
+      "source_url": "https://msme.gov.in/design-clinic",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "Design Project Proposal",
+      "document_type": "project_report",
+      "issuing_authority_slug": null,
+      "issuing_authority_name": "Self",
+      "typical_processing_days": 15,
+      "how_to_obtain": "Draft a proposal alongside an approved design consultant.",
+      "mandatory": true,
+      "display_order": 2,
+      "source_url": "https://msme.gov.in/design-clinic",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "Bank Statement",
+      "document_type": "bank_statement",
+      "issuing_authority_slug": null,
+      "issuing_authority_name": "Bank",
+      "typical_processing_days": 2,
+      "how_to_obtain": "Submit past 6 months transactions.",
+      "mandatory": true,
+      "display_order": 3,
+      "source_url": "https://msme.gov.in/design-clinic",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "windows": [
+    {
+      "open_date": null,
+      "close_date": null,
+      "recurrence": "rolling",
+      "notification_source": "portal",
+      "notes": "Available based on fund availability.",
+      "source_url": "https://msme.gov.in/design-clinic",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "benefits": [
+    {
+      "benefit_type": "cash",
+      "description": "Financial assistance for design projects.",
+      "quantum_min": null,
+      "quantum_max": 1500000,
+      "conditions_for_disbursement": "Paid conditionally upon the completion of design milestones.",
+      "source_url": "https://msme.gov.in/design-clinic",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "slug": "nidhi-ssp",
+  "name": "NIDHI Seed Support Programme (NIDHI-SSP)",
+  "summary": "Provides seed funding to early-stage incubatee startups to bridge the gap between development and commercialization.",
+  "scheme_type": "equity",
+  "status": "active",
+  "administering_ministry": "Ministry of Science and Technology",
+  "implementing_agency": "National Science & Technology Entrepreneurship Development Board",
+  "authority_slug": "nstedb",
+  "target_segments": [
+    "startup"
+  ],
+  "sectors": [],
+  "states": [],
+  "benefit_value_min": null,
+  "benefit_value_max": 10000000,
+  "benefit_description": "Financial assistance of up to Rs. 100 Lakhs per startup as seed support.",
+  "application_url": "https://nidhi.dst.gov.in/",
+  "offline_process": false,
+  "application_difficulty": "high",
+  "estimated_effort_hours": 30,
+  "drafting_lead_days": 21,
+  "effective_from": "2016-09-01T00:00:00Z",
+  "criteria": [
+    {
+      "criterion_type": "hard",
+      "description": "Must be recognized by DPIIT.",
+      "machine_readable_rule": {
+        "op": "contains",
+        "field": "registrations",
+        "value": "dpiit"
+      },
+      "display_order": 1,
+      "source_url": "https://nidhi.dst.gov.in/",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "criterion_type": "soft",
+      "description": "Indian promoters must hold at least 51% of the shares.",
+      "machine_readable_rule": null,
+      "display_order": 2,
+      "source_url": "https://nidhi.dst.gov.in/",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "document_requirements": [
+    {
+      "document_name": "DPIIT Recognition Certificate",
+      "document_type": "dpiit_certificate",
+      "issuing_authority_slug": "dpiit",
+      "issuing_authority_name": "DPIIT",
+      "typical_processing_days": 15,
+      "how_to_obtain": "Register on the Startup India portal.",
+      "mandatory": true,
+      "display_order": 1,
+      "source_url": "https://nidhi.dst.gov.in/",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "Incorporation Certificate",
+      "document_type": "incorporation_certificate",
+      "issuing_authority_slug": "mca",
+      "issuing_authority_name": "Ministry of Corporate Affairs",
+      "typical_processing_days": 10,
+      "how_to_obtain": "Obtain company registration.",
+      "mandatory": true,
+      "display_order": 2,
+      "source_url": "https://nidhi.dst.gov.in/",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "Project Report",
+      "document_type": "project_report",
+      "issuing_authority_slug": null,
+      "issuing_authority_name": "Self",
+      "typical_processing_days": 14,
+      "how_to_obtain": "Create a detailed business and financial projection plan.",
+      "mandatory": true,
+      "display_order": 3,
+      "source_url": "https://nidhi.dst.gov.in/",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "windows": [
+    {
+      "open_date": null,
+      "close_date": null,
+      "recurrence": "rolling",
+      "notification_source": "portal",
+      "notes": "Available via NSTEDB incubators year-round.",
+      "source_url": "https://nidhi.dst.gov.in/",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "benefits": [
+    {
+      "benefit_type": "cash",
+      "description": "Funding support up to Rs 1 Crore.",
+      "quantum_min": null,
+      "quantum_max": 10000000,
+      "conditions_for_disbursement": "Equity or debt agreements finalized with the incubator.",
+      "source_url": "https://nidhi.dst.gov.in/",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ]
+}
