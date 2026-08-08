@@ -306,7 +306,7 @@
   }
 
   .field-readout-value {
-    @apply tabular-nums text-field-fg;
+    @apply text-base font-semibold tabular-nums text-field-fg;
   }
 
   /* Status chip: always a text label, color is a reinforcement only —

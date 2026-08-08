@@ -123,7 +123,15 @@ export default function DashboardPage() {
             </div>
             <div className="field-readout">
               <span className="field-readout-label">FULLY MET</span>
-              <span className="field-readout-value">{ready.length}</span>
+              <span
+                className={
+                  ready.length === 0
+                    ? "field-readout-value text-field-alert"
+                    : "field-readout-value font-semibold"
+                }
+              >
+                {ready.length}
+              </span>
             </div>
             <div className="field-readout">
               <span className="field-readout-label">WORTH A LOOK</span>
@@ -152,8 +160,11 @@ export default function DashboardPage() {
         />
 
         {feed.suggested_profile_additions.length > 0 && (
-          <aside className="field-panel field-panel-active p-4">
-            <p className="font-semibold text-field-fg">
+          <aside className="border border-field-alert-border bg-field-alert-bg p-4">
+            <p className="font-field text-xs font-semibold uppercase tracking-[0.1em] text-field-alert">
+              ⚠ ACTION AVAILABLE
+            </p>
+            <p className="mt-2 font-semibold text-field-fg">
               Add {humaniseField(feed.suggested_profile_additions[0]!)} to settle the most open requirements
             </p>
             {feed.suggested_profile_additions.length > 1 && (
@@ -161,7 +172,7 @@ export default function DashboardPage() {
                 Then: {feed.suggested_profile_additions.slice(1).map(humaniseField).join(", ")}.
               </p>
             )}
-            <Link href="/onboarding" className="mt-2 inline-flex min-h-11 items-center font-field text-xs font-semibold uppercase text-field-fg hover:text-field-fg-muted">
+            <Link href="/onboarding" className="mt-3 inline-flex min-h-11 items-center font-field text-xs font-semibold uppercase text-field-alert hover:text-field-fg">
               UPDATE PROFILE <span aria-hidden="true" className="ml-1">→</span>
             </Link>
           </aside>
