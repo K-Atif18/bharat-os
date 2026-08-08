@@ -1,0 +1,119 @@
+{
+  "slug": "nsic-raw-material-assistance",
+  "name": "Raw Material Assistance Scheme (NSIC)",
+  "summary": "Helps MSMEs finance the purchase of indigenous and imported raw materials through NSIC, against a bank guarantee, so units can focus on production rather than upfront procurement cost.",
+  "scheme_type": "credit_guarantee",
+  "status": "active",
+  "administering_ministry": "Ministry of Micro, Small and Medium Enterprises",
+  "implementing_agency": "National Small Industries Corporation (NSIC)",
+  "authority_slug": "nsic",
+  "target_segments": [
+    "msme"
+  ],
+  "sectors": [],
+  "states": [],
+  "benefit_value_min": null,
+  "benefit_value_max": null,
+  "benefit_description": "NSIC arranges finance for the purchase of raw materials on behalf of the MSME, against a bank guarantee for payment to suppliers, so the enterprise does not need to pay the full amount upfront.",
+  "application_url": "http://www.nsic.co.in/",
+  "offline_process": false,
+  "application_difficulty": "medium",
+  "estimated_effort_hours": 15,
+  "drafting_lead_days": 10,
+  "effective_from": "1970-01-01T00:00:00Z",
+  "criteria": [
+    {
+      "criterion_type": "hard",
+      "description": "Enterprise must hold a valid Udyam Registration Certificate and be engaged in manufacturing or service activity, not trading.",
+      "machine_readable_rule": {
+        "op": "contains",
+        "field": "registrations",
+        "value": "udyam"
+      },
+      "display_order": 1,
+      "source_url": "https://www.oneindia.com/schemes/government-schemes-icar-senior-research-fellowship-for-post-graduate-studies-in-agricultural-sciences-s259/",
+      "source_quote": "Any MSME involved in manufacturing or providing services can apply, as long as they have a valid Udyam Registration Certificate. However, it's important to note that this scheme is strictly for manufacturing and service activities, not for trading businesses.",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "criterion_type": "soft",
+      "description": "The enterprise must be able to furnish a bank guarantee to NSIC covering the raw material advance, or an equivalent arrangement NSIC accepts.",
+      "machine_readable_rule": null,
+      "display_order": 2,
+      "source_url": "https://sansad.in/getFile/loksabhaquestions/annex/182/AU1651_U1WK5p.pdf?source=pqars",
+      "source_quote": "Under RMA Scheme, NSIC provides financial assistance to MSMEs against bank guarantee for payment to the suppliers for procurement of raw material.",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "document_requirements": [
+    {
+      "document_name": "Udyam Registration Certificate",
+      "document_type": "udyam_certificate",
+      "issuing_authority_slug": "udyam-registration",
+      "issuing_authority_name": "Ministry of MSME",
+      "typical_processing_days": 3,
+      "how_to_obtain": "Register on the national Udyam portal.",
+      "mandatory": true,
+      "display_order": 1,
+      "source_url": "http://www.nsic.co.in/",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "Bank Guarantee",
+      "document_type": "bank_statement",
+      "issuing_authority_slug": null,
+      "issuing_authority_name": "Applicant's bank",
+      "typical_processing_days": 15,
+      "how_to_obtain": "Arrange a bank guarantee covering the value of the raw material advance requested from NSIC.",
+      "mandatory": true,
+      "display_order": 2,
+      "source_url": "https://sansad.in/getFile/loksabhaquestions/annex/182/AU1651_U1WK5p.pdf?source=pqars",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "Raw material requirement estimate",
+      "document_type": "unknown",
+      "issuing_authority_slug": null,
+      "issuing_authority_name": "Self",
+      "typical_processing_days": 5,
+      "how_to_obtain": "Prepare a statement of raw material quantities and specifications required for production.",
+      "mandatory": true,
+      "display_order": 3,
+      "source_url": "http://www.nsic.co.in/",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "windows": [
+    {
+      "open_date": null,
+      "close_date": null,
+      "recurrence": "rolling",
+      "notification_source": "portal",
+      "notes": "Available on a rolling basis through NSIC branch offices.",
+      "source_url": "http://www.nsic.co.in/",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "benefits": [
+    {
+      "benefit_type": "credit_guarantee",
+      "description": "NSIC-arranged financing for raw material procurement, both indigenous and imported.",
+      "quantum_min": null,
+      "quantum_max": null,
+      "conditions_for_disbursement": "NSIC pays the supplier directly on the MSME's behalf against the bank guarantee, rather than disbursing cash to the enterprise.",
+      "source_url": "http://www.nsic.co.in/",
+      "source_quote": "Raw Material Assistance Scheme aims at helping MSMEs by way of financing the purchase of Raw Material (Both indigenous & imported).",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ]
+}

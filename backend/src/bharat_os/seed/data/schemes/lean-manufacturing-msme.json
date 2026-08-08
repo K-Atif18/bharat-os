@@ -1,0 +1,121 @@
+{
+  "slug": "lean-manufacturing-msme",
+  "name": "MSME Competitive (Lean) Scheme",
+  "summary": "Subsidises the engagement of lean manufacturing consultants to help MSMEs reduce waste, cut costs and improve manufacturing competitiveness.",
+  "scheme_type": "subsidy",
+  "status": "active",
+  "administering_ministry": "Ministry of Micro, Small and Medium Enterprises",
+  "implementing_agency": "Office of the Development Commissioner (MSME)",
+  "authority_slug": "ministry-of-msme",
+  "target_segments": [
+    "msme"
+  ],
+  "sectors": [
+    "Manufacturing"
+  ],
+  "states": [],
+  "benefit_value_min": null,
+  "benefit_value_max": null,
+  "benefit_description": "Ministry of MSME subsidises consultancy charges for lean manufacturing implementation: 80% for micro, 60% for small, and 50% for medium enterprises, averaging around 70% of the consultant fee.",
+  "application_url": "https://lean.msme.gov.in/",
+  "offline_process": false,
+  "application_difficulty": "medium",
+  "estimated_effort_hours": 15,
+  "drafting_lead_days": 10,
+  "effective_from": "2009-07-08T00:00:00Z",
+  "criteria": [
+    {
+      "criterion_type": "hard",
+      "description": "All MSMEs registered with the Udyam registration portal are eligible to participate.",
+      "machine_readable_rule": {
+        "op": "contains",
+        "field": "registrations",
+        "value": "udyam"
+      },
+      "display_order": 1,
+      "source_url": "https://dcmsme.gov.in/CLCS_TUS_Scheme/Lean_Manufacturing/Scheme_Guidelines.aspx",
+      "source_quote": "All MSMEs registered with the UDYAM registration portal (of the MoMSME) will be eligible to participate in MSME Competitive (Lean) Scheme and avail related benefits/incentives.",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "criterion_type": "soft",
+      "description": "The applicant must be a manufacturing MSE, and typically applies as part of a mini-cluster of similar units guided by a lean manufacturing consultant, not individually.",
+      "machine_readable_rule": null,
+      "display_order": 2,
+      "source_url": "https://my.msme.gov.in/MyMsmeMob/MsmeScheme/Pages/ssub_4.html",
+      "source_quote": "The scheme is open to all manufacturing MSEs. The units should be registered with the DIC (EM-II) or with any other agency (professional body, association, Government agency, department, etc.).",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "document_requirements": [
+    {
+      "document_name": "Udyam Registration Certificate",
+      "document_type": "udyam_certificate",
+      "issuing_authority_slug": "udyam-registration",
+      "issuing_authority_name": "Ministry of MSME",
+      "typical_processing_days": 3,
+      "how_to_obtain": "Register on the Udyam portal.",
+      "mandatory": true,
+      "display_order": 1,
+      "source_url": "https://dcmsme.gov.in/CLCS_TUS_Scheme/Lean_Manufacturing/Scheme_Guidelines.aspx",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "Mini-cluster formation agreement",
+      "document_type": "unknown",
+      "issuing_authority_slug": null,
+      "issuing_authority_name": "Lean Manufacturing Consultant / Implementing Agency",
+      "typical_processing_days": 15,
+      "how_to_obtain": "Join or form a mini-cluster of 8-10 similar manufacturing units, coordinated by an empanelled Lean Manufacturing Consultant.",
+      "mandatory": true,
+      "display_order": 2,
+      "source_url": "https://lean.msme.gov.in/Home/FAQs",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "Consultant engagement/fee agreement",
+      "document_type": "unknown",
+      "issuing_authority_slug": null,
+      "issuing_authority_name": "Empanelled Lean Manufacturing Consultant",
+      "typical_processing_days": 10,
+      "how_to_obtain": "Sign an engagement letter with the consultant assigned to the mini-cluster.",
+      "mandatory": true,
+      "display_order": 3,
+      "source_url": "https://lean.msme.gov.in/Home/FAQs",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "windows": [
+    {
+      "open_date": null,
+      "close_date": null,
+      "recurrence": "rolling",
+      "notification_source": "portal",
+      "notes": "Rolling enrolment into mini-clusters, coordinated by regional implementing agencies.",
+      "source_url": "https://lean.msme.gov.in/",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "benefits": [
+    {
+      "benefit_type": "cash",
+      "description": "Subsidy on consultancy fees for lean manufacturing implementation.",
+      "quantum_min": null,
+      "quantum_max": null,
+      "conditions_for_disbursement": "Subsidy paid to the empanelled consultant on behalf of the MSME after milestone completion, not as direct cash to the applicant.",
+      "source_url": "https://msme.gov.in/zero-defect-zero-effect",
+      "source_quote": "Ministry of MSME will subsidize* 80% of Micro, 60% of Small, 50% of Medium Enterprises' Consultancy charges: average 70% of Fee",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ]
+}

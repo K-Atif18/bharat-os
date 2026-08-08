@@ -1,0 +1,119 @@
+{
+  "slug": "mse-cdp",
+  "name": "Micro and Small Enterprises Cluster Development Programme (MSE-CDP)",
+  "summary": "Provides a Government of India grant to establish Common Facility Centres and upgrade infrastructure in identified clusters of Micro and Small Enterprises, improving shared productivity and competitiveness.",
+  "scheme_type": "grant",
+  "status": "active",
+  "administering_ministry": "Ministry of Micro, Small and Medium Enterprises",
+  "implementing_agency": "Office of the Development Commissioner (MSME)",
+  "authority_slug": "ministry-of-msme",
+  "target_segments": [
+    "msme"
+  ],
+  "sectors": [],
+  "states": [],
+  "benefit_value_min": null,
+  "benefit_value_max": 300000000,
+  "benefit_description": "GoI grant restricted to 70% of project cost for Common Facility Centre projects between Rs. 5 crore and Rs. 10 crore, and 60% of project cost for projects between Rs. 10 crore and Rs. 30 crore.",
+  "application_url": "https://msme.gov.in/micro-small-enterprises-cluster-development-mse-cdp",
+  "offline_process": true,
+  "application_difficulty": "high",
+  "estimated_effort_hours": 60,
+  "drafting_lead_days": 45,
+  "effective_from": "2019-10-11T00:00:00Z",
+  "criteria": [
+    {
+      "criterion_type": "soft",
+      "description": "Applicant must be part of an identified cluster of Micro and Small Enterprises, defined as a group of enterprises in an identifiable and contiguous area producing similar products or services.",
+      "machine_readable_rule": null,
+      "display_order": 1,
+      "source_url": "http://www.dcmsme.gov.in/schemes/ModifiedGuidelinesofMSE.pdf",
+      "source_quote": "A cluster is a group of enterprises located within an identifiable and as far as practicable, contiguous area and producing same/similar products/services.",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "criterion_type": "hard",
+      "description": "Member units of the cluster must hold a valid Udyam Registration to be classified as Micro or Small Enterprises.",
+      "machine_readable_rule": {
+        "op": "contains",
+        "field": "registrations",
+        "value": "udyam"
+      },
+      "display_order": 2,
+      "source_url": "https://msme.gov.in/micro-small-enterprises-cluster-development-mse-cdp",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "document_requirements": [
+    {
+      "document_name": "Udyam Registration Certificate (for cluster member units)",
+      "document_type": "udyam_certificate",
+      "issuing_authority_slug": "udyam-registration",
+      "issuing_authority_name": "Ministry of MSME",
+      "typical_processing_days": 3,
+      "how_to_obtain": "Each participating enterprise registers on the Udyam portal.",
+      "mandatory": true,
+      "display_order": 1,
+      "source_url": "https://msme.gov.in/micro-small-enterprises-cluster-development-mse-cdp",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "Detailed Project Report for the Common Facility Centre",
+      "document_type": "project_report",
+      "issuing_authority_slug": null,
+      "issuing_authority_name": "State Government / Implementing Agency",
+      "typical_processing_days": 60,
+      "how_to_obtain": "Prepared jointly by the cluster's special purpose vehicle and the state nodal agency.",
+      "mandatory": true,
+      "display_order": 2,
+      "source_url": "https://msme.gov.in/micro-small-enterprises-cluster-development-mse-cdp",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "State Government sponsorship letter",
+      "document_type": "noc",
+      "issuing_authority_slug": "state-revenue-department",
+      "issuing_authority_name": "State Industries Department",
+      "typical_processing_days": 30,
+      "how_to_obtain": "Obtain endorsement from the state industries department for the cluster proposal.",
+      "mandatory": true,
+      "display_order": 3,
+      "source_url": "https://sansad.in/getFile/annex/270/AU3472_ciqVvi.pdf?source=pqars",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "windows": [
+    {
+      "open_date": null,
+      "close_date": null,
+      "recurrence": "rolling",
+      "notification_source": "portal",
+      "notes": "Demand-driven; proposals accepted from state governments on a rolling basis, not a fixed calendar window.",
+      "source_url": "https://msme.gov.in/micro-small-enterprises-cluster-development-mse-cdp",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "benefits": [
+    {
+      "benefit_type": "cash",
+      "description": "Government of India grant for Common Facility Centre construction and infrastructure upgrade in MSE clusters.",
+      "quantum_min": null,
+      "quantum_max": 300000000,
+      "conditions_for_disbursement": "Released in tranches to the state government / implementing agency against project milestones, not directly to individual enterprises.",
+      "source_url": "https://msme.gov.in/micro-small-enterprises-cluster-development-mse-cdp",
+      "source_quote": "The GoI grant will be restricted to 70% of the cost of project from Rs. 5.00 crore to Rs. 10.00 crore and 60% of the cost of project from Rs. 10.00 crore to Rs. 30.00 crore.",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ]
+}

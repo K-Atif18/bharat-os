@@ -38,7 +38,7 @@ test.describe("profile to ranked feed", () => {
 
     // --- Ranked feed ---
     await expect(page.getByRole("heading", { name: "Your matches" })).toBeVisible();
-    await expect(page.getByText(/Checked your profile against 34 active schemes/)).toBeVisible();
+    await expect(page.getByText(/Checked your profile against 40 active schemes/)).toBeVisible();
 
     // SISFS requires DPIIT recognition and an entity under two years old, both of
     // which this profile satisfies, so it must appear.
@@ -108,7 +108,7 @@ test.describe("one-click judge demo", () => {
     await page.getByRole("button", { name: /Launch live judge demo/i }).click();
 
     await expect(page.getByRole("heading", { name: "ZEN Club", level: 1 })).toBeVisible();
-    await expect(page.getByText("34", { exact: true }).first()).toBeVisible();
+    await expect(page.getByText("40", { exact: true }).first()).toBeVisible();
 
     await page.getByRole("link", { name: /Startup India Seed Fund Scheme/i }).click();
     await expect(page.getByRole("heading", { name: /Startup India Seed Fund Scheme/i })).toBeVisible();

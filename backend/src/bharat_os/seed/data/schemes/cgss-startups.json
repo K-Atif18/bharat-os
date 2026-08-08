@@ -1,0 +1,119 @@
+{
+  "slug": "cgss-startups",
+  "name": "Credit Guarantee Scheme for Startups (CGSS)",
+  "summary": "Provides collateral-free credit guarantee cover to Member Institutions lending to DPIIT-recognised startups, routed through the National Credit Guarantee Trustee Company (NCGTC).",
+  "scheme_type": "credit_guarantee",
+  "status": "active",
+  "administering_ministry": "Department for Promotion of Industry and Internal Trade",
+  "implementing_agency": "National Credit Guarantee Trustee Company Limited (NCGTC)",
+  "authority_slug": "dpiit",
+  "target_segments": [
+    "startup"
+  ],
+  "sectors": [],
+  "states": [],
+  "benefit_value_min": null,
+  "benefit_value_max": 100000000,
+  "benefit_description": "Credit guarantee cover up to Rs. 10 crore per borrowing startup, extended to Member Institutions (banks, NBFCs, AIFs) against loans given to eligible startups.",
+  "application_url": "https://www.startupindia.gov.in/content/sih/en/credit-guarantee-scheme-for-startups.html",
+  "offline_process": false,
+  "application_difficulty": "medium",
+  "estimated_effort_hours": 20,
+  "drafting_lead_days": 15,
+  "effective_from": "2022-10-06T00:00:00Z",
+  "criteria": [
+    {
+      "criterion_type": "hard",
+      "description": "The applicant must be recognised as a startup by DPIIT.",
+      "machine_readable_rule": {
+        "op": "contains",
+        "field": "registrations",
+        "value": "dpiit"
+      },
+      "display_order": 1,
+      "source_url": "https://www.startupindia.gov.in/manipuri/content/sih/en/credit-guarantee-scheme-for-startups.html",
+      "source_quote": "Startup whose eligibility is certified by the Member Institution for the purpose of guarantee cover.",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "criterion_type": "soft",
+      "description": "CGSS does not lend or guarantee to the startup directly; the startup must first secure a loan sanction from an empanelled Member Institution, which then applies for the guarantee cover.",
+      "machine_readable_rule": null,
+      "display_order": 2,
+      "source_url": "https://startupindia.gov.in/content/sih/en/credit-guarantee-scheme-for-startups.html",
+      "source_quote": "CGSS does not provide guarantee cover to DPIIT recognised startups directly, but through a Trustee (NCGTC), which in turn provides guarantee cover to MIs who provide loans to startups.",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "document_requirements": [
+    {
+      "document_name": "DPIIT Recognition Certificate",
+      "document_type": "dpiit_certificate",
+      "issuing_authority_slug": "dpiit",
+      "issuing_authority_name": "DPIIT",
+      "typical_processing_days": 15,
+      "how_to_obtain": "Register on the Startup India portal.",
+      "mandatory": true,
+      "display_order": 1,
+      "source_url": "https://www.startupindia.gov.in/content/sih/en/credit-guarantee-scheme-for-startups.html",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "Loan sanction letter from a Member Institution",
+      "document_type": "bank_statement",
+      "issuing_authority_slug": null,
+      "issuing_authority_name": "Member Institution (bank/NBFC/AIF empanelled under CGSS)",
+      "typical_processing_days": 30,
+      "how_to_obtain": "Apply for a business loan with a Member Institution empanelled under CGSS; the MI certifies eligibility and requests guarantee cover.",
+      "mandatory": true,
+      "display_order": 2,
+      "source_url": "https://www.startupindia.gov.in/content/sih/en/credit-guarantee-scheme-for-startups.html",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "Incorporation Certificate",
+      "document_type": "incorporation_certificate",
+      "issuing_authority_slug": "mca",
+      "issuing_authority_name": "Ministry of Corporate Affairs",
+      "typical_processing_days": 10,
+      "how_to_obtain": "Obtain company/LLP registration proof.",
+      "mandatory": true,
+      "display_order": 3,
+      "source_url": "https://www.startupindia.gov.in/content/sih/en/credit-guarantee-scheme-for-startups.html",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "windows": [
+    {
+      "open_date": null,
+      "close_date": null,
+      "recurrence": "rolling",
+      "notification_source": "portal",
+      "notes": "Applications processed on a rolling basis through empanelled Member Institutions.",
+      "source_url": "https://www.startupindia.gov.in/content/sih/en/credit-guarantee-scheme-for-startups.html",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "benefits": [
+    {
+      "benefit_type": "credit_guarantee",
+      "description": "Collateral-free credit guarantee cover on loans extended by Member Institutions to eligible startups.",
+      "quantum_min": null,
+      "quantum_max": 100000000,
+      "conditions_for_disbursement": "Guarantee is invoked by the Member Institution in case of default, not disbursed to the startup directly.",
+      "source_url": "https://www.startupindia.gov.in/sindhi/content/sih/en/bloglist/blogs/Credit-guarantee.html",
+      "source_quote": "CGSS is aimed at providing credit guarantees up to a particular limit to finance eligible borrowers, i.e., eligible startups, against loans extended by Member Institutions (MI).",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ]
+}

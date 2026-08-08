@@ -1,0 +1,121 @@
+{
+  "slug": "coir-udyami-yojana",
+  "name": "Coir Udyami Yojana",
+  "summary": "A credit-linked capital subsidy scheme for setting up new coir processing units, administered by the Coir Board as the nodal agency for the coir sector.",
+  "scheme_type": "subsidy",
+  "status": "active",
+  "administering_ministry": "Ministry of Micro, Small and Medium Enterprises",
+  "implementing_agency": "Coir Board",
+  "authority_slug": "ministry-of-msme",
+  "target_segments": [
+    "msme"
+  ],
+  "sectors": [
+    "Coir"
+  ],
+  "states": [],
+  "benefit_value_min": null,
+  "benefit_value_max": null,
+  "benefit_description": "Margin money subsidy of up to 25% (higher for special categories) of the project cost for setting up new coir units, along with bank credit for the balance.",
+  "application_url": "http://coirboard.gov.in/",
+  "offline_process": false,
+  "application_difficulty": "medium",
+  "estimated_effort_hours": 25,
+  "drafting_lead_days": 21,
+  "effective_from": "2015-01-01T00:00:00Z",
+  "criteria": [
+    {
+      "criterion_type": "hard",
+      "description": "The applicant's enterprise must be in the coir processing sector.",
+      "machine_readable_rule": {
+        "op": "eq",
+        "field": "sector",
+        "value": "coir"
+      },
+      "display_order": 1,
+      "source_url": "http://coirboard.gov.in/wp-content/uploads/2015/06/OperationalGuidelines_CUY.pdf",
+      "source_quote": "Coir Udyami Yojana will be a Central Sector Scheme to be administered by the Ministry of Micro, Small and Medium Enterprises. The Scheme will be implemented by Coir Board a statutory organization under the Ministry of MSME as the Nodal Agency at the national level.",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "criterion_type": "soft",
+      "description": "Applicant must be an individual, self-help group, NGO, cooperative society or company setting up a new coir processing unit, and be able to arrange the balance project financing through a bank loan.",
+      "machine_readable_rule": null,
+      "display_order": 2,
+      "source_url": "http://coirboard.gov.in/wp-content/uploads/2015/06/OperationalGuidelines_CUY.pdf",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "document_requirements": [
+    {
+      "document_name": "Detailed Project Report",
+      "document_type": "project_report",
+      "issuing_authority_slug": null,
+      "issuing_authority_name": "Self",
+      "typical_processing_days": 21,
+      "how_to_obtain": "Prepare a project report covering machinery, output capacity and financial projections for the coir processing unit.",
+      "mandatory": true,
+      "display_order": 1,
+      "source_url": "http://coirboard.gov.in/wp-content/uploads/2015/06/OperationalGuidelines_CUY.pdf",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "Bank loan sanction letter",
+      "document_type": "bank_statement",
+      "issuing_authority_slug": null,
+      "issuing_authority_name": "Lending bank",
+      "typical_processing_days": 30,
+      "how_to_obtain": "Apply for a term loan to cover the balance project cost not covered by the margin money subsidy.",
+      "mandatory": true,
+      "display_order": 2,
+      "source_url": "http://coirboard.gov.in/wp-content/uploads/2015/06/OperationalGuidelines_CUY.pdf",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "Registration/incorporation proof",
+      "document_type": "incorporation_certificate",
+      "issuing_authority_slug": null,
+      "issuing_authority_name": "Registrar of Companies/Societies, as applicable",
+      "typical_processing_days": 20,
+      "how_to_obtain": "Provide proof of legal entity status appropriate to the applicant type (individual, SHG, NGO, cooperative or company).",
+      "mandatory": true,
+      "display_order": 3,
+      "source_url": "http://coirboard.gov.in/wp-content/uploads/2015/06/OperationalGuidelines_CUY.pdf",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "windows": [
+    {
+      "open_date": null,
+      "close_date": null,
+      "recurrence": "rolling",
+      "notification_source": "portal",
+      "notes": "Applications accepted year-round through Coir Board regional offices.",
+      "source_url": "http://coirboard.gov.in/",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "benefits": [
+    {
+      "benefit_type": "cash",
+      "description": "Margin money subsidy on project cost for new coir processing units.",
+      "quantum_min": null,
+      "quantum_max": null,
+      "conditions_for_disbursement": "Subsidy held as a term deposit and adjusted against the bank loan after the unit is verified operational.",
+      "source_url": "http://coirboard.gov.in/wp-content/uploads/2015/06/OperationalGuidelines_CUY.pdf",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ]
+}

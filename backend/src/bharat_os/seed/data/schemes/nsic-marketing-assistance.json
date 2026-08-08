@@ -1,0 +1,119 @@
+{
+  "slug": "nsic-marketing-assistance",
+  "name": "Marketing Assistance Scheme (NSIC)",
+  "summary": "Supports MSMEs in participating in domestic and international trade exhibitions to showcase products and access new markets, with NSIC bearing part of the participation cost.",
+  "scheme_type": "grant",
+  "status": "active",
+  "administering_ministry": "Ministry of Micro, Small and Medium Enterprises",
+  "implementing_agency": "National Small Industries Corporation (NSIC)",
+  "authority_slug": "nsic",
+  "target_segments": [
+    "msme"
+  ],
+  "sectors": [],
+  "states": [],
+  "benefit_value_min": null,
+  "benefit_value_max": null,
+  "benefit_description": "Subsidised participation in domestic and international exhibitions/trade fairs organised or facilitated by NSIC, with differential subsidy rates for women, SC/ST and other special-category entrepreneurs.",
+  "application_url": "https://msme.gov.in/application-procedure-ati-scheme-0",
+  "offline_process": false,
+  "application_difficulty": "low",
+  "estimated_effort_hours": 10,
+  "drafting_lead_days": 10,
+  "effective_from": "2009-12-30T00:00:00Z",
+  "criteria": [
+    {
+      "criterion_type": "hard",
+      "description": "Applicant must hold a valid Udyam Registration (or its predecessor Entrepreneur's Memorandum Part-II) to be eligible to apply.",
+      "machine_readable_rule": {
+        "op": "contains",
+        "field": "registrations",
+        "value": "udyam"
+      },
+      "display_order": 1,
+      "source_url": "https://msme.gov.in/application-procedure-ati-scheme-0",
+      "source_quote": "Copy of valid Entrepreneur's Memorandum Part-II only.",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "criterion_type": "soft",
+      "description": "Applicant must provide proof of their promoter category (e.g. women, SC/ST, backward, minority) if claiming a differential subsidy rate.",
+      "machine_readable_rule": null,
+      "display_order": 2,
+      "source_url": "https://msme.gov.in/application-procedure-ati-scheme-0",
+      "source_quote": "Proof in support of the promoter's category or categories (Women, SC/ST. Backward, Minority) etc.",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "document_requirements": [
+    {
+      "document_name": "Udyam Registration Certificate / Entrepreneur's Memorandum Part-II",
+      "document_type": "udyam_certificate",
+      "issuing_authority_slug": "udyam-registration",
+      "issuing_authority_name": "Ministry of MSME",
+      "typical_processing_days": 3,
+      "how_to_obtain": "Register on the Udyam portal.",
+      "mandatory": true,
+      "display_order": 1,
+      "source_url": "https://msme.gov.in/application-procedure-ati-scheme-0",
+      "source_quote": "Copy of valid Entrepreneur's Memorandum Part-II only.",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "Audited Balance Sheet or Income Tax Returns (last 2 years)",
+      "document_type": "audited_financials",
+      "issuing_authority_slug": null,
+      "issuing_authority_name": "Chartered Accountant / Income Tax Department",
+      "typical_processing_days": 10,
+      "how_to_obtain": "Obtain from your statutory auditor or income tax filings for the previous two years.",
+      "mandatory": true,
+      "display_order": 2,
+      "source_url": "https://msme.gov.in/application-procedure-ati-scheme-0",
+      "source_quote": "Copies of Audited Balance Sheet or Income Tax Returns for the last two year.",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    },
+    {
+      "document_name": "Company profile",
+      "document_type": "unknown",
+      "issuing_authority_slug": null,
+      "issuing_authority_name": "Self",
+      "typical_processing_days": 3,
+      "how_to_obtain": "Prepare a brief company profile document for the application.",
+      "mandatory": true,
+      "display_order": 3,
+      "source_url": "https://msme.gov.in/application-procedure-ati-scheme-0",
+      "source_quote": "Copy of company profile",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "windows": [
+    {
+      "open_date": null,
+      "close_date": null,
+      "recurrence": "annual",
+      "notification_source": "portal",
+      "notes": "NSIC publishes an annual calendar of domestic and international exhibitions each year that MSMEs can apply against.",
+      "source_url": "https://msme.gov.in/application-procedure-ati-scheme-0",
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ],
+  "benefits": [
+    {
+      "benefit_type": "kind",
+      "description": "Subsidised stall space and participation cost at domestic and international trade exhibitions.",
+      "quantum_min": null,
+      "quantum_max": null,
+      "conditions_for_disbursement": "Subsidy applied against the exhibition participation invoice, not paid as cash to the applicant.",
+      "source_url": "http://www.dcmsme.gov.in/schemes/Guidelines-Marketing-Final-Approved--30.12.2009.pdf",
+      "source_quote": null,
+      "last_verified_at": "2026-08-08T00:00:00Z",
+      "verified_by_human": false
+    }
+  ]
+}
