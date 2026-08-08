@@ -13,6 +13,7 @@ from bharat_os.api import (
     deadlines,
     documents,
     drafts,
+    freshness,
     health,
     matches,
     profile,
@@ -90,6 +91,7 @@ def create_app() -> FastAPI:
 
     app.include_router(health.router)
     app.include_router(schemes.router)
+    app.include_router(freshness.router)
     app.include_router(auth.router)
     app.include_router(profile.router)
     # drafts.router must be included before matches.router: it defines
