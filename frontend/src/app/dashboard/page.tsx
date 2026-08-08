@@ -32,7 +32,7 @@ import { FieldNav } from "@/components/FieldNav";
 import { RuledOutCard, SchemeCard } from "@/components/SchemeCard";
 import { FieldLoadingState, FieldSectionHeading } from "@/components/Ui";
 import { ApiError, getMatches, getProfile, type MatchFeed, type Profile } from "@/lib/api";
-import { humaniseField } from "@/lib/format";
+import { formatRupees, humaniseField } from "@/lib/format";
 
 export default function DashboardPage() {
   const router = useRouter();
@@ -136,6 +136,12 @@ export default function DashboardPage() {
             <div className="field-readout">
               <span className="field-readout-label">WORTH A LOOK</span>
               <span className="field-readout-value">{feed.matches.length}</span>
+            </div>
+            <div className="field-readout">
+              <span className="field-readout-label">POTENTIAL BENEFIT</span>
+              <span className="field-readout-value">
+                {formatRupees(feed.matches.reduce((sum, m) => sum + (m.benefit_value_max ?? 0), 0))}
+              </span>
             </div>
           </div>
         </div>
