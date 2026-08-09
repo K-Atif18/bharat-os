@@ -236,10 +236,53 @@ publishes.
 Act–aligned consent (withdrawal deletes the corresponding data), real account
 erasure, and de-identified-at-capture outcome banding.
 
-**Human-gated data intake.** A robots.txt-respecting crawler and a PDF pipeline
-detect changes and run LLM extraction, but their output can only ever become a
-`PendingRevision` for a human reviewer to approve or reject — crawler output never
-goes live automatically.
+**Crawler orchestration & change detection.** A crawl pass is triggered two ways
+— a CLI (`make crawl`) or a reviewer-gated `POST /crawler/run` (it makes real
+outbound requests and LLM calls, so it is never public). For each monitored
+source the runner: (1) checks **robots.txt**, which **fails closed** — an
+unreachable or unparseable robots file is treated as *disallowed*; (2) fetches
+politely — static pages over `httpx`, JavaScript-rendered pages through a
+headless **Playwright/Chromium** browser — behind a **per-host 3-second rate
+limiter** and a self-identifying User-Agent; (3) runs **hash-based change
+detection** that first **normalises out volatile noise** — timestamps,
+`session`/`token`/`nonce`/`csrf` parameters, and whitespace — *before* taking a
+SHA-256 hash, so incidental markup churn never triggers a false "changed"
+signal. Failures are isolated per source (one broken page can't sink the run),
+and a source is auto-deactivated after 5 consecutive failures. The whole
+architecture converges on one hard invariant: a detected change becomes a
+`PendingRevision`, **never** a live `SchemeVersion`.
+
+**Human-gated intake with LLM extraction.** On a real change, HTML is reduced to
+text and passed through the **same structured-extraction pipeline the PDF
+ingestion uses** — one code path, one extraction prompt, one confidence policy.
+The model returns structured fields plus a confidence score; below the **0.7
+threshold** the revision is flagged for review, and even an outright extraction
+*failure* still produces a queued row ("we couldn't confidently extract this" is
+itself useful signal, not a reason to auto-publish). A reviewer then approves,
+rejects (with a mandatory reason), or annotates each `PendingRevision`. Approval
+marks it reviewed — it still does not publish; turning approved data into a live
+scheme is a separate, deliberate human step. **Nothing scraped or extracted ever
+reaches the live corpus without a human decision.**
+
+**Retrieval-augmented extraction & grounding (RAG) — dependency-free.** A
+government notification can run to many pages; sending it whole either blows the
+prompt budget or forces a truncation that can silently cut off the one section
+that matters (eligibility, benefit ceilings, document lists). Bharat OS instead
+**retrieves** the relevant passages first: it splits text into ~800-character,
+sentence-boundary chunks, scores each by overlap with a domain vocabulary
+(`eligibility`, `turnover`, `Udyam`, `benefit`, `last date`, …), keeps the top
+chunks (re-sorted back into original document order so cross-references read
+correctly), and caps what is sent to the model. It is used in **two places**:
+(1) long-document extraction — retrieval kicks in above ~12,000 characters, and a
+`used_retrieval` flag is surfaced to the reviewer for transparency; and
+(2) **grounding soft-criteria judgments** in the scheme's own summary, benefit
+text, and neighbouring criteria (via a separate `v1-grounded` prompt version and
+cache key, so it never collides with the default judgment path). The design is
+deliberately **embedding-free and vector-DB-free** — the domain vocabulary is
+predictable enough that keyword/overlap scoring suffices, avoiding a heavy
+dependency the problem doesn't need. This path was verified against the real
+Gemini API, correctly extracting an eligibility clause buried in a
+27,491-character document among ~300 filler paragraphs.
 
 ---
 
