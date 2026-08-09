@@ -10,6 +10,14 @@ get a link to a government portal. Bharat OS goes further: it tells you
 application with every field labeled by source, and reports honestly on its
 own accuracy instead of presenting AI output as fact.
 
+## Live
+
+- **Web app:** https://bharat-os-tawny.vercel.app
+- **API:** https://bharat-os-production.up.railway.app (interactive docs at `/docs`)
+
+Open the web app and select **Launch live judge demo** for a one-click
+account provisioned with a real profile and real scheme matches.
+
 ## What makes this different
 
 - **Deterministic eligibility, not AI guessing.** Hard criteria (turnover
@@ -35,6 +43,53 @@ own accuracy instead of presenting AI output as fact.
   de-identified real application outcomes — actual approval rates, actual
   timelines, actual rejection reasons — instead of only republishing what
   a scheme's official notification claims.
+
+## How it works
+
+### User journey
+
+```mermaid
+flowchart LR
+    A[Register or<br/>Launch judge demo] --> B[Onboarding wizard<br/>sector, stage, turnover,<br/>state, registrations]
+    B --> C[Ranked match feed<br/>met / unmet / cannot-verify]
+    C --> D[Scheme deep-dive<br/>criterion-by-criterion<br/>with source links]
+    D --> E[Document-gap checklist<br/>have / need / expired]
+    D --> F[Draft application<br/>per-field provenance]
+    D --> G[Deadline calendar<br/>.ics export]
+    F --> H[Track application]
+    H --> I[Report outcome<br/>de-identified at capture]
+```
+
+### Eligibility evaluation — deterministic logic meets hedged AI
+
+```mermaid
+flowchart TB
+    P[Applicant profile] --> HR[Hard criteria]
+    P --> SC[Soft criteria]
+    HR -->|deterministic Kleene<br/>three-valued logic| HRV[met / unmet / cannot_verify]
+    SC -->|LLM + confidence score| Q{confidence >= 0.6?}
+    Q -->|yes| SJ[likely_met / likely_unmet / uncertain]
+    Q -->|no| HRQ[forced into human review]
+    HRV --> AGG[Aggregate report]
+    SJ --> AGG
+    HRQ --> AGG
+    AGG --> R[Sourced, hedged eligibility result<br/>every claim traceable, nothing invented]
+```
+
+### Data ingestion — nothing goes live without a human
+
+```mermaid
+flowchart LR
+    S[Official pages / PDFs] --> RB{robots.txt<br/>allowed?}
+    RB -->|no — fails closed| SK[Skip]
+    RB -->|yes| FE[Fetch<br/>httpx or Playwright]
+    FE --> CD{Changed?<br/>SHA-256 of normalised content<br/>timestamps/tokens stripped}
+    CD -->|no| NO[Done]
+    CD -->|yes| EX[LLM structured extraction<br/>+ RAG retrieval on long docs]
+    EX --> PR[(PendingRevision<br/>status = PENDING)]
+    PR --> RV{Human reviewer}
+    RV -->|approve / reject / annotate| CUR[Curated seed →<br/>live SchemeVersion]
+```
 
 ## Stack
 
@@ -79,8 +134,65 @@ make lint             run linters
 make types            regenerate frontend types from the live API schema
 ```
 
+## Repository structure
+
+```text
+bharat-os/
+├── backend/
+│   ├── src/bharat_os/
+│   │   ├── engine/            # Deterministic Kleene 3-valued rule evaluator (no AI)
+│   │   │   ├── evaluator.py       #   met / unmet / cannot_verify + explanations
+│   │   │   ├── hard_rules.py  profile.py  results.py
+│   │   ├── llm/               # Provider-neutral AI boundary
+│   │   │   ├── base.py  mock.py (offline)  gemini.py
+│   │   ├── services/          # Application use cases
+│   │   │   ├── eligibility.py  ranking.py  deep_dive.py
+│   │   │   ├── soft_criteria.py   # hedged LLM judgement + confidence + audit
+│   │   │   ├── drafting.py  field_maps.py  documents.py  deadlines.py
+│   │   │   ├── outcomes.py        # de-identified outcome capture
+│   │   │   ├── calibration.py     # Expected Calibration Error measurement
+│   │   │   └── application_lifecycle.py  review_queue.py  notifications.py
+│   │   ├── api/               # FastAPI routers (thin HTTP layer)
+│   │   │   ├── auth.py  profile.py  matches.py  schemes.py  drafts.py
+│   │   │   ├── documents.py  deadlines.py  applications.py
+│   │   │   ├── freshness.py  calibration.py  intelligence.py
+│   │   │   └── crawler.py  review_queue.py  health.py
+│   │   ├── crawler/           # Robots-aware crawler + change detection
+│   │   │   ├── runner.py  robots.py  change_detection.py
+│   │   │   └── static_fetcher.py  js_fetcher.py (Playwright)  html_text.py
+│   │   ├── pdf/               # Extraction + dependency-free RAG retrieval
+│   │   │   ├── structured_extraction.py  retrieval.py  pipeline.py
+│   │   ├── models/            # SQLAlchemy ORM (schemes, users, drafts, audit...)
+│   │   ├── schemas/           # Pydantic request/response contracts
+│   │   ├── seed/              # 40-scheme corpus + idempotent loaders
+│   │   ├── scripts/           # CLI entrypoints (crawl, calibration, seed...)
+│   │   ├── crypto.py          # Fernet field encryption at rest
+│   │   ├── security.py        # Argon2 password hashing, session tokens
+│   │   └── config.py  db.py  dependencies.py  main.py
+│   ├── alembic/               # Database migrations
+│   ├── tests/                 # Backend test suite (unit + integration + contract)
+│   └── Dockerfile
+├── frontend/
+│   ├── src/
+│   │   ├── app/               # Next.js App Router pages (two visual worlds)
+│   │   │   ├── page.tsx           # Landing — "terminal" world
+│   │   │   ├── onboarding/  dashboard/  schemes/[slug]/
+│   │   │   ├── schemes/[slug]/workspace/   # editable draft application
+│   │   │   ├── calibration/  applications/  vault/  deadlines/
+│   │   │   └── settings/  review-queue/
+│   │   ├── components/        # SchemeCard, CriterionRow, IntelligencePanel...
+│   │   └── lib/               # Typed API client + generated OpenAPI types
+│   ├── e2e/                   # Playwright browser journeys (CI)
+│   └── Dockerfile
+├── docs/                      # ARCHITECTURE · API · DEMO_GUIDE · PROJECT_DOCUMENTATION
+├── docker-compose.yml         # Local production-like stack
+└── Makefile                   # install / migrate / seed / dev / test / lint
+```
+
 ## Documentation
 
+- [`docs/PROJECT_DOCUMENTATION.md`](docs/PROJECT_DOCUMENTATION.md) — single-page
+  overview: architecture, API endpoints, setup, and feature breakdown
 - [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — system design, repository
   map, backend layers, and the two frontend visual systems
 - [`docs/API.md`](docs/API.md) — full endpoint reference
