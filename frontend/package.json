@@ -15,7 +15,7 @@
     "demo:assets": "playwright test --config=playwright.demo.config.ts"
   },
   "dependencies": {
-    "next": "15.1.6",
+    "next": "15.5.23",
     "react": "19.0.0",
     "react-dom": "19.0.0"
   },
@@ -31,7 +31,7 @@
     "@vitejs/plugin-react": "4.3.4",
     "autoprefixer": "10.4.20",
     "eslint": "9.18.0",
-    "eslint-config-next": "15.1.6",
+    "eslint-config-next": "15.5.23",
     "jsdom": "25.0.1",
     "openapi-typescript": "7.5.2",
     "postcss": "8.4.49",
