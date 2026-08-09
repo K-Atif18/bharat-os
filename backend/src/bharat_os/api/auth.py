@@ -68,15 +68,20 @@ def _issue_session(db: DbSession, user: UserAccount, response: Response) -> None
     db.commit()
 
     settings = get_settings()
+    # In the hosted deployment the frontend (e.g. Vercel) and the API (e.g.
+    # Railway) live on different domains, so every authenticated call is
+    # cross-site. SameSite=Lax would stop the browser from sending the session
+    # cookie on those calls, so production uses SameSite=None — which browsers
+    # only accept together with Secure, hence the HTTPS pairing. Local
+    # development stays SameSite=Lax over plain HTTP, where None is not allowed.
+    is_production = settings.environment == "production"
     response.set_cookie(
         key=SESSION_COOKIE,
         value=token,
         max_age=SESSION_TTL_DAYS * 24 * 3600,
         httponly=True,
-        # Lax rather than Strict so returning from an email link keeps the
-        # session, while still blocking cross-site POSTs.
-        samesite="lax",
-        secure=settings.environment == "production",
+        samesite="none" if is_production else "lax",
+        secure=is_production,
         path="/",
     )
 
