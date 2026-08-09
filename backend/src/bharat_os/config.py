@@ -64,10 +64,21 @@ class Settings(BaseSettings):
 
     @field_validator("database_url")
     @classmethod
-    def _reject_blank_database_url(cls, value: str) -> str:
+    def _normalise_database_url(cls, value: str) -> str:
         if not value.strip():
             raise ValueError("database_url must not be empty")
-        return value
+        # Managed platforms (Railway, Render, Heroku) expose their Postgres
+        # connection string as ``postgres://`` or ``postgresql://``, which
+        # SQLAlchemy resolves to the psycopg2 driver. This project ships
+        # psycopg v3, so normalise the scheme to ``postgresql+psycopg://``.
+        # This lets a platform's own DATABASE_URL be used verbatim, without a
+        # hand-edited driver prefix that is easy to get wrong.
+        normalised = value.strip()
+        if normalised.startswith("postgres://"):
+            normalised = "postgresql://" + normalised[len("postgres://") :]
+        if normalised.startswith("postgresql://"):
+            normalised = "postgresql+psycopg://" + normalised[len("postgresql://") :]
+        return normalised
 
     @property
     def is_sqlite(self) -> bool:
